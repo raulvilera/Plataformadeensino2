@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Aulas - Matemática 6º Ano</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .lesson-card {
+            transition: all 0.3s ease;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        .tab-button {
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button.active {
+            border-bottom: 3px solid #2563eb;
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full">
+  <div id="app" class="w-full h-full overflow-auto bg-gradient-to-br from-blue-50 to-indigo-100"></div>
+  <script>
+        const lessonsData = {
+            1: [
+                { code: "EF05MA03", title: "Frações Equivalentes", url: "https://orientação-vocacional.my.canva.site/" },
+                { code: "EF05MA04A", title: "Frações e Decimais", url: "https://orientação-vocacional.my.canva.site/fra-es-e-decimais" },
+                { code: "EF05MA04B", title: "Comparação de Decimais", url: "https://orientação-vocacional.my.canva.site/bt0bqtvs7f70s72y" },
+                { code: "EF05MA05", title: "Números Racionais", url: "https://orientação-vocacional.my.canva.site/n-meros-racionais-matem-tica-6-ano" },
+                { code: "EF05MA03", title: "App de Frações", url: "https://orientação-vocacional.my.canva.site/c-pia-de-app-de-fra-es-para-6-ano-com-simulador-e-exerc-cios-bncc-ef05ma03" },
+                { code: "EF05MA04A", title: "Atividades com Decimais", url: "https://orientação-vocacional.my.canva.site/bt2yb516accwxb4y" },
+                { code: "EF05MA04B", title: "Exercícios Decimais", url: "https://orientação-vocacional.my.canva.site/bt2ytnyxbqyh896x" },
+                { code: "EF05MA05", title: "Números Racionais 6º Ano", url: "https://orientação-vocacional.my.canva.site/n-meros-racionais-6-ano" },
+                { code: "EF05MA16", title: "Figuras Espaciais", url: "https://orientação-vocacional.my.canva.site/figuras-espaciais-e-planifica-es" },
+                { code: "EF05MA17", title: "Polígonos", url: "https://orientação-vocacional.my.canva.site/pol-gonos-matem-tica-6-ano" },
+                { code: "EF06MA06", title: "Múltiplos e Divisores", url: "https://orientação-vocacional.my.canva.site/m-ltiplos-e-divisores-6-ano" },
+                { code: "EF06MA14", title: "Propriedades da Igualdade", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-propriedades-da-igualdade" },
+                { code: "EF06MA03", title: "Números Naturais", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-n-meros-naturais" },
+                { code: "EF06MA01", title: "Naturais e Racionais", url: "https://orientação-vocacional.my.canva.site/n-meros-naturais-e-racionais" }
+            ],
+            2: [
+                { code: "EF05MA18", title: "Congruência e Proporcionalidade", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-congru-ncia-e-proporcionalidade" },
+                { code: "EF05MA20", title: "Perímetro e Área", url: "https://orientação-vocacional.my.canva.site/per-metro-e-rea-matem-tica-6-ano" },
+                { code: "EF06MA03", title: "Cálculos com Números Naturais", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-c-lculos-com-n-meros-naturais" },
+                { code: "EF06MA24", title: "Grandezas e Medidas", url: "https://orientação-vocacional.my.canva.site/grandezas-e-medidas-6-ano" },
+                { code: "EF06MA09", title: "Frações Matemáticas", url: "https://orientação-vocacional.my.canva.site/fra-es-matem-ticas-6-ano" },
+                { code: "EF06MA20", title: "Quadriláteros", url: "https://orientação-vocacional.my.canva.site/quadril-teros-matem-tica-6-ano" },
+                { code: "EF06MA16A", title: "Plano Cartesiano", url: "https://orientação-vocacional.my.canva.site/plano-cartesiano-6-ano" },
+                { code: "EF06MA31", title: "Gráficos e Estatística", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-gr-ficos-e-estat-stica" }
+            ],
+            3: [
+                { code: "EF05MA07", title: "Adição e Subtração", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-adi-o-e-subtra-o" },
+                { code: "EF05MA08", title: "Multiplicação e Divisão", url: "https://orientação-vocacional.my.canva.site/matem-tica-6-ano-multiplica-o-e-divis-o" },
+                { code: "EF06MA07", title: "Reforço de Frações", url: "https://orientação-vocacional.my.canva.site/c-pia-de-app-de-refor-o-de-fra-es-para-6-ano-bncc-ef06ma07" },
+                { code: "EF06MA09", title: "Frações Matemática", url: "https://orientação-vocacional.my.canva.site/fra-es-matem-tica-6-ano" },
+                { code: "EF05MA12", title: "Proporcionalidade", url: "https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-proporcionalidade" },
+                { code: "EF05MA13", title: "Partilha Desigual", url: "https://orientação-vocacional.my.canva.site/c-pia-de-app-de-refor-o-de-matem-tica-6-ano-partilha-desigual-ef05ma13" },
+                { code: "EF06MA28", title: "Plantas Baixas e Vistas", url: "https://orientação-vocacional.my.canva.site/plantas-baixas-e-vistas-a-reas" },
+                { code: "EF06MA30", title: "Probabilidade", url: "https://orientação-vocacional.my.canva.site/c-pia-de-app-de-refor-o-de-probabilidade-para-6-ano-ef06ma30" }
+            ],
+            4: [
+                { code: "EF06MA14", title: "Reforço Matemática", url: "https://orientação-vocacional.my.canva.site/refor-o-matem-tica-6-ano" },
+                { code: "EF06MA15", title: "Reforço Matemático", url: "https://orientação-vocacional.my.canva.site/refor-o-matem-tico-6-ano" },
+                { code: "EF05MA09", title: "Contagem", url: "https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-contagem" },
+                { code: "EF06MA30", title: "Princípio Multiplicativo", url: "https://orientação-vocacional.my.canva.site/matem-tica-interativa-princ-pio-multiplicativo" },
+                { code: "EF05MA24", title: "Dados e Estatística", url: "https://orientação-vocacional.my.canva.site/dados-e-estat-stica" },
+                { code: "EF05MA25", title: "Reforço Estatística", url: "https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-estat-stica" },
+                { code: "EF06MA21", title: "Figuras Semelhantes", url: "https://orientação-vocacional.my.canva.site/figuras-semelhantes-6-ano" },
+                { code: "EF06MA17", title: "Prismas e Pirâmides", url: "https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-prismas-e-pir-mides" }
+            ]
+        };
+
+        let currentStudentName = '';
+        let currentBimester = 1;
+        let allStudentData = [];
+        let lessonTimers = {};
+
+        const defaultConfig = {
+            app_title: "Portal de Aulas - Matemática 6º Ano",
+            welcome_message: "Bem-vindo ao seu portal de aprendizado",
+            primary_color: "#2563eb",
+            secondary_color: "#ffffff",
+            text_color: "#1f2937",
+            accent_color: "#10b981",
+            background_color: "#f0f9ff",
+            font_family: "Inter",
+            font_size: 16
+        };
+
+        const dataHandler = {
+            onDataChanged(data) {
+                allStudentData = data;
+                if (currentStudentName && document.getElementById('dashboard')) {
+                    renderDashboard();
+                }
+            }
+        };
+
+        async function initApp() {
+            if (window.dataSdk) {
+                const initResult = await window.dataSdk.init(dataHandler);
+                if (!initResult.isOk) {
+                    console.error("Erro ao inicializar Data SDK");
+                }
+            }
+
+            if (window.elementSdk) {
+                window.elementSdk.init({
+                    defaultConfig,
+                    onConfigChange: async (config) => {
+                        const fontFamily = config.font_family || defaultConfig.font_family;
+                        const fontSize = config.font_size || defaultConfig.font_size;
+                        const baseFontStack = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+                        document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+                        document.body.style.fontSize = `${fontSize}px`;
+
+                        const appTitle = document.getElementById('app-title');
+                        if (appTitle) {
+                            appTitle.textContent = config.app_title || defaultConfig.app_title;
+                            appTitle.style.color = config.text_color || defaultConfig.text_color;
+                        }
+
+                        const welcomeMsg = document.getElementById('welcome-message');
+                        if (welcomeMsg) {
+                            welcomeMsg.textContent = config.welcome_message || defaultConfig.welcome_message;
+                            welcomeMsg.style.color = config.text_color || defaultConfig.text_color;
+                        }
+
+                        const buttons = document.querySelectorAll('.primary-button');
+                        buttons.forEach(btn => {
+                            btn.style.backgroundColor = config.primary_color || defaultConfig.primary_color;
+                        });
+
+                        const cards = document.querySelectorAll('.lesson-card');
+                        cards.forEach(card => {
+                            card.style.backgroundColor = config.secondary_color || defaultConfig.secondary_color;
+                        });
+
+                        const tabs = document.querySelectorAll('.tab-button');
+                        tabs.forEach(tab => {
+                            if (tab.classList.contains('active')) {
+                                tab.style.borderBottomColor = config.primary_color || defaultConfig.primary_color;
+                            }
+                        });
+                    },
+                    mapToCapabilities: (config) => ({
+                        recolorables: [
+                            {
+                                get: () => config.background_color || defaultConfig.background_color,
+                                set: (value) => {
+                                    config.background_color = value;
+                                    window.elementSdk.setConfig({ background_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.secondary_color || defaultConfig.secondary_color,
+                                set: (value) => {
+                                    config.secondary_color = value;
+                                    window.elementSdk.setConfig({ secondary_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.text_color || defaultConfig.text_color,
+                                set: (value) => {
+                                    config.text_color = value;
+                                    window.elementSdk.setConfig({ text_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.primary_color || defaultConfig.primary_color,
+                                set: (value) => {
+                                    config.primary_color = value;
+                                    window.elementSdk.setConfig({ primary_color: value });
+                                }
+                            },
+                            {
+                                get: () => config.accent_color || defaultConfig.accent_color,
+                                set: (value) => {
+                                    config.accent_color = value;
+                                    window.elementSdk.setConfig({ accent_color: value });
+                                }
+                            }
+                        ],
+                        borderables: [],
+                        fontEditable: {
+                            get: () => config.font_family || defaultConfig.font_family,
+                            set: (value) => {
+                                config.font_family = value;
+                                window.elementSdk.setConfig({ font_family: value });
+                            }
+                        },
+                        fontSizeable: {
+                            get: () => config.font_size || defaultConfig.font_size,
+                            set: (value) => {
+                                config.font_size = value;
+                                window.elementSdk.setConfig({ font_size: value });
+                            }
+                        }
+                    }),
+                    mapToEditPanelValues: (config) => new Map([
+                        ["app_title", config.app_title || defaultConfig.app_title],
+                        ["welcome_message", config.welcome_message || defaultConfig.welcome_message]
+                    ])
+                });
+            }
+
+            renderLoginScreen();
+        }
+
+        function renderLoginScreen() {
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                <div class="min-h-full flex items-center justify-center p-4">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+                        <div class="text-center mb-8">
+                            <h1 id="app-title" class="text-3xl font-bold mb-2" style="color: ${defaultConfig.text_color}">
+                                ${defaultConfig.app_title}
+                            </h1>
+                            <p id="welcome-message" class="text-base" style="color: ${defaultConfig.text_color}">
+                                ${defaultConfig.welcome_message}
+                            </p>
+                        </div>
+                        <form id="login-form" class="space-y-6">
+                            <div>
+                                <label for="student-name" class="block text-sm font-semibold mb-2" style="color: ${defaultConfig.text_color}">
+                                    Digite seu nome:
+                                </label>
+                                <input
+                                    type="text"
+                                    id="student-name"
+                                    required
+                                    class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors"
+                                    placeholder="Seu nome completo"
+                                    style="font-size: ${defaultConfig.font_size}px"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                class="primary-button w-full text-white font-bold py-3 rounded-lg hover:opacity-90 transition-opacity"
+                                style="background-color: ${defaultConfig.primary_color}; font-size: ${defaultConfig.font_size * 1.125}px"
+                            >
+                                Entrar no Portal
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('student-name').value.trim();
+                if (name) {
+                    currentStudentName = name;
+                    renderDashboard();
+                }
+            });
+        }
+
+        function renderDashboard() {
+            const app = document.getElementById('app');
+            app.innerHTML = `
+                <div id="dashboard" class="min-h-full">
+                    <header class="bg-white shadow-md p-4">
+                        <div class="max-w-7xl mx-auto flex justify-between items-center">
+                            <div>
+                                <h1 class="text-2xl font-bold" style="color: ${defaultConfig.text_color}">Olá, ${currentStudentName}! 👋</h1>
+                                <p class="text-sm" style="color: ${defaultConfig.text_color}; opacity: 0.7">Seu progresso em Matemática</p>
+                            </div>
+                            <button
+                                id="logout-btn"
+                                class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-semibold"
+                                style="font-size: ${defaultConfig.font_size * 0.875}px"
+                            >
+                                Sair
+                            </button>
+                        </div>
+                    </header>
+
+                    <div class="max-w-7xl mx-auto p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-base font-semibold mb-2" style="color: ${defaultConfig.text_color}">📚 Aulas Concluídas</h3>
+                                <p class="text-3xl font-bold" style="color: ${defaultConfig.primary_color}" id="completed-count">0</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-base font-semibold mb-2" style="color: ${defaultConfig.text_color}">⏱️ Tempo Total</h3>
+                                <p class="text-3xl font-bold" style="color: ${defaultConfig.accent_color}" id="total-time">0min</p>
+                            </div>
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-base font-semibold mb-2" style="color: ${defaultConfig.text_color}">⭐ Média de Acertos</h3>
+                                <p class="text-3xl font-bold" style="color: ${defaultConfig.accent_color}" id="avg-score">0%</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                            <h2 class="text-xl font-bold mb-4" style="color: ${defaultConfig.text_color}">🏆 Ranking de Acertos</h2>
+                            <div id="ranking-list"></div>
+                        </div>
+
+                        <div class="bg-white rounded-xl shadow-lg p-6">
+                            <div class="flex gap-4 mb-6 border-b overflow-x-auto">
+                                ${[1, 2, 3, 4].map(b => `
+                                    <button
+                                        class="tab-button px-6 py-3 font-semibold whitespace-nowrap ${b === currentBimester ? 'active' : ''}"
+                                        data-bimester="${b}"
+                                        style="color: ${defaultConfig.text_color}; ${b === currentBimester ? `border-bottom: 3px solid ${defaultConfig.primary_color}` : ''}"
+                                    >
+                                        ${b}º Bimestre
+                                    </button>
+                                `).join('')}
+                            </div>
+                            <div id="lessons-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                currentStudentName = '';
+                currentBimester = 1;
+                Object.keys(lessonTimers).forEach(key => {
+                    if (lessonTimers[key].interval) {
+                        clearInterval(lessonTimers[key].interval);
+                    }
+                });
+                lessonTimers = {};
+                renderLoginScreen();
+            });
+
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    currentBimester = parseInt(e.target.dataset.bimester);
+                    renderDashboard();
+                });
+            });
+
+            updateStats();
+            renderLessons();
+        }
+
+        function updateStats() {
+            const studentData = allStudentData.filter(d => d.student_name === currentStudentName);
+            
+            const completed = studentData.filter(d => d.completed).length;
+            document.getElementById('completed-count').textContent = completed;
+
+            const totalTime = studentData.reduce((sum, d) => sum + (d.time_spent || 0), 0);
+            document.getElementById('total-time').textContent = `${Math.round(totalTime / 60)}min`;
+
+            const validScores = studentData.filter(d => d.score !== null && d.score !== undefined);
+            const avgScore = validScores.length > 0 
+                ? validScores.reduce((sum, d) => sum + d.score, 0) / validScores.length 
+                : 0;
+            document.getElementById('avg-score').textContent = `${Math.round(avgScore)}%`;
+
+            renderRanking(studentData);
+        }
+
+        function renderRanking(studentData) {
+            const rankingList = document.getElementById('ranking-list');
+            const sorted = [...studentData]
+                .filter(d => d.score !== null && d.score !== undefined)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 5);
+
+            if (sorted.length === 0) {
+                rankingList.innerHTML = `<p class="text-center py-4" style="color: ${defaultConfig.text_color}; opacity: 0.6">Nenhuma aula com nota registrada ainda</p>`;
+                return;
+            }
+
+            rankingList.innerHTML = sorted.map((d, i) => `
+                <div class="flex items-center justify-between p-3 mb-2 rounded-lg" style="background-color: ${defaultConfig.secondary_color}; box-shadow: 0 1px 3px rgba(0,0,0,0.1)">
+                    <div class="flex items-center gap-3">
+                        <span class="text-2xl">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '🎯'}</span>
+                        <div>
+                            <p class="font-semibold" style="color: ${defaultConfig.text_color}">${d.lesson_code}</p>
+                            <p class="text-xs" style="color: ${defaultConfig.text_color}; opacity: 0.6">${d.bimester}º Bimestre</p>
+                        </div>
+                    </div>
+                    <span class="text-xl font-bold" style="color: ${defaultConfig.accent_color}">${d.score}%</span>
+                </div>
+            `).join('');
+        }
+
+        function renderLessons() {
+            const container = document.getElementById('lessons-container');
+            const lessons = lessonsData[currentBimester] || [];
+
+            container.innerHTML = lessons.map((lesson, index) => {
+                const studentLesson = allStudentData.find(
+                    d => d.student_name === currentStudentName && 
+                         d.lesson_code === lesson.code && 
+                         d.bimester === currentBimester
+                );
+
+                const isCompleted = studentLesson?.completed || false;
+                const timeSpent = studentLesson?.time_spent || 0;
+                const score = studentLesson?.score;
+
+                return `
+                    <div class="lesson-card bg-white rounded-xl shadow-md p-6 cursor-pointer" data-index="${index}">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold px-3 py-1 rounded-full" style="background-color: ${defaultConfig.primary_color}; color: white">
+                                ${lesson.code}
+                            </span>
+                            ${isCompleted ? `<span class="text-2xl">✅</span>` : ''}
+                        </div>
+                        <h3 class="font-bold text-base mb-2" style="color: ${defaultConfig.text_color}">${lesson.title}</h3>
+                        <p class="text-sm mb-3" style="color: ${defaultConfig.text_color}; opacity: 0.6">Aula ${index + 1}</p>
+                        ${timeSpent > 0 ? `
+                            <div class="mb-2">
+                                <p class="text-xs mb-1" style="color: ${defaultConfig.text_color}">Tempo: ${Math.round(timeSpent / 60)}min</p>
+                            </div>
+                        ` : ''}
+                        ${score !== null && score !== undefined ? `
+                            <div class="mb-3">
+                                <p class="text-xs mb-1" style="color: ${defaultConfig.text_color}">Acertos: ${score}%</p>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="progress-bar h-2 rounded-full" style="width: ${score}%; background-color: ${defaultConfig.accent_color}"></div>
+                                </div>
+                            </div>
+                        ` : ''}
+                        <button
+                            class="w-full mt-3 py-2 rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+                            style="background-color: ${defaultConfig.primary_color}; font-size: ${defaultConfig.font_size * 0.875}px"
+                            onclick="openLesson('${lesson.code}', ${index})"
+                        >
+                            ${isCompleted ? 'Revisar Aula' : 'Iniciar Aula'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        window.openLesson = function(lessonCode, index) {
+            const lesson = lessonsData[currentBimester][index];
+            const timerKey = `${currentStudentName}-${lessonCode}-${currentBimester}`;
+
+            if (!lessonTimers[timerKey]) {
+                lessonTimers[timerKey] = {
+                    startTime: Date.now(),
+                    interval: setInterval(() => {
+                        updateLessonTime(lessonCode);
+                    }, 30000)
+                };
+            }
+
+            window.open(lesson.url, '_blank', 'noopener,noreferrer');
+
+            setTimeout(() => {
+                showScorePrompt(lessonCode);
+            }, 5000);
+        };
+
+        async function updateLessonTime(lessonCode) {
+            const timerKey = `${currentStudentName}-${lessonCode}-${currentBimester}`;
+            const timer = lessonTimers[timerKey];
+
+            if (!timer) return;
+
+            const existingRecord = allStudentData.find(
+                d => d.student_name === currentStudentName && 
+                     d.lesson_code === lessonCode && 
+                     d.bimester === currentBimester
+            );
+
+            const elapsedSeconds = Math.floor((Date.now() - timer.startTime) / 1000);
+            const totalTime = (existingRecord?.time_spent || 0) + elapsedSeconds;
+
+            if (existingRecord) {
+                existingRecord.time_spent = totalTime;
+                existingRecord.last_access = new Date().toISOString();
+                if (window.dataSdk) {
+                    await window.dataSdk.update(existingRecord);
+                }
+            } else {
+                if (allStudentData.length >= 999) {
+                    alert("Limite de 999 registros atingido. Não é possível adicionar mais dados.");
+                    return;
+                }
+                if (window.dataSdk) {
+                    await window.dataSdk.create({
+                        student_name: currentStudentName,
+                        lesson_code: lessonCode,
+                        bimester: currentBimester,
+                        time_spent: totalTime,
+                        score: null,
+                        completed: false,
+                        last_access: new Date().toISOString()
+                    });
+                }
+            }
+
+            timer.startTime = Date.now();
+        }
+
+        function showScorePrompt(lessonCode) {
+            const timerKey = `${currentStudentName}-${lessonCode}-${currentBimester}`;
+            
+            if (lessonTimers[timerKey]?.interval) {
+                clearInterval(lessonTimers[timerKey].interval);
+            }
+
+            const overlay = document.createElement('div');
+            overlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            overlay.innerHTML = `
+                <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+                    <h2 class="text-2xl font-bold mb-4" style="color: ${defaultConfig.text_color}">Registrar Desempenho</h2>
+                    <p class="mb-6" style="color: ${defaultConfig.text_color}">Qual foi sua porcentagem de acertos nesta aula?</p>
+                    <form id="score-form">
+                        <input
+                            type="number"
+                            id="score-input"
+                            min="0"
+                            max="100"
+                            required
+                            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-blue-500"
+                            placeholder="Digite de 0 a 100"
+                            style="font-size: ${defaultConfig.font_size}px"
+                        />
+                        <div class="flex gap-3">
+                            <button
+                                type="button"
+                                class="flex-1 py-3 bg-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-400 transition-colors"
+                                onclick="closeScorePrompt()"
+                            >
+                                Pular
+                            </button>
+                            <button
+                                type="submit"
+                                class="flex-1 py-3 text-white rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                                style="background-color: ${defaultConfig.primary_color}"
+                            >
+                                Registrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+
+            document.getElementById('score-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const score = parseInt(document.getElementById('score-input').value);
+                
+                if (score >= 0 && score <= 100) {
+                    await saveScore(lessonCode, score);
+                    closeScorePrompt();
+                }
+            });
+        }
+
+        window.closeScorePrompt = function() {
+            const overlay = document.querySelector('.fixed.inset-0');
+            if (overlay) {
+                overlay.remove();
+            }
+        };
+
+        async function saveScore(lessonCode, score) {
+            const existingRecord = allStudentData.find(
+                d => d.student_name === currentStudentName && 
+                     d.lesson_code === lessonCode && 
+                     d.bimester === currentBimester
+            );
+
+            if (existingRecord) {
+                existingRecord.score = score;
+                existingRecord.completed = true;
+                existingRecord.last_access = new Date().toISOString();
+                if (window.dataSdk) {
+                    await window.dataSdk.update(existingRecord);
+                }
+            } else {
+                if (allStudentData.length >= 999) {
+                    alert("Limite de 999 registros atingido. Não é possível adicionar mais dados.");
+                    return;
+                }
+                if (window.dataSdk) {
+                    await window.dataSdk.create({
+                        student_name: currentStudentName,
+                        lesson_code: lessonCode,
+                        bimester: currentBimester,
+                        time_spent: 0,
+                        score: score,
+                        completed: true,
+                        last_access: new Date().toISOString()
+                    });
+                }
+            }
+        }
+
+        initApp();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bb6a59ee21f5e0f',t:'MTc2Nzk5MDE0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
