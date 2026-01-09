@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matemática 7º Ano - BNCC</title>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .lesson-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .lesson-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .bimester-tab {
+      transition: all 0.3s;
+    }
+    
+    .bimester-tab.active {
+      transform: scale(1.05);
+    }
+    
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full w-full overflow-auto bg-gradient-to-br from-blue-50 to-indigo-100"><!-- Login Screen -->
+   <div id="loginScreen" class="min-h-full flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
+     <div class="text-center mb-8">
+      <div class="text-5xl mb-4">
+       📚
+      </div>
+      <h1 id="appTitle" class="text-3xl font-bold text-indigo-900 mb-2">Matemática 7º Ano</h1>
+      <p id="welcomeMessage" class="text-gray-600">Bem-vindo ao seu portal de estudos!</p>
+     </div>
+     <form id="loginForm" class="space-y-4">
+      <div><label for="studentName" class="block text-sm font-medium text-gray-700 mb-2">Seu Nome Completo</label> <input type="text" id="studentName" required class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none transition" placeholder="Digite seu nome">
+      </div><button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition"> Entrar </button>
+     </form>
+    </div>
+   </div><!-- Main App Screen -->
+   <div id="mainScreen" class="hidden min-h-full"><!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+     <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex justify-between items-center">
+       <div>
+        <h1 class="text-2xl font-bold text-indigo-900">Matemática 7º Ano</h1>
+        <p class="text-sm text-gray-600">Olá, <span id="studentNameDisplay" class="font-semibold"></span>!</p>
+       </div><button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition text-sm"> Sair </button>
+      </div>
+     </div>
+    </header><!-- Bimester Tabs -->
+    <div class="bg-white border-b">
+     <div class="max-w-7xl mx-auto px-4">
+      <div class="flex space-x-2 overflow-x-auto py-4"><button class="bimester-tab active bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold whitespace-nowrap" data-bimester="1">1º Bimestre</button> <button class="bimester-tab bg-gray-200 text-gray-700 hover:bg-gray-300 px-6 py-2 rounded-lg font-semibold whitespace-nowrap" data-bimester="2">2º Bimestre</button> <button class="bimester-tab bg-gray-200 text-gray-700 hover:bg-gray-300 px-6 py-2 rounded-lg font-semibold whitespace-nowrap" data-bimester="3">3º Bimestre</button> <button class="bimester-tab bg-gray-200 text-gray-700 hover:bg-gray-300 px-6 py-2 rounded-lg font-semibold whitespace-nowrap" data-bimester="4">4º Bimestre</button>
+      </div>
+     </div>
+    </div><!-- Content Area -->
+    <div class="max-w-7xl mx-auto px-4 py-6"><!-- Stats Cards -->
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div class="bg-white rounded-lg shadow p-4">
+       <div class="flex items-center">
+        <div class="text-3xl mr-3">
+         ⏱️
+        </div>
+        <div>
+         <p class="text-sm text-gray-600">Tempo Total</p>
+         <p id="totalTime" class="text-2xl font-bold text-indigo-900">0h 0m</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+       <div class="flex items-center">
+        <div class="text-3xl mr-3">
+         ✅
+        </div>
+        <div>
+         <p class="text-sm text-gray-600">Aulas Concluídas</p>
+         <p id="completedLessons" class="text-2xl font-bold text-indigo-900">0</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-4">
+       <div class="flex items-center">
+        <div class="text-3xl mr-3">
+         🏆
+        </div>
+        <div>
+         <p class="text-sm text-gray-600">Pontuação Média</p>
+         <p id="avgScore" class="text-2xl font-bold text-indigo-900">-</p>
+        </div>
+       </div>
+      </div>
+     </div><!-- Lessons Grid -->
+     <div id="lessonsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><!-- Lessons will be dynamically inserted here -->
+     </div><!-- Ranking Section -->
+     <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+      <h2 class="text-2xl font-bold text-indigo-900 mb-4">🏆 Seu Histórico de Estudos</h2>
+      <div id="rankingContainer" class="space-y-2">
+       <p class="text-gray-500 text-center py-8">Comece a estudar para ver seu progresso aqui!</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Lesson data organized by bimester
+    const lessons = {
+      1: [
+        { code: 'EF06MA06', title: 'Reforço Matemático', description: 'Resolver problemas que envolvam o cálculo de porcentagem', url: 'https://orientação-vocacional.my.canva.site/refor-o-matem-tico-7-ano' },
+        { code: 'EF06MA10', title: 'Frações', description: 'Resolver e elaborar problemas que envolvam adição ou subtração com números racionais positivos', url: 'https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-fra-es' },
+        { code: 'EF06MA11', title: 'Reforço Matemática', description: 'Resolver e elaborar problemas com números racionais positivos na representação decimal', url: 'https://orientação-vocacional.my.canva.site/refor-o-matem-tica-7-ano' },
+        { code: 'EF07MA13', title: 'Operações Matemáticas', description: 'Compreender a ideia de variável, representada por letra ou símbolo', url: 'https://orientação-vocacional.my.canva.site/bw617st7wcpyajnq' },
+        { code: 'EF07MA24', title: 'Triângulos', description: 'Construir triângulos usando régua e compasso', url: 'https://orientação-vocacional.my.canva.site/matem-tica-tri-ngulos' },
+        { code: 'EF07MA01', title: 'Números e Operações', description: 'Resolver e elaborar problemas com números inteiros', url: 'https://orientação-vocacional.my.canva.site/bw6gw4x7c9mdx02r' },
+        { code: 'EF07MA29', title: 'Medidas de Grandezas', description: 'Resolver problemas que envolvam medidas de grandezas inseridos em contextos', url: 'https://orientação-vocacional.my.canva.site/matem-tica-7-ano-medidas-de-grandezas' }
+      ],
+      2: [
+        { code: 'EF06MA24', title: 'Formas Geométricas', description: 'Resolver e elaborar problemas que envolvam as grandezas comprimento, massa, tempo', url: 'https://orientação-vocacional.my.canva.site/bw7t51z9af7kvxkq' },
+        { code: 'EF06MA25A', title: 'Ângulos', description: 'Reconhecer a abertura do ângulo como grandeza associada às figuras geométricas', url: 'https://orientação-vocacional.my.canva.site/matem-tica-ngulos' },
+        { code: 'EF06MA25B', title: 'Ângulos e Giros', description: 'Reconhecer ângulos como giros e deslocamentos', url: 'https://orientação-vocacional.my.canva.site/ngulos-e-giros-7-ano' },
+        { code: 'EF07MA05', title: 'Operações com Números', description: 'Resolver um mesmo problema utilizando diferentes algoritmos', url: 'https://orientação-vocacional.my.canva.site/bw8j3qyz7g3h1wmv' },
+        { code: 'EF07MA29', title: 'Medidas', description: 'Resolver e elaborar problemas que envolvam medidas de grandezas', url: 'https://orientação-vocacional.my.canva.site/bw8jse13g8m5nv3d' },
+        { code: 'EF07MA09', title: 'Razão e Fração', description: 'Utilizar a relação entre fração e razão para resolver problemas', url: 'https://orientação-vocacional.my.canva.site/matem-tica-7-ano-raz-o-e-fra-o' },
+        { code: 'EF07MA15', title: 'Álgebra e Sequências', description: 'Utilizar a simbologia algébrica para expressar regularidades em sequências numéricas', url: 'https://orientação-vocacional.my.canva.site/matem-tica-7-ano-lgebra-e-sequ-ncias' },
+        { code: 'EF07MA19', title: 'Plano Cartesiano', description: 'Realizar transformações de figuras geométricas planas no plano cartesiano', url: 'https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-plano-cartesiano' }
+      ],
+      3: [
+        { code: 'EF06MA03', title: 'Números Naturais', description: 'Resolver e elaborar problemas que envolvam cálculos com números naturais', url: 'https://orientação-vocacional.my.canva.site/c-pia-de-aplicativo-de-refor-o-de-c-lculo-com-n-meros-naturais-para-7-ano' },
+        { code: 'EF07MA04', title: 'Números Inteiros', description: 'Resolver e elaborar problemas que envolvam operações com números inteiros', url: 'https://orientação-vocacional.my.canva.site/refor-o-matem-tica-n-meros-inteiros' },
+        { code: 'EF06MA13', title: 'Porcentagens', description: 'Resolver e elaborar problemas que envolvam porcentagens', url: 'https://orientação-vocacional.my.canva.site/matem-tica-porcentagens' },
+        { code: 'EF07MA02', title: 'Porcentagem Aplicada', description: 'Resolver e elaborar problemas que envolvam porcentagens em contextos diversos', url: 'https://orientação-vocacional.my.canva.site/matem-tica-7-ano-porcentagem' },
+        { code: 'EF06MA19', title: 'Triângulos', description: 'Identificar características dos triângulos e classificá-los', url: 'https://orientação-vocacional.my.canva.site/tri-ngulos-matem-tica-7-ano' },
+        { code: 'EF06MA20', title: 'Quadriláteros', description: 'Identificar características dos quadriláteros e classificá-los', url: 'https://orientação-vocacional.my.canva.site/quadril-teros-7-ano' },
+        { code: 'EF07MA19', title: 'Plano Cartesiano', description: 'Realizar transformações de polígonos no plano cartesiano', url: 'https://orientação-vocacional.my.canva.site/plano-cartesiano-7-ano' },
+        { code: 'EF07MA20', title: 'Simetria no Plano', description: 'Reconhecer e construir figuras obtidas por simetrias de translação, rotação e reflexão', url: 'https://orientação-vocacional.my.canva.site/simetria-no-plano-cartesiano' },
+        { code: 'EF07MA12', title: 'Números Racionais', description: 'Resolver e elaborar problemas que envolvam operações com números racionais', url: 'https://orientação-vocacional.my.canva.site/matem-tica-7-ano-n-meros-racionais' },
+        { code: 'EF07MA16', title: 'Expressões Algébricas', description: 'Reconhecer se duas expressões algébricas são equivalentes', url: 'https://orientação-vocacional.my.canva.site/express-es-alg-bricas-equivalentes' },
+        { code: 'EF07MA30', title: 'Volume de Blocos', description: 'Resolver e elaborar problemas de cálculo de medida de volume de blocos retangulares', url: 'https://orientação-vocacional.my.canva.site/volume-de-blocos-7-ano' }
+      ],
+      4: [
+        { code: 'EF07MA17', title: 'Proporcionalidade', description: 'Resolver e elaborar problemas que envolvam variação de proporcionalidade direta e inversa', url: 'https://orientação-vocacional.my.canva.site/matem-tica-7-ano-proporcionalidade' },
+        { code: 'EF06MA30', title: 'Probabilidade', description: 'Calcular a probabilidade de um evento aleatório simples', url: 'https://orientação-vocacional.my.canva.site/refor-o-de-probabilidade-7-ano' },
+        { code: 'EF07MA34', title: 'Probabilidades Avançadas', description: 'Planejar e realizar experimentos aleatórios envolvendo probabilidade', url: 'https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-probabilidades' },
+        { code: 'EF07MA15', title: 'Sequências', description: 'Utilizar a simbologia algébrica para expressar regularidades encontradas em sequências', url: 'https://orientação-vocacional.my.canva.site/bwwjhvknf7qfxd3a' },
+        { code: 'EF07MA16', title: 'Expressões', description: 'Reconhecer se expressões algébricas obtidas para descrever padrões são equivalentes', url: 'https://orientação-vocacional.my.canva.site/bwwk6z6wexd4jzbs' },
+        { code: 'EF07MA18', title: 'Equações', description: 'Resolver e elaborar problemas que possam ser representados por equações do 1º grau', url: 'https://orientação-vocacional.my.canva.site/bwwkdz9hegkjbxpa' },
+        { code: 'EF07MA32', title: 'Áreas', description: 'Resolver e elaborar problemas de cálculo de medida de área de figuras planas', url: 'https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-reas' },
+        { code: 'EF07MA35', title: 'Média Estatística', description: 'Compreender a ideia de tendência de uma pesquisa usando medidas de tendência central', url: 'https://orientação-vocacional.my.canva.site/refor-o-de-matem-tica-m-dia-estat-stica' }
+      ]
+    };
+
+    // App state
+    let currentStudent = '';
+    let currentBimester = 1;
+    let allStudyRecords = [];
+    let lessonStartTime = null;
+    let currentLessonCode = null;
+
+    // Default config
+    const defaultConfig = {
+      app_title: 'Matemática 7º Ano',
+      welcome_message: 'Bem-vindo ao seu portal de estudos!',
+      background_color: '#EEF2FF',
+      card_color: '#FFFFFF',
+      text_color: '#312E81',
+      primary_button_color: '#4F46E5',
+      secondary_button_color: '#6366F1'
+    };
+
+    // Data SDK handler
+    const dataHandler = {
+      onDataChanged(data) {
+        allStudyRecords = data;
+        updateStats();
+        updateRanking();
+      }
+    };
+
+    // Initialize SDKs
+    async function initApp() {
+      const dataResult = await window.dataSdk.init(dataHandler);
+      if (!dataResult.isOk) {
+        console.error('Failed to initialize Data SDK');
+      }
+
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange: async (config) => {
+            document.getElementById('appTitle').textContent = config.app_title || defaultConfig.app_title;
+            document.getElementById('welcomeMessage').textContent = config.welcome_message || defaultConfig.welcome_message;
+            
+            const bgColor = config.background_color || defaultConfig.background_color;
+            const cardColor = config.card_color || defaultConfig.card_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryBtnColor = config.primary_button_color || defaultConfig.primary_button_color;
+            const secondaryBtnColor = config.secondary_button_color || defaultConfig.secondary_button_color;
+            
+            document.getElementById('app').style.background = `linear-gradient(to bottom right, ${bgColor}, ${secondaryBtnColor}20)`;
+            
+            document.querySelectorAll('.bg-white').forEach(el => {
+              if (!el.classList.contains('shadow') && !el.classList.contains('rounded-lg')) {
+                el.style.backgroundColor = cardColor;
+              }
+            });
+            
+            document.querySelectorAll('.text-indigo-900').forEach(el => {
+              el.style.color = textColor;
+            });
+            
+            document.querySelectorAll('.bg-indigo-600, .bimester-tab.active').forEach(el => {
+              el.style.backgroundColor = primaryBtnColor;
+            });
+          },
+          mapToCapabilities: (config) => ({
+            recolorables: [
+              {
+                get: () => config.background_color || defaultConfig.background_color,
+                set: (value) => {
+                  config.background_color = value;
+                  window.elementSdk.setConfig({ background_color: value });
+                }
+              },
+              {
+                get: () => config.card_color || defaultConfig.card_color,
+                set: (value) => {
+                  config.card_color = value;
+                  window.elementSdk.setConfig({ card_color: value });
+                }
+              },
+              {
+                get: () => config.text_color || defaultConfig.text_color,
+                set: (value) => {
+                  config.text_color = value;
+                  window.elementSdk.setConfig({ text_color: value });
+                }
+              },
+              {
+                get: () => config.primary_button_color || defaultConfig.primary_button_color,
+                set: (value) => {
+                  config.primary_button_color = value;
+                  window.elementSdk.setConfig({ primary_button_color: value });
+                }
+              },
+              {
+                get: () => config.secondary_button_color || defaultConfig.secondary_button_color,
+                set: (value) => {
+                  config.secondary_button_color = value;
+                  window.elementSdk.setConfig({ secondary_button_color: value });
+                }
+              }
+            ],
+            borderables: [],
+            fontEditable: undefined,
+            fontSizeable: undefined
+          }),
+          mapToEditPanelValues: (config) => new Map([
+            ['app_title', config.app_title || defaultConfig.app_title],
+            ['welcome_message', config.welcome_message || defaultConfig.welcome_message]
+          ])
+        });
+      }
+    }
+
+    // Login form handler
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      currentStudent = document.getElementById('studentName').value.trim();
+      
+      if (currentStudent) {
+        document.getElementById('studentNameDisplay').textContent = currentStudent;
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('mainScreen').classList.remove('hidden');
+        renderLessons();
+        updateStats();
+      }
+    });
+
+    // Logout handler
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      currentStudent = '';
+      document.getElementById('studentName').value = '';
+      document.getElementById('mainScreen').classList.add('hidden');
+      document.getElementById('loginScreen').classList.remove('hidden');
+    });
+
+    // Bimester tab handlers
+    document.querySelectorAll('.bimester-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.bimester-tab').forEach(t => {
+          t.classList.remove('active', 'bg-indigo-600', 'text-white');
+          t.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        
+        tab.classList.add('active', 'bg-indigo-600', 'text-white');
+        tab.classList.remove('bg-gray-200', 'text-gray-700');
+        
+        currentBimester = parseInt(tab.dataset.bimester);
+        renderLessons();
+      });
+    });
+
+    // Render lessons
+    function renderLessons() {
+      const container = document.getElementById('lessonsContainer');
+      const bimesterLessons = lessons[currentBimester];
+      
+      container.innerHTML = bimesterLessons.map(lesson => {
+        const studentRecords = allStudyRecords.filter(r => 
+          r.student_name === currentStudent && 
+          r.lesson_code === lesson.code
+        );
+        
+        const totalTime = studentRecords.reduce((sum, r) => sum + (r.time_spent || 0), 0);
+        const avgScore = studentRecords.length > 0 
+          ? (studentRecords.reduce((sum, r) => sum + (r.score || 0), 0) / studentRecords.length).toFixed(1)
+          : '-';
+        
+        const minutes = Math.floor(totalTime / 60);
+        const timeText = minutes > 0 ? `${minutes}min` : 'Novo';
+        
+        return `
+          <div class="lesson-card bg-white rounded-lg shadow p-5">
+            <div class="flex items-start justify-between mb-3">
+              <div class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold">
+                ${lesson.code}
+              </div>
+              <div class="text-2xl">📖</div>
+            </div>
+            
+            <h3 class="font-bold text-gray-800 mb-2 text-lg">${lesson.title}</h3>
+            
+            <p class="text-sm text-gray-600 mb-4 leading-relaxed">${lesson.description}</p>
+            
+            <div class="flex items-center justify-between text-sm text-gray-600 mb-4">
+              <span>⏱️ ${timeText}</span>
+              <span>⭐ ${avgScore}</span>
+            </div>
+            
+            <button 
+              onclick="startLesson('${lesson.code}', '${lesson.url}')"
+              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition font-semibold"
+            >
+              Estudar
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Start lesson
+    window.startLesson = (code, url) => {
+      currentLessonCode = code;
+      lessonStartTime = Date.now();
+      
+      window.open(url, '_blank', 'noopener,noreferrer');
+      
+      setTimeout(() => {
+        showScoreInput();
+      }, 5000);
+    };
+
+    // Show score input
+    function showScoreInput() {
+      const overlay = document.createElement('div');
+      overlay.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50';
+      overlay.innerHTML = `
+        <div class="bg-white rounded-xl shadow-2xl p-6 max-w-md w-full">
+          <h3 class="text-xl font-bold text-indigo-900 mb-4">Como foi seu estudo?</h3>
+          <p class="text-gray-600 mb-4">Dê uma nota de 0 a 10 para seu desempenho:</p>
+          
+          <input 
+            type="number" 
+            id="scoreInput" 
+            min="0" 
+            max="10" 
+            step="0.5"
+            class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg mb-4 text-center text-2xl font-bold"
+            placeholder="0-10"
+          >
+          
+          <div class="flex space-x-3">
+            <button 
+              onclick="cancelScore()"
+              class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 py-2 rounded-lg transition font-semibold"
+            >
+              Cancelar
+            </button>
+            <button 
+              onclick="saveScore()"
+              class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition font-semibold"
+            >
+              Salvar
+            </button>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(overlay);
+      overlay.id = 'scoreOverlay';
+    }
+
+    // Save score
+    window.saveScore = async () => {
+      const scoreInput = document.getElementById('scoreInput');
+      const score = parseFloat(scoreInput.value);
+      
+      if (isNaN(score) || score < 0 || score > 10) {
+        scoreInput.classList.add('border-red-500');
+        return;
+      }
+      
+      const timeSpent = Math.floor((Date.now() - lessonStartTime) / 1000);
+      
+      const overlay = document.getElementById('scoreOverlay');
+      const saveBtn = overlay.querySelector('button:last-child');
+      saveBtn.textContent = 'Salvando...';
+      saveBtn.disabled = true;
+      
+      const result = await window.dataSdk.create({
+        student_name: currentStudent,
+        lesson_code: currentLessonCode,
+        bimester: currentBimester,
+        time_spent: timeSpent,
+        score: score,
+        completed_at: new Date().toISOString()
+      });
+      
+      if (result.isOk) {
+        document.body.removeChild(overlay);
+        lessonStartTime = null;
+        currentLessonCode = null;
+      } else {
+        saveBtn.textContent = 'Erro! Tente novamente';
+        saveBtn.disabled = false;
+      }
+    };
+
+    // Cancel score
+    window.cancelScore = () => {
+      const overlay = document.getElementById('scoreOverlay');
+      document.body.removeChild(overlay);
+      lessonStartTime = null;
+      currentLessonCode = null;
+    };
+
+    // Update stats
+    function updateStats() {
+      const studentRecords = allStudyRecords.filter(r => r.student_name === currentStudent);
+      
+      const totalSeconds = studentRecords.reduce((sum, r) => sum + (r.time_spent || 0), 0);
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      document.getElementById('totalTime').textContent = `${hours}h ${minutes}m`;
+      
+      const uniqueLessons = new Set(studentRecords.map(r => r.lesson_code));
+      document.getElementById('completedLessons').textContent = uniqueLessons.size;
+      
+      const avgScore = studentRecords.length > 0
+        ? (studentRecords.reduce((sum, r) => sum + (r.score || 0), 0) / studentRecords.length).toFixed(1)
+        : '-';
+      document.getElementById('avgScore').textContent = avgScore;
+    }
+
+    // Update ranking
+    function updateRanking() {
+      const container = document.getElementById('rankingContainer');
+      const studentRecords = allStudyRecords
+        .filter(r => r.student_name === currentStudent)
+        .sort((a, b) => new Date(b.completed_at) - new Date(a.completed_at))
+        .slice(0, 10);
+      
+      if (studentRecords.length === 0) {
+        container.innerHTML = '<p class="text-gray-500 text-center py-8">Comece a estudar para ver seu progresso aqui!</p>';
+        return;
+      }
+      
+      container.innerHTML = studentRecords.map((record, index) => {
+        const lesson = Object.values(lessons).flat().find(l => l.code === record.lesson_code);
+        const date = new Date(record.completed_at).toLocaleDateString('pt-BR');
+        const minutes = Math.floor(record.time_spent / 60);
+        
+        return `
+          <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+            <div class="flex items-center space-x-4">
+              <div class="text-2xl font-bold text-gray-400">#${index + 1}</div>
+              <div>
+                <p class="font-semibold text-gray-800">${lesson ? lesson.title : record.lesson_code}</p>
+                <p class="text-sm text-gray-500">${date} • ${minutes} min</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-2xl font-bold text-indigo-600">${record.score.toFixed(1)}</div>
+              <div class="text-xs text-gray-500">pontos</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Initialize app
+    initApp();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bb6a4e991725e0f',t:'MTc2Nzk5MDEyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
