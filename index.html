@@ -209,7 +209,7 @@
             flex-wrap: wrap;
         }
         
-        /* ===== CARDS DE CURSO ===== */
+        /* ===== CARDS DE CURSO - NOVO ESTILO ===== */
         .section-title {
             text-align: center;
             margin-bottom: 1rem;
@@ -236,6 +236,8 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            position: relative;
         }
         
         .course-card:hover {
@@ -243,47 +245,112 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .course-image {
-            height: 200px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
+        .course-card.special {
+            border-top: 5px solid;
         }
         
-        .course-content {
-            padding: 1.5rem;
+        .course-card.special[data-year="6"] {
+            border-top-color: #2563eb;
+        }
+        
+        .course-card.special[data-year="7"] {
+            border-top-color: #059669;
+        }
+        
+        .course-card.special[data-year="8"] {
+            border-top-color: #7c3aed;
+        }
+        
+        .course-card.special[data-year="9"] {
+            border-top-color: #dc2626;
+        }
+        
+        .course-header {
+            padding: 1.5rem 1.5rem 0.5rem;
+            border-bottom: 1px solid var(--gray-light);
         }
         
         .course-title {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .course-description {
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
+        .course-category {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--gray-light);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--dark-color);
         }
         
         .course-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent-color);
-            display: block;
-            margin-bottom: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .course-old-price {
+            font-size: 1rem;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .course-price-section {
+            padding: 0 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            padding-bottom: 1rem;
+        }
+        
+        .course-description {
+            padding: 1.5rem;
+            color: var(--dark-color);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            border-bottom: 1px solid var(--gray-light);
+            min-height: 120px;
+        }
+        
+        .course-features {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .course-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .course-feature i {
+            color: var(--accent-color);
+            width: 20px;
+        }
+        
+        .course-actions {
+            padding: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .course-actions .btn {
+            flex: 1;
         }
         
         .course-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1rem;
-            padding-top: 1rem;
+            padding: 1rem 1.5rem;
             border-top: 1px solid var(--gray-light);
             font-size: 0.9rem;
             color: var(--gray);
@@ -404,7 +471,7 @@
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
         
-        /* ===== MODAL DO PORTAL 6º ANO ===== */
+        /* ===== MODAIS DOS PORTALS ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -515,6 +582,7 @@
             padding: 1rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            border: 1px solid #e5e7eb;
         }
         
         .lesson-card:hover {
@@ -642,7 +710,7 @@
             margin-bottom: 2rem;
         }
         
-        .stat-card {
+        .stat-card-admin {
             background: var(--white);
             padding: 1.5rem;
             border-radius: 10px;
@@ -651,7 +719,7 @@
             transition: var(--transition);
         }
         
-        .stat-card:hover {
+        .stat-card-admin:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
@@ -888,6 +956,14 @@
             
             .lessons-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .course-actions {
+                flex-direction: column;
+            }
+            
+            .course-card.special .course-actions .btn {
+                width: 100%;
             }
         }
         
@@ -1198,28 +1274,28 @@
                         <!-- Dashboard -->
                         <div id="dashboard-tab" class="admin-tab">
                             <div class="admin-stats">
-                                <div class="stat-card">
+                                <div class="stat-card-admin">
                                     <div class="stat-icon">
                                         <i class="fas fa-book"></i>
                                     </div>
                                     <h3 id="total-courses">0</h3>
                                     <p>Cursos Ativos</p>
                                 </div>
-                                <div class="stat-card">
+                                <div class="stat-card-admin">
                                     <div class="stat-icon">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <h3 id="total-students">0</h3>
                                     <p>Alunos Cadastrados</p>
                                 </div>
-                                <div class="stat-card">
+                                <div class="stat-card-admin">
                                     <div class="stat-icon">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <h3 id="total-revenue">R$ 0</h3>
                                     <p>Receita Total</p>
                                 </div>
-                                <div class="stat-card">
+                                <div class="stat-card-admin">
                                     <div class="stat-icon">
                                         <i class="fas fa-chart-line"></i>
                                     </div>
@@ -1468,7 +1544,7 @@
         </div>
     </footer>
 
-    <!-- ===== MODAL DO PORTAL 6º ANO ===== -->
+    <!-- ===== MODAIS DOS PORTALS ===== -->
     <div class="modal-overlay hidden" id="portal-6ano-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1483,7 +1559,6 @@
         </div>
     </div>
 
-    <!-- ===== MODAL DO PORTAL 7º ANO ===== -->
     <div class="modal-overlay hidden" id="portal-7ano-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1492,6 +1567,20 @@
             </div>
             <div class="modal-body">
                 <div id="portal-7ano-content">
+                    <!-- Conteúdo do portal será carregado aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="portal-8ano-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-calculator"></i> Portal de Aulas - Matemática 8º Ano</h3>
+                <button class="modal-close" onclick="closePortal8Modal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="portal-8ano-content">
                     <!-- Conteúdo do portal será carregado aqui -->
                 </div>
             </div>
@@ -1680,6 +1769,78 @@
             ]
         };
 
+        // ===== DADOS DAS AULAS 8º ANO =====
+        const lessonsData8ano = {
+            1: [
+                { code: 'EF08MA01', title: 'Números Reais', description: 'Conjuntos numéricos: racionais e irracionais', url: 'https://exemplo.com/aula1-8ano' },
+                { code: 'EF08MA02', title: 'Potenciação e Radiciação', description: 'Propriedades das potências e raízes', url: 'https://exemplo.com/aula2-8ano' },
+                { code: 'EF08MA03', title: 'Notação Científica', description: 'Representação de números muito grandes ou pequenos', url: 'https://exemplo.com/aula3-8ano' },
+                { code: 'EF08MA04', title: 'Sistema de Equações', description: 'Resolução de sistemas do 1º grau', url: 'https://exemplo.com/aula4-8ano' },
+                { code: 'EF08MA05', title: 'Teorema de Tales', description: 'Proporcionalidade e feixe de paralelas', url: 'https://exemplo.com/aula5-8ano' },
+                { code: 'EF08MA06', title: 'Teorema de Pitágoras', description: 'Relação entre lados do triângulo retângulo', url: 'https://exemplo.com/aula6-8ano' }
+            ],
+            2: [
+                { code: 'EF08MA07', title: 'Área de Figuras Planas', description: 'Cálculo de áreas de polígonos e círculos', url: 'https://exemplo.com/aula7-8ano' },
+                { code: 'EF08MA08', title: 'Volume de Sólidos', description: 'Cálculo de volumes de prismas, cilindros e pirâmides', url: 'https://exemplo.com/aula8-8ano' },
+                { code: 'EF08MA09', title: 'Probabilidade', description: 'Cálculo de probabilidades de eventos', url: 'https://exemplo.com/aula9-8ano' },
+                { code: 'EF08MA10', title: 'Estatística', description: 'Média, mediana, moda e gráficos', url: 'https://exemplo.com/aula10-8ano' },
+                { code: 'EF08MA11', title: 'Funções', description: 'Conceito de função e representações', url: 'https://exemplo.com/aula11-8ano' },
+                { code: 'EF08MA12', title: 'Função Afim', description: 'Gráfico e propriedades da função afim', url: 'https://exemplo.com/aula12-8ano' }
+            ],
+            3: [
+                { code: 'EF08MA13', title: 'Equações do 2º Grau', description: 'Resolução por fatoração e fórmula de Bhaskara', url: 'https://exemplo.com/aula13-8ano' },
+                { code: 'EF08MA14', title: 'Trigonometria', description: 'Razões trigonométricas no triângulo retângulo', url: 'https://exemplo.com/aula14-8ano' },
+                { code: 'EF08MA15', title: 'Semelhança de Triângulos', description: 'Casos de semelhança e aplicações', url: 'https://exemplo.com/aula15-8ano' },
+                { code: 'EF08MA16', title: 'Polígonos Regulares', description: 'Propriedades e construções', url: 'https://exemplo.com/aula16-8ano' },
+                { code: 'EF08MA17', title: 'Circunferência e Círculo', description: 'Elementos e propriedades', url: 'https://exemplo.com/aula17-8ano' },
+                { code: 'EF08MA18', title: 'Ângulos na Circunferência', description: 'Relações entre ângulos e arcos', url: 'https://exemplo.com/aula18-8ano' }
+            ],
+            4: [
+                { code: 'EF08MA19', title: 'Geometria Analítica', description: 'Coordenadas cartesianas e distância entre pontos', url: 'https://exemplo.com/aula19-8ano' },
+                { code: 'EF08MA20', title: 'Inequações', description: 'Resolução de inequações do 1º grau', url: 'https://exemplo.com/aula20-8ano' },
+                { code: 'EF08MA21', title: 'Porcentagem Aplicada', description: 'Juros simples e compostos', url: 'https://exemplo.com/aula21-8ano' },
+                { code: 'EF08MA22', title: 'Grandezas Proporcionais', description: 'Regra de três simples e composta', url: 'https://exemplo.com/aula22-8ano' },
+                { code: 'EF08MA23', title: 'Análise Combinatória', description: 'Princípio fundamental da contagem', url: 'https://exemplo.com/aula23-8ano' },
+                { code: 'EF08MA24', title: 'Revisão Geral', description: 'Preparação para o 9º ano', url: 'https://exemplo.com/aula24-8ano' }
+            ]
+        };
+
+        // ===== DADOS DAS AULAS 9º ANO =====
+        const lessonsData9ano = {
+            1: [
+                { code: 'EF09MA01', title: 'Função Quadrática', description: 'Gráfico, vértice e raízes da parábola', url: 'https://exemplo.com/aula1-9ano' },
+                { code: 'EF09MA02', title: 'Equações Biquadradas', description: 'Resolução de equações biquadradas', url: 'https://exemplo.com/aula2-9ano' },
+                { code: 'EF09MA03', title: 'Inequações do 2º Grau', description: 'Resolução e representação gráfica', url: 'https://exemplo.com/aula3-9ano' },
+                { code: 'EF09MA04', title: 'Geometria Espacial', description: 'Prismas, pirâmides, cilindros, cones e esferas', url: 'https://exemplo.com/aula4-9ano' },
+                { code: 'EF09MA05', title: 'Volume e Área Total', description: 'Cálculos para sólidos geométricos', url: 'https://exemplo.com/aula5-9ano' },
+                { code: 'EF09MA06', title: 'Trigonometria Aplicada', description: 'Lei dos senos e cossenos', url: 'https://exemplo.com/aula6-9ano' }
+            ],
+            2: [
+                { code: 'EF09MA07', title: 'Matrizes', description: 'Operações com matrizes', url: 'https://exemplo.com/aula7-9ano' },
+                { code: 'EF09MA08', title: 'Determinantes', description: 'Cálculo e propriedades de determinantes', url: 'https://exemplo.com/aula8-9ano' },
+                { code: 'EF09MA09', title: 'Sistemas Lineares', description: 'Resolução por escalonamento e regra de Cramer', url: 'https://exemplo.com/aula9-9ano' },
+                { code: 'EF09MA10', title: 'Polinômios', description: 'Operações e fatoração de polinômios', url: 'https://exemplo.com/aula10-9ano' },
+                { code: 'EF09MA11', title: 'Equações Polinomiais', description: 'Teorema fundamental da álgebra', url: 'https://exemplo.com/aula11-9ano' },
+                { code: 'EF09MA12', title: 'Progressão Aritmética', description: 'Termo geral e soma dos termos', url: 'https://exemplo.com/aula12-9ano' }
+            ],
+            3: [
+                { code: 'EF09MA13', title: 'Progressão Geométrica', description: 'Termo geral e soma dos termos', url: 'https://exemplo.com/aula13-9ano' },
+                { code: 'EF09MA14', title: 'Juros Compostos', description: 'Aplicações financeiras e matemática comercial', url: 'https://exemplo.com/aula14-9ano' },
+                { code: 'EF09MA15', title: 'Estatística Avançada', description: 'Desvio padrão e variância', url: 'https://exemplo.com/aula15-9ano' },
+                { code: 'EF09MA16', title: 'Probabilidade Condicional', description: 'Eventos dependentes e independentes', url: 'https://exemplo.com/aula16-9ano' },
+                { code: 'EF09MA17', title: 'Geometria Analítica', description: 'Equação da reta e da circunferência', url: 'https://exemplo.com/aula17-9ano' },
+                { code: 'EF09MA18', title: 'Números Complexos', description: 'Operações e representação geométrica', url: 'https://exemplo.com/aula18-9ano' }
+            ],
+            4: [
+                { code: 'EF09MA19', title: 'Função Exponencial', description: 'Gráficos e equações exponenciais', url: 'https://exemplo.com/aula19-9ano' },
+                { code: 'EF09MA20', title: 'Logaritmos', description: 'Propriedades e equações logarítmicas', url: 'https://exemplo.com/aula20-9ano' },
+                { code: 'EF09MA21', title: 'Função Logarítmica', description: 'Gráficos e aplicações', url: 'https://exemplo.com/aula21-9ano' },
+                { code: 'EF09MA22', title: 'Geometria Métrica', description: 'Relações métricas nos triângulos', url: 'https://exemplo.com/aula22-9ano' },
+                { code: 'EF09MA23', title: 'Revisão ENEM', description: 'Preparação para o vestibular', url: 'https://exemplo.com/aula23-9ano' },
+                { code: 'EF09MA24', title: 'Revisão Geral', description: 'Consolidação dos conteúdos do Ensino Fundamental', url: 'https://exemplo.com/aula24-9ano' }
+            ]
+        };
+
         // ===== VARIÁVEIS GLOBAIS =====
         let currentUser = null;
         let currentAdmin = null;
@@ -1692,7 +1853,7 @@
         // Variáveis específicas do portal
         let currentStudentName = '';
         let currentBimester = 1;
-        let currentPortalType = '6ano'; // '6ano' ou '7ano'
+        let currentPortalType = '6ano';
         let allStudentData = [];
         let lessonTimers = {};
         let currentLessonCode = '';
@@ -1708,21 +1869,16 @@
         
         // ===== FUNÇÕES DE INICIALIZAÇÃO =====
         function initApp() {
-            // Verificar autenticação
             currentUser = JSON.parse(localStorage.getItem('currentUser'));
             currentAdmin = JSON.parse(localStorage.getItem('currentAdmin'));
             
-            // Carregar dados do aluno
             currentStudentName = localStorage.getItem('currentStudentName') || '';
             currentPortalType = localStorage.getItem('currentPortalType') || '6ano';
             
-            // Atualizar navegação baseada no login
             updateNavigation();
             
-            // Carregar cursos do localStorage
             allCourses = JSON.parse(localStorage.getItem('courses')) || [];
             
-            // Configurar menu mobile
             const menuToggle = document.getElementById('mobile-menu');
             const navMenu = document.getElementById('nav-menu');
             
@@ -1733,7 +1889,6 @@
                 });
             }
             
-            // Fechar menu ao clicar em link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     menuToggle.classList.remove('active');
@@ -1743,7 +1898,6 @@
         }
         
         function setupEventListeners() {
-            // Filtros de cursos
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1752,7 +1906,6 @@
                 });
             });
             
-            // Ordenação de cursos
             const sortSelect = document.getElementById('sort-courses');
             if (sortSelect) {
                 sortSelect.addEventListener('change', function() {
@@ -1762,81 +1915,85 @@
         }
         
         function loadSampleData() {
-            // Se não existirem cursos, criar dados de exemplo
             if (allCourses.length === 0) {
                 allCourses = [
                     {
                         id: 1,
                         titulo: 'Matemática 6º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre.',
+                        descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre, exercícios resolvidos, material de apoio e avaliações periódicas.',
                         valor: 197.90,
                         categoria: '6ano',
                         imagem: '',
                         alunos: 1500,
                         rating: 4.9,
-                        dataCriacao: '2024-01-15'
+                        dataCriacao: '2024-01-15',
+                        features: [
+                            '34 aulas completas',
+                            '4 bimestres organizados',
+                            'Material em PDF',
+                            'Exercícios resolvidos',
+                            'Certificado de conclusão'
+                        ]
                     },
                     {
                         id: 2,
                         titulo: 'Matemática 7º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre.',
+                        descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre com foco em álgebra e geometria.',
                         valor: 197.90,
                         categoria: '7ano',
                         imagem: '',
                         alunos: 1200,
                         rating: 4.8,
-                        dataCriacao: '2024-02-10'
+                        dataCriacao: '2024-02-10',
+                        features: [
+                            '33 aulas completas',
+                            '4 bimestres organizados',
+                            'Foco em álgebra',
+                            'Exercícios práticos',
+                            'Suporte via chat'
+                        ]
                     },
                     {
                         id: 3,
                         titulo: 'Matemática 8º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas organizadas por bimestre.',
+                        descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas com ênfase em funções, geometria e estatística.',
                         valor: 197.90,
                         categoria: '8ano',
                         imagem: '',
                         alunos: 950,
                         rating: 4.7,
-                        dataCriacao: '2024-03-05'
+                        dataCriacao: '2024-03-05',
+                        features: [
+                            '35 aulas completas',
+                            'Introdução às funções',
+                            'Geometria avançada',
+                            'Estatística aplicada',
+                            'Preparação para o 9º ano'
+                        ]
                     },
                     {
                         id: 4,
                         titulo: 'Matemática 9º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 9º ano alinhado com a BNCC. Preparação para o Ensino Médio.',
+                        descricao: 'Sistema completo de aulas de matemática do 9º ano alinhado com a BNCC. Preparação para o Ensino Médio com revisão geral dos conteúdos.',
                         valor: 197.90,
                         categoria: '9ano',
                         imagem: '',
                         alunos: 850,
                         rating: 4.8,
-                        dataCriacao: '2024-01-20'
-                    },
-                    {
-                        id: 5,
-                        titulo: 'Reforço Matemático - Fundamental II',
-                        descricao: 'Reforço completo de matemática para alunos do 6º ao 9º ano. Foco nas principais dificuldades.',
-                        valor: 247.90,
-                        categoria: 'reforco',
-                        imagem: '',
-                        alunos: 720,
-                        rating: 4.6,
-                        dataCriacao: '2024-02-28'
-                    },
-                    {
-                        id: 6,
-                        titulo: 'Matemática para Concursos',
-                        descricao: 'Preparação completa em matemática para concursos públicos. Foco em raciocínio lógico e matemática básica.',
-                        valor: 297.90,
-                        categoria: 'concursos',
-                        imagem: '',
-                        alunos: 540,
-                        rating: 4.9,
-                        dataCriacao: '2024-01-10'
+                        dataCriacao: '2024-01-20',
+                        features: [
+                            '36 aulas completas',
+                            'Revisão do Fundamental',
+                            'Preparação para EM',
+                            'Exercícios ENEM',
+                            'Simulados periódicos'
+                        ]
                     }
                 ];
                 
                 localStorage.setItem('courses', JSON.stringify(allCourses));
             }
             
-            // Criar usuário admin padrão se não existir
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const adminExists = users.some(u => u.email === 'admin@matematicafacil.com');
             
@@ -1867,19 +2024,15 @@
         
         // ===== NAVEGAÇÃO =====
         function navigateTo(page) {
-            // Esconder todas as páginas
             document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
             
-            // Mostrar página solicitada
             const targetPage = document.getElementById(`${page}-page`);
             if (targetPage) {
                 targetPage.classList.remove('hidden');
             }
             
-            // Atualizar navegação ativa
             updateActiveNav(page);
             
-            // Carregar conteúdo específico da página
             switch(page) {
                 case 'home':
                     loadFeaturedCourses();
@@ -1908,7 +2061,6 @@
                     break;
             }
             
-            // Scroll para topo
             window.scrollTo(0, 0);
         }
         
@@ -1917,7 +2069,6 @@
                 link.classList.remove('active');
             });
             
-            // Mapear páginas para índices de navegação
             const navMap = {
                 'home': 0,
                 'cursos': 1,
@@ -1937,7 +2088,6 @@
         
         function updateNavigation() {
             if (currentUser) {
-                // Atualizar link de login para perfil
                 const loginLink = document.querySelector('.nav-link[onclick*="login"]');
                 if (loginLink) {
                     loginLink.innerHTML = '<i class="fas fa-user"></i> Minha Conta';
@@ -1946,7 +2096,6 @@
             }
             
             if (currentAdmin) {
-                // Atualizar link admin para dashboard
                 const adminLink = document.querySelector('.nav-link[onclick*="admin"]');
                 if (adminLink) {
                     adminLink.innerHTML = '<i class="fas fa-tachometer-alt"></i> Dashboard';
@@ -1960,101 +2109,61 @@
             const container = document.getElementById('featured-courses');
             if (!container) return;
             
-            // Adicionar os cards especiais
-            const featuredCourses = [
-                {
-                    id: 'matematica-6ano',
-                    titulo: 'Matemática 6º Ano - Completo',
-                    descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre.',
-                    categoria: '6ano',
-                    alunos: 1500,
-                    rating: 4.9,
-                    especial: true,
-                    ano: 6,
-                    cor: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)'
-                },
-                {
-                    id: 'matematica-7ano',
-                    titulo: 'Matemática 7º Ano - Completo',
-                    descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre.',
-                    categoria: '7ano',
-                    alunos: 1200,
-                    rating: 4.8,
-                    especial: true,
-                    ano: 7,
-                    cor: 'linear-gradient(135deg, #059669 0%, #047857 100%)'
-                },
-                {
-                    id: 'matematica-8ano',
-                    titulo: 'Matemática 8º Ano - Completo',
-                    descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas organizadas por bimestre.',
-                    categoria: '8ano',
-                    alunos: 950,
-                    rating: 4.7,
-                    especial: true,
-                    ano: 8,
-                    cor: 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)'
-                }
-            ];
+            const featuredCourses = allCourses.filter(course => 
+                ['6ano', '7ano', '8ano'].includes(course.categoria)
+            );
             
             container.innerHTML = featuredCourses.map(course => {
-                if (course.especial) {
-                    return `
-                        <div class="course-card">
-                            <div class="course-image" style="background: ${course.cor};">
-                                <i class="fas fa-calculator"></i>
+                const ano = parseInt(course.categoria);
+                return `
+                    <div class="course-card special" data-year="${ano}">
+                        <div class="course-header">
+                            <h3 class="course-title">
+                                ${course.titulo}
+                                <span class="course-category">${ano}º ANO</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="course-price-section">
+                            <div>
+                                <span class="course-old-price">R$ 297,90</span>
+                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
                             </div>
-                            <div class="course-content">
-                                <h3 class="course-title">${course.titulo}</h3>
-                                <p class="course-description">${course.descricao}</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
-                                    <span><i class="fas fa-users"></i> ${course.alunos}</span>
-                                    <span><i class="fas fa-graduation-cap"></i> BNCC</span>
-                                </div>
-                                <button class="btn btn-primary btn-block mt-2" onclick="openMatematicaPortal(${course.ano})">
-                                    <i class="fas fa-door-open"></i> Acessar Portal
-                                </button>
-                                <button class="btn btn-outline btn-block mt-2" onclick="showPortalInfo(${course.ano})">
-                                    <i class="fas fa-info-circle"></i> Saiba Mais
-                                </button>
+                            <div style="font-size: 0.9rem; color: var(--success-color);">
+                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
                             </div>
                         </div>
-                    `;
-                } else {
-                    return `
-                        <div class="course-card">
-                            <div class="course-image">
-                                <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
-                            </div>
-                            <div class="course-content">
-                                <h3 class="course-title">${course.titulo}</h3>
-                                <p class="course-description">${course.descricao.substring(0, 100)}...</p>
-                                <span class="course-price">R$ ${course.valor.toFixed(2)}</span>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
-                                    <span><i class="fas fa-users"></i> ${course.alunos}</span>
-                                </div>
-                                <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
-                                    <i class="fas fa-eye"></i> Ver Detalhes
-                                </button>
-                            </div>
+                        
+                        <div class="course-description">
+                            ${course.descricao}
                         </div>
-                    `;
-                }
+                        
+                        <div class="course-features">
+                            ${course.features ? course.features.map(feature => `
+                                <div class="course-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        
+                        <div class="course-actions">
+                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-shopping-cart"></i> Comprar Agora
+                            </button>
+                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
+                                <i class="fas fa-door-open"></i> Ver Conteúdo
+                            </button>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
+                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
+                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
+                        </div>
+                    </div>
+                `;
             }).join('');
-        }
-        
-        function getCategoryIcon(category) {
-            const icons = {
-                '6ano': 'calculator',
-                '7ano': 'calculator',
-                '8ano': 'calculator',
-                '9ano': 'calculator',
-                'reforco': 'book',
-                'concursos': 'file-alt'
-            };
-            return icons[category] || 'book';
         }
         
         // ===== PORTAL MATEMÁTICA =====
@@ -2065,17 +2174,45 @@
             if (!currentStudentName) {
                 showLoginPortal(ano);
             } else {
-                if (ano === 6) {
-                    render6AnoPortalContent();
-                } else if (ano === 7) {
-                    render7AnoPortalContent();
+                switch(ano) {
+                    case 6:
+                        render6AnoPortalContent();
+                        break;
+                    case 7:
+                        render7AnoPortalContent();
+                        break;
+                    case 8:
+                        render8AnoPortalContent();
+                        break;
+                    case 9:
+                        render9AnoPortalContent();
+                        break;
                 }
             }
         }
         
         function showLoginPortal(ano) {
-            const portalId = ano === 6 ? 'portal-6ano-content' : 'portal-7ano-content';
-            const modalId = ano === 6 ? 'portal-6ano-modal' : 'portal-7ano-modal';
+            let modalId, portalId;
+            switch(ano) {
+                case 6:
+                    modalId = 'portal-6ano-modal';
+                    portalId = 'portal-6ano-content';
+                    break;
+                case 7:
+                    modalId = 'portal-7ano-modal';
+                    portalId = 'portal-7ano-content';
+                    break;
+                case 8:
+                    modalId = 'portal-8ano-modal';
+                    portalId = 'portal-8ano-content';
+                    break;
+                case 9:
+                    // Para 9º ano, usar modal do 8º ou criar específico
+                    modalId = 'portal-8ano-modal';
+                    portalId = 'portal-8ano-content';
+                    break;
+            }
+            
             const portalContent = document.getElementById(portalId);
             
             portalContent.innerHTML = `
@@ -2112,10 +2249,8 @@
                 localStorage.setItem('currentStudentName', name);
                 localStorage.setItem('currentPortalType', currentPortalType);
                 
-                // Verificar se é um novo aluno
                 const studentExists = allStudentData.some(d => d.student_name === name && d.portal_type === currentPortalType);
                 if (!studentExists) {
-                    // Criar registro inicial para o aluno
                     allStudentData.push({
                         student_name: name,
                         portal_type: currentPortalType,
@@ -2124,10 +2259,19 @@
                     saveStudentData();
                 }
                 
-                if (ano === 6) {
-                    render6AnoPortalContent();
-                } else if (ano === 7) {
-                    render7AnoPortalContent();
+                switch(ano) {
+                    case 6:
+                        render6AnoPortalContent();
+                        break;
+                    case 7:
+                        render7AnoPortalContent();
+                        break;
+                    case 8:
+                        render8AnoPortalContent();
+                        break;
+                    case 9:
+                        render9AnoPortalContent();
+                        break;
                 }
             } else {
                 alert('Por favor, digite seu nome.');
@@ -2136,7 +2280,6 @@
         
         function render6AnoPortalContent() {
             const portalContent = document.getElementById('portal-6ano-content');
-            const lessonData = lessonsData6ano;
             
             portalContent.innerHTML = `
                 <div class="portal-container">
@@ -2196,13 +2339,11 @@
             updatePortalStats(6);
             renderPortalLessons(6);
             
-            // Mostrar modal
             document.getElementById('portal-6ano-modal').classList.remove('hidden');
         }
         
         function render7AnoPortalContent() {
             const portalContent = document.getElementById('portal-7ano-content');
-            const lessonData = lessonsData7ano;
             
             portalContent.innerHTML = `
                 <div class="portal-container">
@@ -2262,8 +2403,135 @@
             updatePortalStats(7);
             renderPortalLessons(7);
             
-            // Mostrar modal
             document.getElementById('portal-7ano-modal').classList.remove('hidden');
+        }
+        
+        function render8AnoPortalContent() {
+            const portalContent = document.getElementById('portal-8ano-content');
+            
+            portalContent.innerHTML = `
+                <div class="portal-container">
+                    <div class="portal-header" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
+                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 8º Ano</p>
+                            </div>
+                            <button class="btn btn-danger" onclick="logoutFromPortal(8)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #7c3aed;" id="completed-count-8">0</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #10b981;" id="total-time-8">0min</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-8">0%</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
+                        <div id="ranking-list-8">
+                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
+                        
+                        <div class="bimester-tabs">
+                            ${[1, 2, 3, 4].map(b => `
+                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
+                                        onclick="switchBimester(${b}, 8)">
+                                    ${b}º Bimestre
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="lessons-grid" id="lessons-container-8">
+                            <!-- Aulas serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            updatePortalStats(8);
+            renderPortalLessons(8);
+            
+            document.getElementById('portal-8ano-modal').classList.remove('hidden');
+        }
+        
+        function render9AnoPortalContent() {
+            const portalContent = document.getElementById('portal-8ano-content');
+            
+            portalContent.innerHTML = `
+                <div class="portal-container">
+                    <div class="portal-header" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
+                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 9º Ano</p>
+                            </div>
+                            <button class="btn btn-danger" onclick="logoutFromPortal(9)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #dc2626;" id="completed-count-9">0</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #10b981;" id="total-time-9">0min</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-9">0%</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
+                        <div id="ranking-list-9">
+                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
+                        
+                        <div class="bimester-tabs">
+                            ${[1, 2, 3, 4].map(b => `
+                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
+                                        onclick="switchBimester(${b}, 9)">
+                                    ${b}º Bimestre
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="lessons-grid" id="lessons-container-9">
+                            <!-- Aulas serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            updatePortalStats(9);
+            renderPortalLessons(9);
+            
+            document.getElementById('portal-8ano-modal').classList.remove('hidden');
         }
         
         function updatePortalStats(ano) {
@@ -2314,7 +2582,24 @@
         
         function renderPortalLessons(ano) {
             const container = document.getElementById(`lessons-container-${ano}`);
-            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
+            let lessonData;
+            switch(ano) {
+                case 6:
+                    lessonData = lessonsData6ano;
+                    break;
+                case 7:
+                    lessonData = lessonsData7ano;
+                    break;
+                case 8:
+                    lessonData = lessonsData8ano;
+                    break;
+                case 9:
+                    lessonData = lessonsData9ano;
+                    break;
+                default:
+                    lessonData = lessonsData6ano;
+            }
+            
             const lessons = lessonData[currentBimester] || [];
 
             container.innerHTML = lessons.map((lesson, index) => {
@@ -2365,12 +2650,10 @@
         function switchBimester(bimester, ano) {
             currentBimester = bimester;
             
-            // Atualizar tabs ativas
             document.querySelectorAll(`#portal-${ano}ano-content .bimester-tab`).forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Encontrar e ativar o botão correto
             document.querySelectorAll(`#portal-${ano}ano-content .bimester-tab`).forEach(btn => {
                 if (btn.textContent.includes(`${bimester}º`)) {
                     btn.classList.add('active');
@@ -2381,11 +2664,27 @@
         }
         
         function startPortalLesson(lessonCode, index, ano) {
-            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
+            let lessonData;
+            switch(ano) {
+                case 6:
+                    lessonData = lessonsData6ano;
+                    break;
+                case 7:
+                    lessonData = lessonsData7ano;
+                    break;
+                case 8:
+                    lessonData = lessonsData8ano;
+                    break;
+                case 9:
+                    lessonData = lessonsData9ano;
+                    break;
+                default:
+                    lessonData = lessonsData6ano;
+            }
+            
             const lesson = lessonData[currentBimester][index];
             currentLessonCode = lessonCode;
             
-            // Iniciar timer
             const timerKey = `${currentStudentName}-${ano}ano-${lessonCode}-${currentBimester}`;
             
             if (!lessonTimers[timerKey]) {
@@ -2393,14 +2692,12 @@
                     startTime: Date.now(),
                     interval: setInterval(() => {
                         updatePortalLessonTime(lessonCode, ano);
-                    }, 30000) // Atualiza a cada 30 segundos
+                    }, 30000)
                 };
             }
 
-            // Abrir aula em nova aba
             window.open(lesson.url, '_blank', 'noopener,noreferrer');
 
-            // Mostrar prompt de nota após 5 segundos
             setTimeout(() => {
                 showScorePrompt(ano);
             }, 5000);
@@ -2445,7 +2742,6 @@
         function showScorePrompt(ano) {
             const timerKey = `${currentStudentName}-${ano}ano-${currentLessonCode}-${currentBimester}`;
             
-            // Parar timer
             if (lessonTimers[timerKey]?.interval) {
                 clearInterval(lessonTimers[timerKey].interval);
             }
@@ -2454,7 +2750,6 @@
             document.getElementById('score-input').value = '';
             document.getElementById('score-input').focus();
             
-            // Armazenar ano atual para salvar a nota
             document.getElementById('score-input').dataset.ano = ano;
         }
         
@@ -2495,7 +2790,6 @@
             saveStudentData();
             closeScoreModal();
             
-            // Atualizar portal
             updatePortalStats(ano);
             renderPortalLessons(ano);
             
@@ -2504,7 +2798,6 @@
         
         function logoutFromPortal(ano) {
             if (confirm('Deseja sair do portal?')) {
-                // Parar todos os timers
                 Object.keys(lessonTimers).forEach(key => {
                     if (lessonTimers[key].interval) {
                         clearInterval(lessonTimers[key].interval);
@@ -2517,10 +2810,17 @@
                 localStorage.removeItem('currentPortalType');
                 lessonTimers = {};
                 
-                if (ano === 6) {
-                    closePortalModal();
-                } else {
-                    closePortal7Modal();
+                switch(ano) {
+                    case 6:
+                        closePortalModal();
+                        break;
+                    case 7:
+                        closePortal7Modal();
+                        break;
+                    case 8:
+                    case 9:
+                        closePortal8Modal();
+                        break;
                 }
             }
         }
@@ -2533,62 +2833,73 @@
             document.getElementById('portal-7ano-modal').classList.add('hidden');
         }
         
+        function closePortal8Modal() {
+            document.getElementById('portal-8ano-modal').classList.add('hidden');
+        }
+        
         function closeScoreModal() {
             document.getElementById('score-modal').classList.add('hidden');
         }
         
-        function showPortalInfo(ano) {
-            if (ano === 6) {
-                alert(`Portal de Matemática 6º Ano\n\n• 34 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
-            } else if (ano === 7) {
-                alert(`Portal de Matemática 7º Ano\n\n• 33 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
-            } else if (ano === 8) {
-                alert(`Portal de Matemática 8º Ano\n\n• 35 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
-            }
-        }
-        
         // ===== FUNÇÕES RESTANTES DO SISTEMA =====
-        // (Mantive apenas as funções essenciais para o exemplo)
         
         function loadAllCoursesPage() {
             const container = document.getElementById('all-courses');
             filteredCourses = [...allCourses];
-            displayCourses(filteredCourses, container);
-            updatePagination();
-        }
-        
-        function displayCourses(courses, container) {
-            container.innerHTML = courses.map(course => `
-                <div class="course-card">
-                    <div class="course-image" style="background: ${getCourseColor(course.categoria)};">
-                        <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">${course.titulo}</h3>
-                        <p class="course-description">${course.descricao.substring(0, 100)}...</p>
-                        <span class="course-price">R$ ${course.valor.toFixed(2)}</span>
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos}</span>
+            
+            container.innerHTML = filteredCourses.map(course => {
+                const ano = parseInt(course.categoria);
+                return `
+                    <div class="course-card special" data-year="${ano}">
+                        <div class="course-header">
+                            <h3 class="course-title">
+                                ${course.titulo}
+                                <span class="course-category">${ano}º ANO</span>
+                            </h3>
                         </div>
-                        <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
+                        
+                        <div class="course-price-section">
+                            <div>
+                                <span class="course-old-price">R$ 297,90</span>
+                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--success-color);">
+                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
+                            </div>
+                        </div>
+                        
+                        <div class="course-description">
+                            ${course.descricao}
+                        </div>
+                        
+                        <div class="course-features">
+                            ${course.features ? course.features.map(feature => `
+                                <div class="course-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        
+                        <div class="course-actions">
+                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-shopping-cart"></i> Comprar Agora
+                            </button>
+                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
+                                <i class="fas fa-door-open"></i> Ver Conteúdo
+                            </button>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
+                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
+                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
+                        </div>
                     </div>
-                </div>
-            `).join('');
-        }
-        
-        function getCourseColor(category) {
-            const colors = {
-                '6ano': 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)',
-                '7ano': 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                '8ano': 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)',
-                '9ano': 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
-                'reforco': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                'concursos': 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'
-            };
-            return colors[category] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                `;
+            }).join('');
+            
+            updatePagination();
         }
         
         function applyFilter(filter) {
@@ -2601,7 +2912,57 @@
             }
             
             currentPage = 1;
-            displayCourses(filteredCourses.slice(0, coursesPerPage), container);
+            container.innerHTML = filteredCourses.map(course => {
+                const ano = parseInt(course.categoria);
+                return `
+                    <div class="course-card special" data-year="${ano}">
+                        <div class="course-header">
+                            <h3 class="course-title">
+                                ${course.titulo}
+                                <span class="course-category">${ano}º ANO</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="course-price-section">
+                            <div>
+                                <span class="course-old-price">R$ 297,90</span>
+                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--success-color);">
+                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
+                            </div>
+                        </div>
+                        
+                        <div class="course-description">
+                            ${course.descricao}
+                        </div>
+                        
+                        <div class="course-features">
+                            ${course.features ? course.features.map(feature => `
+                                <div class="course-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        
+                        <div class="course-actions">
+                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-shopping-cart"></i> Comprar Agora
+                            </button>
+                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
+                                <i class="fas fa-door-open"></i> Ver Conteúdo
+                            </button>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
+                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
+                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
             updatePagination();
         }
         
@@ -2623,7 +2984,57 @@
                     break;
             }
             
-            displayCourses(filteredCourses.slice(0, coursesPerPage), container);
+            container.innerHTML = filteredCourses.map(course => {
+                const ano = parseInt(course.categoria);
+                return `
+                    <div class="course-card special" data-year="${ano}">
+                        <div class="course-header">
+                            <h3 class="course-title">
+                                ${course.titulo}
+                                <span class="course-category">${ano}º ANO</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="course-price-section">
+                            <div>
+                                <span class="course-old-price">R$ 297,90</span>
+                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--success-color);">
+                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
+                            </div>
+                        </div>
+                        
+                        <div class="course-description">
+                            ${course.descricao}
+                        </div>
+                        
+                        <div class="course-features">
+                            ${course.features ? course.features.map(feature => `
+                                <div class="course-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        
+                        <div class="course-actions">
+                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-shopping-cart"></i> Comprar Agora
+                            </button>
+                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
+                                <i class="fas fa-door-open"></i> Ver Conteúdo
+                            </button>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
+                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
+                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
             updatePagination();
         }
         
@@ -2649,7 +3060,58 @@
             const start = (page - 1) * coursesPerPage;
             const end = start + coursesPerPage;
             
-            displayCourses(filteredCourses.slice(start, end), container);
+            const coursesToShow = filteredCourses.slice(start, end);
+            container.innerHTML = coursesToShow.map(course => {
+                const ano = parseInt(course.categoria);
+                return `
+                    <div class="course-card special" data-year="${ano}">
+                        <div class="course-header">
+                            <h3 class="course-title">
+                                ${course.titulo}
+                                <span class="course-category">${ano}º ANO</span>
+                            </h3>
+                        </div>
+                        
+                        <div class="course-price-section">
+                            <div>
+                                <span class="course-old-price">R$ 297,90</span>
+                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--success-color);">
+                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
+                            </div>
+                        </div>
+                        
+                        <div class="course-description">
+                            ${course.descricao}
+                        </div>
+                        
+                        <div class="course-features">
+                            ${course.features ? course.features.map(feature => `
+                                <div class="course-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                        
+                        <div class="course-actions">
+                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-shopping-cart"></i> Comprar Agora
+                            </button>
+                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
+                                <i class="fas fa-door-open"></i> Ver Conteúdo
+                            </button>
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
+                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
+                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
             updatePagination();
         }
         
@@ -2683,24 +3145,34 @@
                 }
             ];
             
-            container.innerHTML = demoLessons.map(lesson => `
-                <div class="course-card">
-                    <div class="course-image" style="background: ${getCourseColor(lesson.categoria)};">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">${lesson.titulo}</h3>
-                        <p class="course-description">${lesson.descricao}</p>
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${lesson.rating}</span>
-                            <span><i class="fas fa-play-circle"></i> DEMO</span>
+            container.innerHTML = demoLessons.map(lesson => {
+                const ano = parseInt(lesson.categoria);
+                return `
+                    <div class="course-card">
+                        <div class="course-header">
+                            <h3 class="course-title">
+                                ${lesson.titulo}
+                                <span class="course-category">DEMO</span>
+                            </h3>
                         </div>
-                        <button class="btn btn-primary btn-block mt-2" onclick="playDemoLesson(${lesson.id})">
-                            <i class="fas fa-play"></i> Assistir Aula
-                        </button>
+                        
+                        <div class="course-description">
+                            ${lesson.descricao}
+                        </div>
+                        
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${lesson.rating}/5.0</span>
+                            <span><i class="fas fa-play-circle"></i> AULA GRÁTIS</span>
+                        </div>
+                        
+                        <div class="course-actions">
+                            <button class="btn btn-primary btn-block" onclick="playDemoLesson(${lesson.id})">
+                                <i class="fas fa-play"></i> Assistir Aula
+                            </button>
+                        </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
         
         function registerForDemo() {
@@ -2718,7 +3190,6 @@
                 return;
             }
             
-            // Simular cadastro
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const newUser = {
                 id: Date.now(),
@@ -2814,16 +3285,13 @@
         function loadAdminDashboard() {
             switchAdminTab('dashboard');
             
-            // Atualizar estatísticas
             document.getElementById('total-courses').textContent = allCourses.length;
             document.getElementById('total-students').textContent = 
                 (JSON.parse(localStorage.getItem('users')) || []).filter(u => u.tipo === 'aluno').length;
             
-            // Simular receita
             const totalRevenue = allCourses.reduce((sum, course) => sum + (course.valor * course.alunos), 0);
             document.getElementById('total-revenue').textContent = `R$ ${totalRevenue.toFixed(2)}`;
             
-            // Simular leads
             const demoUsers = (JSON.parse(localStorage.getItem('users')) || []).filter(u => u.dataCadastro);
             document.getElementById('total-leads').textContent = demoUsers.length;
             
@@ -2833,7 +3301,6 @@
         function loadRecentSales() {
             const table = document.getElementById('recent-sales').querySelector('tbody');
             
-            // Dados simulados
             const sales = [
                 { aluno: 'João Silva', curso: 'Matemática 6º Ano', valor: 197.90, data: '2024-01-15' },
                 { aluno: 'Maria Santos', curso: 'Matemática 7º Ano', valor: 197.90, data: '2024-01-18' },
@@ -2872,7 +3339,13 @@
                 imagem: '',
                 alunos: 0,
                 rating: 4.0,
-                dataCriacao: new Date().toISOString().split('T')[0]
+                dataCriacao: new Date().toISOString().split('T')[0],
+                features: [
+                    'Aulas completas',
+                    'Material em PDF',
+                    'Exercícios resolvidos',
+                    'Suporte via chat'
+                ]
             };
             
             allCourses.push(newCourse);
@@ -2888,26 +3361,30 @@
             if (!course) return;
             
             const content = document.getElementById('course-detail-content');
+            const ano = parseInt(course.categoria);
+            
             content.innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto;">
-                    <div style="background: ${getCourseColor(course.categoria)}; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; margin-bottom: 2rem;">
-                        <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h1 style="font-size: 2.5rem; margin: 0;">${course.titulo}</h1>
+                        <span class="course-category" style="font-size: 1.2rem;">${ano}º ANO</span>
                     </div>
-                    
-                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${course.titulo}</h1>
                     
                     <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
                         <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
                             <div style="font-size: 0.9rem; color: var(--gray);">Valor</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">R$ ${course.valor.toFixed(2)}</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">R$ ${course.valor.toFixed(2).replace('.', ',')}</div>
+                            <div style="font-size: 0.9rem; color: var(--gray); text-decoration: line-through;">R$ 297,90</div>
                         </div>
                         <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
                             <div style="font-size: 0.9rem; color: var(--gray);">Avaliação</div>
                             <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">${course.rating}/5.0</div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">${course.alunos} avaliações</div>
                         </div>
                         <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
                             <div style="font-size: 0.9rem; color: var(--gray);">Alunos</div>
                             <div style="font-size: 2rem; font-weight: bold; color: var(--secondary-color);">${course.alunos}</div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">matriculados</div>
                         </div>
                     </div>
                     
@@ -2916,9 +3393,24 @@
                         <p style="font-size: 1.1rem; line-height: 1.6;">${course.descricao}</p>
                     </div>
                     
+                    <div style="margin-bottom: 2rem;">
+                        <h2 style="margin-bottom: 1rem;">O que você vai aprender</h2>
+                        <div class="course-features">
+                            ${course.features ? course.features.map(feature => `
+                                <div class="course-feature">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${feature}</span>
+                                </div>
+                            `).join('') : ''}
+                        </div>
+                    </div>
+                    
                     <div style="display: flex; gap: 1rem; margin-top: 3rem;">
                         <button class="btn btn-primary" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="startPayment(${course.id})">
-                            <i class="fas fa-shopping-cart"></i> Comprar Curso
+                            <i class="fas fa-shopping-cart"></i> Comprar Curso Agora
+                        </button>
+                        <button class="btn btn-outline" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="openMatematicaPortal(${ano})">
+                            <i class="fas fa-door-open"></i> Ver Conteúdo do Curso
                         </button>
                         <button class="btn btn-outline" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="navigateTo('cursos')">
                             <i class="fas fa-arrow-left"></i> Voltar para Cursos
@@ -2945,8 +3437,16 @@
                         <strong>${course.titulo}</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span>Valor:</span>
-                        <strong style="color: var(--accent-color); font-size: 1.2rem;">R$ ${course.valor.toFixed(2)}</strong>
+                        <span>Valor original:</span>
+                        <strong style="text-decoration: line-through; color: var(--gray);">R$ 297,90</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Desconto:</span>
+                        <strong style="color: var(--success-color);">-33%</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Valor final:</span>
+                        <strong style="color: var(--accent-color); font-size: 1.2rem;">R$ ${course.valor.toFixed(2).replace('.', ',')}</strong>
                     </div>
                 </div>
             `;
@@ -2965,7 +3465,6 @@
                 return;
             }
             
-            // Simular processamento do pagamento
             const success = document.getElementById('payment-success');
             success.classList.remove('hidden');
             
@@ -2976,9 +3475,8 @@
         }
         
         function playDemoLesson(lessonId) {
-            // URLs de exemplo para aulas demo
             const demoVideos = {
-                1: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // URL exemplo
+                1: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 2: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 3: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
             };
@@ -3013,4 +3511,3 @@
     </script>
 </body>
 </html>
-
