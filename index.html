@@ -209,7 +209,7 @@
             flex-wrap: wrap;
         }
         
-        /* ===== CARDS DE CURSO - NOVO ESTILO ===== */
+        /* ===== CARDS DE CURSO ===== */
         .section-title {
             text-align: center;
             margin-bottom: 1rem;
@@ -236,8 +236,6 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            border: 1px solid var(--gray-light);
-            position: relative;
         }
         
         .course-card:hover {
@@ -245,112 +243,47 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .course-card.special {
-            border-top: 5px solid;
+        .course-image {
+            height: 200px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
         }
         
-        .course-card.special[data-year="6"] {
-            border-top-color: #2563eb;
-        }
-        
-        .course-card.special[data-year="7"] {
-            border-top-color: #059669;
-        }
-        
-        .course-card.special[data-year="8"] {
-            border-top-color: #7c3aed;
-        }
-        
-        .course-card.special[data-year="9"] {
-            border-top-color: #dc2626;
-        }
-        
-        .course-header {
-            padding: 1.5rem 1.5rem 0.5rem;
-            border-bottom: 1px solid var(--gray-light);
+        .course-content {
+            padding: 1.5rem;
         }
         
         .course-title {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .course-category {
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--gray-light);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-        
-        .course-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin: 1rem 0;
-        }
-        
-        .course-old-price {
-            font-size: 1rem;
-            color: var(--gray);
-            text-decoration: line-through;
-            margin-right: 10px;
-        }
-        
-        .course-price-section {
-            padding: 0 1.5rem;
-            border-bottom: 1px solid var(--gray-light);
-            padding-bottom: 1rem;
         }
         
         .course-description {
-            padding: 1.5rem;
-            color: var(--dark-color);
+            color: var(--gray);
+            margin-bottom: 1rem;
             font-size: 0.95rem;
-            line-height: 1.6;
-            border-bottom: 1px solid var(--gray-light);
-            min-height: 120px;
         }
         
-        .course-features {
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--gray-light);
-        }
-        
-        .course-feature {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .course-feature i {
+        .course-price {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: var(--accent-color);
-            width: 20px;
-        }
-        
-        .course-actions {
-            padding: 1.5rem;
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .course-actions .btn {
-            flex: 1;
+            display: block;
+            margin-bottom: 1rem;
         }
         
         .course-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--gray-light);
             font-size: 0.9rem;
             color: var(--gray);
@@ -471,7 +404,7 @@
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
         
-        /* ===== MODAIS DOS PORTALS ===== */
+        /* ===== MODAL DO PORTAL 6º ANO ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -582,7 +515,6 @@
             padding: 1rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
-            border: 1px solid #e5e7eb;
         }
         
         .lesson-card:hover {
@@ -710,7 +642,7 @@
             margin-bottom: 2rem;
         }
         
-        .stat-card-admin {
+        .stat-card {
             background: var(--white);
             padding: 1.5rem;
             border-radius: 10px;
@@ -719,7 +651,7 @@
             transition: var(--transition);
         }
         
-        .stat-card-admin:hover {
+        .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
@@ -957,14 +889,6 @@
             .lessons-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .course-actions {
-                flex-direction: column;
-            }
-            
-            .course-card.special .course-actions .btn {
-                width: 100%;
-            }
         }
         
         @media (max-width: 576px) {
@@ -1087,6 +1011,15 @@
                 
                 <div class="courses-grid" id="featured-courses">
                     <!-- Cursos serão carregados aqui -->
+                </div>
+                
+                <!-- Seção de Aulas Demonstrativas -->
+                <div class="mt-3" id="demo-section">
+                    <h2 class="section-title">Aulas Demonstrativas</h2>
+                    <p class="section-subtitle">Experimente nossos cursos gratuitamente</p>
+                    <div class="courses-grid" id="demo-lessons-home">
+                        <!-- Aulas demo serão carregadas aqui -->
+                    </div>
                 </div>
                 
                 <div class="text-center">
@@ -1235,6 +1168,8 @@
                         <ul>
                             <li><a href="#" class="active" onclick="switchAdminTab('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                             <li><a href="#" onclick="switchAdminTab('cursos')"><i class="fas fa-book"></i> Gerenciar Cursos</a></li>
+                            <li><a href="#" onclick="switchAdminTab('conteudos')"><i class="fas fa-link"></i> Links de Conteúdo</a></li>
+                            <li><a href="#" onclick="switchAdminTab('videos')"><i class="fas fa-video"></i> Vídeos Demo</a></li>
                             <li><a href="#" onclick="switchAdminTab('alunos')"><i class="fas fa-users"></i> Alunos</a></li>
                             <li><a href="#" onclick="switchAdminTab('pagamentos')"><i class="fas fa-dollar-sign"></i> Pagamentos</a></li>
                             <li><a href="#" onclick="switchAdminTab('leads')"><i class="fas fa-chart-line"></i> Leads</a></li>
@@ -1274,28 +1209,28 @@
                         <!-- Dashboard -->
                         <div id="dashboard-tab" class="admin-tab">
                             <div class="admin-stats">
-                                <div class="stat-card-admin">
+                                <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-book"></i>
                                     </div>
                                     <h3 id="total-courses">0</h3>
                                     <p>Cursos Ativos</p>
                                 </div>
-                                <div class="stat-card-admin">
+                                <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <h3 id="total-students">0</h3>
                                     <p>Alunos Cadastrados</p>
                                 </div>
-                                <div class="stat-card-admin">
+                                <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-dollar-sign"></i>
                                     </div>
                                     <h3 id="total-revenue">R$ 0</h3>
                                     <p>Receita Total</p>
                                 </div>
-                                <div class="stat-card-admin">
+                                <div class="stat-card">
                                     <div class="stat-icon">
                                         <i class="fas fa-chart-line"></i>
                                     </div>
@@ -1341,6 +1276,12 @@
                                                 <input type="text" id="new-course-category" class="form-control" placeholder="Categoria">
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="text" id="new-course-link" class="form-control" placeholder="Link do Conteúdo">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="new-course-video" class="form-control" placeholder="Link do Vídeo de Demonstração">
+                                        </div>
                                         <button type="submit" class="btn btn-primary btn-block">
                                             <i class="fas fa-plus"></i> Adicionar Curso
                                         </button>
@@ -1375,6 +1316,104 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Links de Conteúdo -->
+                        <div id="conteudos-tab" class="admin-tab hidden">
+                            <div class="admin-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-link"></i> Gerenciar Links de Conteúdo</h3>
+                                    <button class="btn btn-primary" onclick="loadContentLinks()">
+                                        <i class="fas fa-sync"></i> Atualizar
+                                    </button>
+                                </div>
+                                <div style="overflow-x: auto;">
+                                    <table class="admin-table" id="content-links-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Título</th>
+                                                <th>Link do Conteúdo</th>
+                                                <th>Tipo</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Links de conteúdo serão carregados aqui -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h3 class="mt-3">Adicionar Novo Link de Conteúdo</h3>
+                                <form id="add-content-link-form" onsubmit="event.preventDefault(); addContentLink();">
+                                    <div class="form-group">
+                                        <input type="text" id="new-link-title" class="form-control" placeholder="Título do Conteúdo" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="new-link-url" class="form-control" placeholder="https://exemplo.com/conteudo" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="new-link-type" class="form-control">
+                                            <option value="curso">Curso Completo</option>
+                                            <option value="aula">Aula Individual</option>
+                                            <option value="material">Material Complementar</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar Link
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Vídeos Demo -->
+                        <div id="videos-tab" class="admin-tab hidden">
+                            <div class="admin-card">
+                                <div class="card-header">
+                                    <h3><i class="fas fa-video"></i> Gerenciar Vídeos Demonstrativos</h3>
+                                    <button class="btn btn-primary" onclick="loadDemoVideos()">
+                                        <i class="fas fa-sync"></i> Atualizar
+                                    </button>
+                                </div>
+                                <div style="overflow-x: auto;">
+                                    <table class="admin-table" id="demo-videos-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Título</th>
+                                                <th>Link do Vídeo</th>
+                                                <th>Curso Relacionado</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Vídeos demo serão carregados aqui -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <h3 class="mt-3">Adicionar Novo Vídeo Demonstrativo</h3>
+                                <form id="add-demo-video-form" onsubmit="event.preventDefault(); addDemoVideo();">
+                                    <div class="form-group">
+                                        <input type="text" id="new-video-title" class="form-control" placeholder="Título do Vídeo" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="new-video-url" class="form-control" placeholder="https://youtube.com/embed/..." required>
+                                    </div>
+                                    <div class="form-group">
+                                        <select id="new-video-course" class="form-control">
+                                            <option value="">Selecionar Curso</option>
+                                            <!-- Cursos serão carregados aqui -->
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea id="new-video-description" class="form-control" placeholder="Descrição do vídeo" rows="2"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-plus"></i> Adicionar Vídeo
+                                    </button>
+                                </form>
                             </div>
                         </div>
                         
@@ -1544,7 +1583,7 @@
         </div>
     </footer>
 
-    <!-- ===== MODAIS DOS PORTALS ===== -->
+    <!-- ===== MODAL DO PORTAL 6º ANO ===== -->
     <div class="modal-overlay hidden" id="portal-6ano-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1559,6 +1598,7 @@
         </div>
     </div>
 
+    <!-- ===== MODAL DO PORTAL 7º ANO ===== -->
     <div class="modal-overlay hidden" id="portal-7ano-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1567,20 +1607,6 @@
             </div>
             <div class="modal-body">
                 <div id="portal-7ano-content">
-                    <!-- Conteúdo do portal será carregado aqui -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay hidden" id="portal-8ano-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-calculator"></i> Portal de Aulas - Matemática 8º Ano</h3>
-                <button class="modal-close" onclick="closePortal8Modal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="portal-8ano-content">
                     <!-- Conteúdo do portal será carregado aqui -->
                 </div>
             </div>
@@ -1640,6 +1666,16 @@
                             <label>Categoria</label>
                             <input type="text" id="edit-course-category" class="form-control" required>
                         </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Link do Conteúdo</label>
+                        <input type="text" id="edit-course-link" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Link do Vídeo de Demonstração</label>
+                        <input type="text" id="edit-course-video" class="form-control">
                     </div>
                     
                     <div class="form-group">
@@ -1769,78 +1805,6 @@
             ]
         };
 
-        // ===== DADOS DAS AULAS 8º ANO =====
-        const lessonsData8ano = {
-            1: [
-                { code: 'EF08MA01', title: 'Números Reais', description: 'Conjuntos numéricos: racionais e irracionais', url: 'https://exemplo.com/aula1-8ano' },
-                { code: 'EF08MA02', title: 'Potenciação e Radiciação', description: 'Propriedades das potências e raízes', url: 'https://exemplo.com/aula2-8ano' },
-                { code: 'EF08MA03', title: 'Notação Científica', description: 'Representação de números muito grandes ou pequenos', url: 'https://exemplo.com/aula3-8ano' },
-                { code: 'EF08MA04', title: 'Sistema de Equações', description: 'Resolução de sistemas do 1º grau', url: 'https://exemplo.com/aula4-8ano' },
-                { code: 'EF08MA05', title: 'Teorema de Tales', description: 'Proporcionalidade e feixe de paralelas', url: 'https://exemplo.com/aula5-8ano' },
-                { code: 'EF08MA06', title: 'Teorema de Pitágoras', description: 'Relação entre lados do triângulo retângulo', url: 'https://exemplo.com/aula6-8ano' }
-            ],
-            2: [
-                { code: 'EF08MA07', title: 'Área de Figuras Planas', description: 'Cálculo de áreas de polígonos e círculos', url: 'https://exemplo.com/aula7-8ano' },
-                { code: 'EF08MA08', title: 'Volume de Sólidos', description: 'Cálculo de volumes de prismas, cilindros e pirâmides', url: 'https://exemplo.com/aula8-8ano' },
-                { code: 'EF08MA09', title: 'Probabilidade', description: 'Cálculo de probabilidades de eventos', url: 'https://exemplo.com/aula9-8ano' },
-                { code: 'EF08MA10', title: 'Estatística', description: 'Média, mediana, moda e gráficos', url: 'https://exemplo.com/aula10-8ano' },
-                { code: 'EF08MA11', title: 'Funções', description: 'Conceito de função e representações', url: 'https://exemplo.com/aula11-8ano' },
-                { code: 'EF08MA12', title: 'Função Afim', description: 'Gráfico e propriedades da função afim', url: 'https://exemplo.com/aula12-8ano' }
-            ],
-            3: [
-                { code: 'EF08MA13', title: 'Equações do 2º Grau', description: 'Resolução por fatoração e fórmula de Bhaskara', url: 'https://exemplo.com/aula13-8ano' },
-                { code: 'EF08MA14', title: 'Trigonometria', description: 'Razões trigonométricas no triângulo retângulo', url: 'https://exemplo.com/aula14-8ano' },
-                { code: 'EF08MA15', title: 'Semelhança de Triângulos', description: 'Casos de semelhança e aplicações', url: 'https://exemplo.com/aula15-8ano' },
-                { code: 'EF08MA16', title: 'Polígonos Regulares', description: 'Propriedades e construções', url: 'https://exemplo.com/aula16-8ano' },
-                { code: 'EF08MA17', title: 'Circunferência e Círculo', description: 'Elementos e propriedades', url: 'https://exemplo.com/aula17-8ano' },
-                { code: 'EF08MA18', title: 'Ângulos na Circunferência', description: 'Relações entre ângulos e arcos', url: 'https://exemplo.com/aula18-8ano' }
-            ],
-            4: [
-                { code: 'EF08MA19', title: 'Geometria Analítica', description: 'Coordenadas cartesianas e distância entre pontos', url: 'https://exemplo.com/aula19-8ano' },
-                { code: 'EF08MA20', title: 'Inequações', description: 'Resolução de inequações do 1º grau', url: 'https://exemplo.com/aula20-8ano' },
-                { code: 'EF08MA21', title: 'Porcentagem Aplicada', description: 'Juros simples e compostos', url: 'https://exemplo.com/aula21-8ano' },
-                { code: 'EF08MA22', title: 'Grandezas Proporcionais', description: 'Regra de três simples e composta', url: 'https://exemplo.com/aula22-8ano' },
-                { code: 'EF08MA23', title: 'Análise Combinatória', description: 'Princípio fundamental da contagem', url: 'https://exemplo.com/aula23-8ano' },
-                { code: 'EF08MA24', title: 'Revisão Geral', description: 'Preparação para o 9º ano', url: 'https://exemplo.com/aula24-8ano' }
-            ]
-        };
-
-        // ===== DADOS DAS AULAS 9º ANO =====
-        const lessonsData9ano = {
-            1: [
-                { code: 'EF09MA01', title: 'Função Quadrática', description: 'Gráfico, vértice e raízes da parábola', url: 'https://exemplo.com/aula1-9ano' },
-                { code: 'EF09MA02', title: 'Equações Biquadradas', description: 'Resolução de equações biquadradas', url: 'https://exemplo.com/aula2-9ano' },
-                { code: 'EF09MA03', title: 'Inequações do 2º Grau', description: 'Resolução e representação gráfica', url: 'https://exemplo.com/aula3-9ano' },
-                { code: 'EF09MA04', title: 'Geometria Espacial', description: 'Prismas, pirâmides, cilindros, cones e esferas', url: 'https://exemplo.com/aula4-9ano' },
-                { code: 'EF09MA05', title: 'Volume e Área Total', description: 'Cálculos para sólidos geométricos', url: 'https://exemplo.com/aula5-9ano' },
-                { code: 'EF09MA06', title: 'Trigonometria Aplicada', description: 'Lei dos senos e cossenos', url: 'https://exemplo.com/aula6-9ano' }
-            ],
-            2: [
-                { code: 'EF09MA07', title: 'Matrizes', description: 'Operações com matrizes', url: 'https://exemplo.com/aula7-9ano' },
-                { code: 'EF09MA08', title: 'Determinantes', description: 'Cálculo e propriedades de determinantes', url: 'https://exemplo.com/aula8-9ano' },
-                { code: 'EF09MA09', title: 'Sistemas Lineares', description: 'Resolução por escalonamento e regra de Cramer', url: 'https://exemplo.com/aula9-9ano' },
-                { code: 'EF09MA10', title: 'Polinômios', description: 'Operações e fatoração de polinômios', url: 'https://exemplo.com/aula10-9ano' },
-                { code: 'EF09MA11', title: 'Equações Polinomiais', description: 'Teorema fundamental da álgebra', url: 'https://exemplo.com/aula11-9ano' },
-                { code: 'EF09MA12', title: 'Progressão Aritmética', description: 'Termo geral e soma dos termos', url: 'https://exemplo.com/aula12-9ano' }
-            ],
-            3: [
-                { code: 'EF09MA13', title: 'Progressão Geométrica', description: 'Termo geral e soma dos termos', url: 'https://exemplo.com/aula13-9ano' },
-                { code: 'EF09MA14', title: 'Juros Compostos', description: 'Aplicações financeiras e matemática comercial', url: 'https://exemplo.com/aula14-9ano' },
-                { code: 'EF09MA15', title: 'Estatística Avançada', description: 'Desvio padrão e variância', url: 'https://exemplo.com/aula15-9ano' },
-                { code: 'EF09MA16', title: 'Probabilidade Condicional', description: 'Eventos dependentes e independentes', url: 'https://exemplo.com/aula16-9ano' },
-                { code: 'EF09MA17', title: 'Geometria Analítica', description: 'Equação da reta e da circunferência', url: 'https://exemplo.com/aula17-9ano' },
-                { code: 'EF09MA18', title: 'Números Complexos', description: 'Operações e representação geométrica', url: 'https://exemplo.com/aula18-9ano' }
-            ],
-            4: [
-                { code: 'EF09MA19', title: 'Função Exponencial', description: 'Gráficos e equações exponenciais', url: 'https://exemplo.com/aula19-9ano' },
-                { code: 'EF09MA20', title: 'Logaritmos', description: 'Propriedades e equações logarítmicas', url: 'https://exemplo.com/aula20-9ano' },
-                { code: 'EF09MA21', title: 'Função Logarítmica', description: 'Gráficos e aplicações', url: 'https://exemplo.com/aula21-9ano' },
-                { code: 'EF09MA22', title: 'Geometria Métrica', description: 'Relações métricas nos triângulos', url: 'https://exemplo.com/aula22-9ano' },
-                { code: 'EF09MA23', title: 'Revisão ENEM', description: 'Preparação para o vestibular', url: 'https://exemplo.com/aula23-9ano' },
-                { code: 'EF09MA24', title: 'Revisão Geral', description: 'Consolidação dos conteúdos do Ensino Fundamental', url: 'https://exemplo.com/aula24-9ano' }
-            ]
-        };
-
         // ===== VARIÁVEIS GLOBAIS =====
         let currentUser = null;
         let currentAdmin = null;
@@ -1849,6 +1813,10 @@
         let filteredCourses = [];
         let currentPage = 1;
         const coursesPerPage = 6;
+        
+        // Novos arrays para conteúdo e vídeos
+        let contentLinks = [];
+        let demoVideos = [];
         
         // Variáveis específicas do portal
         let currentStudentName = '';
@@ -1878,6 +1846,8 @@
             updateNavigation();
             
             allCourses = JSON.parse(localStorage.getItem('courses')) || [];
+            contentLinks = JSON.parse(localStorage.getItem('contentLinks')) || [];
+            demoVideos = JSON.parse(localStorage.getItem('demoVideos')) || [];
             
             const menuToggle = document.getElementById('mobile-menu');
             const navMenu = document.getElementById('nav-menu');
@@ -1920,78 +1890,109 @@
                     {
                         id: 1,
                         titulo: 'Matemática 6º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre, exercícios resolvidos, material de apoio e avaliações periódicas.',
+                        descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre.',
                         valor: 197.90,
                         categoria: '6ano',
                         imagem: '',
                         alunos: 1500,
                         rating: 4.9,
                         dataCriacao: '2024-01-15',
-                        features: [
-                            '34 aulas completas',
-                            '4 bimestres organizados',
-                            'Material em PDF',
-                            'Exercícios resolvidos',
-                            'Certificado de conclusão'
-                        ]
+                        linkConteudo: '',
+                        linkVideoDemo: ''
                     },
                     {
                         id: 2,
                         titulo: 'Matemática 7º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre com foco em álgebra e geometria.',
+                        descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre.',
                         valor: 197.90,
                         categoria: '7ano',
                         imagem: '',
                         alunos: 1200,
                         rating: 4.8,
                         dataCriacao: '2024-02-10',
-                        features: [
-                            '33 aulas completas',
-                            '4 bimestres organizados',
-                            'Foco em álgebra',
-                            'Exercícios práticos',
-                            'Suporte via chat'
-                        ]
+                        linkConteudo: '',
+                        linkVideoDemo: ''
                     },
                     {
                         id: 3,
                         titulo: 'Matemática 8º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas com ênfase em funções, geometria e estatística.',
+                        descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas organizadas por bimestre.',
                         valor: 197.90,
                         categoria: '8ano',
                         imagem: '',
                         alunos: 950,
                         rating: 4.7,
                         dataCriacao: '2024-03-05',
-                        features: [
-                            '35 aulas completas',
-                            'Introdução às funções',
-                            'Geometria avançada',
-                            'Estatística aplicada',
-                            'Preparação para o 9º ano'
-                        ]
+                        linkConteudo: '',
+                        linkVideoDemo: ''
                     },
                     {
                         id: 4,
                         titulo: 'Matemática 9º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 9º ano alinhado com a BNCC. Preparação para o Ensino Médio com revisão geral dos conteúdos.',
+                        descricao: 'Sistema completo de aulas de matemática do 9º ano alinhado com a BNCC. Preparação para o Ensino Médio.',
                         valor: 197.90,
                         categoria: '9ano',
                         imagem: '',
                         alunos: 850,
                         rating: 4.8,
                         dataCriacao: '2024-01-20',
-                        features: [
-                            '36 aulas completas',
-                            'Revisão do Fundamental',
-                            'Preparação para EM',
-                            'Exercícios ENEM',
-                            'Simulados periódicos'
-                        ]
+                        linkConteudo: '',
+                        linkVideoDemo: ''
                     }
                 ];
                 
                 localStorage.setItem('courses', JSON.stringify(allCourses));
+            }
+            
+            // Carregar dados de conteúdo
+            if (contentLinks.length === 0) {
+                contentLinks = [
+                    {
+                        id: 1,
+                        titulo: 'Portal de Aulas 6º Ano',
+                        url: '#',
+                        tipo: 'curso',
+                        dataCriacao: '2024-01-15'
+                    },
+                    {
+                        id: 2,
+                        titulo: 'Portal de Aulas 7º Ano',
+                        url: '#',
+                        tipo: 'curso',
+                        dataCriacao: '2024-01-15'
+                    },
+                    {
+                        id: 3,
+                        titulo: 'Material Complementar - Frações',
+                        url: 'https://orientação-vocacional.my.canva.site/fra-es-e-decimais',
+                        tipo: 'material',
+                        dataCriacao: '2024-02-10'
+                    }
+                ];
+                localStorage.setItem('contentLinks', JSON.stringify(contentLinks));
+            }
+            
+            // Carregar dados de vídeos
+            if (demoVideos.length === 0) {
+                demoVideos = [
+                    {
+                        id: 1,
+                        titulo: 'Aula Demo - Frações 6º Ano',
+                        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                        cursoId: 1,
+                        descricao: 'Introdução às frações',
+                        dataCriacao: '2024-01-15'
+                    },
+                    {
+                        id: 2,
+                        titulo: 'Aula Demo - Números Inteiros 7º Ano',
+                        url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                        cursoId: 2,
+                        descricao: 'Introdução aos números inteiros',
+                        dataCriacao: '2024-02-10'
+                    }
+                ];
+                localStorage.setItem('demoVideos', JSON.stringify(demoVideos));
             }
             
             const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -2036,6 +2037,7 @@
             switch(page) {
                 case 'home':
                     loadFeaturedCourses();
+                    loadDemoLessonsHome();
                     break;
                 case 'cursos':
                     loadAllCoursesPage();
@@ -2109,61 +2111,145 @@
             const container = document.getElementById('featured-courses');
             if (!container) return;
             
-            const featuredCourses = allCourses.filter(course => 
-                ['6ano', '7ano', '8ano'].includes(course.categoria)
-            );
+            const featuredCourses = [
+                {
+                    id: 'matematica-6ano',
+                    titulo: 'Matemática 6º Ano - Completo',
+                    descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre.',
+                    categoria: '6ano',
+                    alunos: 1500,
+                    rating: 4.9,
+                    especial: true,
+                    ano: 6,
+                    cor: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)'
+                },
+                {
+                    id: 'matematica-7ano',
+                    titulo: 'Matemática 7º Ano - Completo',
+                    descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre.',
+                    categoria: '7ano',
+                    alunos: 1200,
+                    rating: 4.8,
+                    especial: true,
+                    ano: 7,
+                    cor: 'linear-gradient(135deg, #059669 0%, #047857 100%)'
+                },
+                {
+                    id: 'matematica-8ano',
+                    titulo: 'Matemática 8º Ano - Completo',
+                    descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas organizadas por bimestre.',
+                    categoria: '8ano',
+                    alunos: 950,
+                    rating: 4.7,
+                    especial: true,
+                    ano: 8,
+                    cor: 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)'
+                }
+            ];
             
             container.innerHTML = featuredCourses.map(course => {
-                const ano = parseInt(course.categoria);
-                return `
-                    <div class="course-card special" data-year="${ano}">
-                        <div class="course-header">
-                            <h3 class="course-title">
-                                ${course.titulo}
-                                <span class="course-category">${ano}º ANO</span>
-                            </h3>
-                        </div>
-                        
-                        <div class="course-price-section">
-                            <div>
-                                <span class="course-old-price">R$ 297,90</span>
-                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
+                if (course.especial) {
+                    return `
+                        <div class="course-card">
+                            <div class="course-image" style="background: ${course.cor};">
+                                <i class="fas fa-calculator"></i>
                             </div>
-                            <div style="font-size: 0.9rem; color: var(--success-color);">
-                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
-                            </div>
-                        </div>
-                        
-                        <div class="course-description">
-                            ${course.descricao}
-                        </div>
-                        
-                        <div class="course-features">
-                            ${course.features ? course.features.map(feature => `
-                                <div class="course-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${feature}</span>
+                            <div class="course-content">
+                                <h3 class="course-title">${course.titulo}</h3>
+                                <p class="course-description">${course.descricao}</p>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
+                                    <span><i class="fas fa-users"></i> ${course.alunos}</span>
+                                    <span><i class="fas fa-graduation-cap"></i> BNCC</span>
                                 </div>
-                            `).join('') : ''}
+                                <button class="btn btn-primary btn-block mt-2" onclick="openMatematicaPortal(${course.ano})">
+                                    <i class="fas fa-door-open"></i> Acessar Portal
+                                </button>
+                                <button class="btn btn-outline btn-block mt-2" onclick="showPortalInfo(${course.ano})">
+                                    <i class="fas fa-info-circle"></i> Saiba Mais
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="course-actions">
-                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
-                                <i class="fas fa-shopping-cart"></i> Comprar Agora
-                            </button>
-                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
-                                <i class="fas fa-door-open"></i> Ver Conteúdo
-                            </button>
+                    `;
+                } else {
+                    return `
+                        <div class="course-card">
+                            <div class="course-image">
+                                <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
+                            </div>
+                            <div class="course-content">
+                                <h3 class="course-title">${course.titulo}</h3>
+                                <p class="course-description">${course.descricao.substring(0, 100)}...</p>
+                                <span class="course-price">R$ ${course.valor.toFixed(2)}</span>
+                                <div class="course-meta">
+                                    <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
+                                    <span><i class="fas fa-users"></i> ${course.alunos}</span>
+                                </div>
+                                <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
+                                    <i class="fas fa-eye"></i> Ver Detalhes
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
-                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
+                    `;
+                }
+            }).join('');
+        }
+        
+        function loadDemoLessonsHome() {
+            const container = document.getElementById('demo-lessons-home');
+            if (!container) return;
+            
+            container.innerHTML = demoVideos.map(video => {
+                const curso = allCourses.find(c => c.id === video.cursoId);
+                return `
+                    <div class="course-card">
+                        <div class="course-image" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">${video.titulo}</h3>
+                            <p class="course-description">${video.descricao}</p>
+                            <div class="course-meta">
+                                <span><i class="fas fa-play-circle"></i> DEMO</span>
+                                <span><i class="fas fa-clock"></i> 15 min</span>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-2" onclick="playDemoVideo('${video.url}')">
+                                <i class="fas fa-play"></i> Assistir Aula
+                            </button>
                         </div>
                     </div>
                 `;
             }).join('');
+        }
+        
+        function playDemoVideo(url) {
+            const videoFrame = document.getElementById('video-frame');
+            videoFrame.src = url;
+            document.getElementById('video-modal').classList.remove('hidden');
+        }
+        
+        function getCategoryIcon(category) {
+            const icons = {
+                '6ano': 'calculator',
+                '7ano': 'calculator',
+                '8ano': 'calculator',
+                '9ano': 'calculator',
+                'reforco': 'book',
+                'concursos': 'file-alt'
+            };
+            return icons[category] || 'book';
+        }
+        
+        function getCourseColor(category) {
+            const colors = {
+                '6ano': 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)',
+                '7ano': 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                '8ano': 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)',
+                '9ano': 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+                'reforco': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                'concursos': 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'
+            };
+            return colors[category] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         }
         
         // ===== PORTAL MATEMÁTICA =====
@@ -2174,45 +2260,17 @@
             if (!currentStudentName) {
                 showLoginPortal(ano);
             } else {
-                switch(ano) {
-                    case 6:
-                        render6AnoPortalContent();
-                        break;
-                    case 7:
-                        render7AnoPortalContent();
-                        break;
-                    case 8:
-                        render8AnoPortalContent();
-                        break;
-                    case 9:
-                        render9AnoPortalContent();
-                        break;
+                if (ano === 6) {
+                    render6AnoPortalContent();
+                } else if (ano === 7) {
+                    render7AnoPortalContent();
                 }
             }
         }
         
         function showLoginPortal(ano) {
-            let modalId, portalId;
-            switch(ano) {
-                case 6:
-                    modalId = 'portal-6ano-modal';
-                    portalId = 'portal-6ano-content';
-                    break;
-                case 7:
-                    modalId = 'portal-7ano-modal';
-                    portalId = 'portal-7ano-content';
-                    break;
-                case 8:
-                    modalId = 'portal-8ano-modal';
-                    portalId = 'portal-8ano-content';
-                    break;
-                case 9:
-                    // Para 9º ano, usar modal do 8º ou criar específico
-                    modalId = 'portal-8ano-modal';
-                    portalId = 'portal-8ano-content';
-                    break;
-            }
-            
+            const portalId = ano === 6 ? 'portal-6ano-content' : 'portal-7ano-content';
+            const modalId = ano === 6 ? 'portal-6ano-modal' : 'portal-7ano-modal';
             const portalContent = document.getElementById(portalId);
             
             portalContent.innerHTML = `
@@ -2259,19 +2317,10 @@
                     saveStudentData();
                 }
                 
-                switch(ano) {
-                    case 6:
-                        render6AnoPortalContent();
-                        break;
-                    case 7:
-                        render7AnoPortalContent();
-                        break;
-                    case 8:
-                        render8AnoPortalContent();
-                        break;
-                    case 9:
-                        render9AnoPortalContent();
-                        break;
+                if (ano === 6) {
+                    render6AnoPortalContent();
+                } else if (ano === 7) {
+                    render7AnoPortalContent();
                 }
             } else {
                 alert('Por favor, digite seu nome.');
@@ -2280,6 +2329,7 @@
         
         function render6AnoPortalContent() {
             const portalContent = document.getElementById('portal-6ano-content');
+            const lessonData = lessonsData6ano;
             
             portalContent.innerHTML = `
                 <div class="portal-container">
@@ -2344,6 +2394,7 @@
         
         function render7AnoPortalContent() {
             const portalContent = document.getElementById('portal-7ano-content');
+            const lessonData = lessonsData7ano;
             
             portalContent.innerHTML = `
                 <div class="portal-container">
@@ -2406,134 +2457,6 @@
             document.getElementById('portal-7ano-modal').classList.remove('hidden');
         }
         
-        function render8AnoPortalContent() {
-            const portalContent = document.getElementById('portal-8ano-content');
-            
-            portalContent.innerHTML = `
-                <div class="portal-container">
-                    <div class="portal-header" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
-                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 8º Ano</p>
-                            </div>
-                            <button class="btn btn-danger" onclick="logoutFromPortal(8)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
-                                <i class="fas fa-sign-out-alt"></i> Sair
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #7c3aed;" id="completed-count-8">0</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #10b981;" id="total-time-8">0min</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-8">0%</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
-                        <div id="ranking-list-8">
-                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
-                        
-                        <div class="bimester-tabs">
-                            ${[1, 2, 3, 4].map(b => `
-                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
-                                        onclick="switchBimester(${b}, 8)">
-                                    ${b}º Bimestre
-                                </button>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="lessons-grid" id="lessons-container-8">
-                            <!-- Aulas serão carregadas aqui -->
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            updatePortalStats(8);
-            renderPortalLessons(8);
-            
-            document.getElementById('portal-8ano-modal').classList.remove('hidden');
-        }
-        
-        function render9AnoPortalContent() {
-            const portalContent = document.getElementById('portal-8ano-content');
-            
-            portalContent.innerHTML = `
-                <div class="portal-container">
-                    <div class="portal-header" style="background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
-                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 9º Ano</p>
-                            </div>
-                            <button class="btn btn-danger" onclick="logoutFromPortal(9)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
-                                <i class="fas fa-sign-out-alt"></i> Sair
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #dc2626;" id="completed-count-9">0</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #10b981;" id="total-time-9">0min</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-9">0%</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
-                        <div id="ranking-list-9">
-                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
-                        
-                        <div class="bimester-tabs">
-                            ${[1, 2, 3, 4].map(b => `
-                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
-                                        onclick="switchBimester(${b}, 9)">
-                                    ${b}º Bimestre
-                                </button>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="lessons-grid" id="lessons-container-9">
-                            <!-- Aulas serão carregadas aqui -->
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            updatePortalStats(9);
-            renderPortalLessons(9);
-            
-            document.getElementById('portal-8ano-modal').classList.remove('hidden');
-        }
-        
         function updatePortalStats(ano) {
             const studentData = allStudentData.filter(d => d.student_name === currentStudentName && d.portal_type === (ano + 'ano'));
             
@@ -2582,24 +2505,7 @@
         
         function renderPortalLessons(ano) {
             const container = document.getElementById(`lessons-container-${ano}`);
-            let lessonData;
-            switch(ano) {
-                case 6:
-                    lessonData = lessonsData6ano;
-                    break;
-                case 7:
-                    lessonData = lessonsData7ano;
-                    break;
-                case 8:
-                    lessonData = lessonsData8ano;
-                    break;
-                case 9:
-                    lessonData = lessonsData9ano;
-                    break;
-                default:
-                    lessonData = lessonsData6ano;
-            }
-            
+            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
             const lessons = lessonData[currentBimester] || [];
 
             container.innerHTML = lessons.map((lesson, index) => {
@@ -2664,24 +2570,7 @@
         }
         
         function startPortalLesson(lessonCode, index, ano) {
-            let lessonData;
-            switch(ano) {
-                case 6:
-                    lessonData = lessonsData6ano;
-                    break;
-                case 7:
-                    lessonData = lessonsData7ano;
-                    break;
-                case 8:
-                    lessonData = lessonsData8ano;
-                    break;
-                case 9:
-                    lessonData = lessonsData9ano;
-                    break;
-                default:
-                    lessonData = lessonsData6ano;
-            }
-            
+            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
             const lesson = lessonData[currentBimester][index];
             currentLessonCode = lessonCode;
             
@@ -2810,17 +2699,10 @@
                 localStorage.removeItem('currentPortalType');
                 lessonTimers = {};
                 
-                switch(ano) {
-                    case 6:
-                        closePortalModal();
-                        break;
-                    case 7:
-                        closePortal7Modal();
-                        break;
-                    case 8:
-                    case 9:
-                        closePortal8Modal();
-                        break;
+                if (ano === 6) {
+                    closePortalModal();
+                } else {
+                    closePortal7Modal();
                 }
             }
         }
@@ -2833,73 +2715,54 @@
             document.getElementById('portal-7ano-modal').classList.add('hidden');
         }
         
-        function closePortal8Modal() {
-            document.getElementById('portal-8ano-modal').classList.add('hidden');
-        }
-        
         function closeScoreModal() {
             document.getElementById('score-modal').classList.add('hidden');
         }
         
-        // ===== FUNÇÕES RESTANTES DO SISTEMA =====
+        function closeModal() {
+            document.getElementById('video-modal').classList.add('hidden');
+            document.getElementById('edit-course-modal').classList.add('hidden');
+            document.getElementById('video-frame').src = '';
+        }
         
+        function showPortalInfo(ano) {
+            if (ano === 6) {
+                alert(`Portal de Matemática 6º Ano\n\n• 34 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
+            } else if (ano === 7) {
+                alert(`Portal de Matemática 7º Ano\n\n• 33 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
+            } else if (ano === 8) {
+                alert(`Portal de Matemática 8º Ano\n\n• 35 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
+            }
+        }
+        
+        // ===== FUNÇÕES RESTANTES DO SISTEMA =====
         function loadAllCoursesPage() {
             const container = document.getElementById('all-courses');
             filteredCourses = [...allCourses];
-            
-            container.innerHTML = filteredCourses.map(course => {
-                const ano = parseInt(course.categoria);
-                return `
-                    <div class="course-card special" data-year="${ano}">
-                        <div class="course-header">
-                            <h3 class="course-title">
-                                ${course.titulo}
-                                <span class="course-category">${ano}º ANO</span>
-                            </h3>
-                        </div>
-                        
-                        <div class="course-price-section">
-                            <div>
-                                <span class="course-old-price">R$ 297,90</span>
-                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--success-color);">
-                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
-                            </div>
-                        </div>
-                        
-                        <div class="course-description">
-                            ${course.descricao}
-                        </div>
-                        
-                        <div class="course-features">
-                            ${course.features ? course.features.map(feature => `
-                                <div class="course-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${feature}</span>
-                                </div>
-                            `).join('') : ''}
-                        </div>
-                        
-                        <div class="course-actions">
-                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
-                                <i class="fas fa-shopping-cart"></i> Comprar Agora
-                            </button>
-                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
-                                <i class="fas fa-door-open"></i> Ver Conteúdo
-                            </button>
-                        </div>
-                        
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
-                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
+            displayCourses(filteredCourses, container);
             updatePagination();
+        }
+        
+        function displayCourses(courses, container) {
+            container.innerHTML = courses.map(course => `
+                <div class="course-card">
+                    <div class="course-image" style="background: ${getCourseColor(course.categoria)};">
+                        <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">${course.titulo}</h3>
+                        <p class="course-description">${course.descricao.substring(0, 100)}...</p>
+                        <span class="course-price">R$ ${course.valor.toFixed(2)}</span>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
+                            <span><i class="fas fa-users"></i> ${course.alunos}</span>
+                        </div>
+                        <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
+                            <i class="fas fa-eye"></i> Ver Detalhes
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
         
         function applyFilter(filter) {
@@ -2912,57 +2775,7 @@
             }
             
             currentPage = 1;
-            container.innerHTML = filteredCourses.map(course => {
-                const ano = parseInt(course.categoria);
-                return `
-                    <div class="course-card special" data-year="${ano}">
-                        <div class="course-header">
-                            <h3 class="course-title">
-                                ${course.titulo}
-                                <span class="course-category">${ano}º ANO</span>
-                            </h3>
-                        </div>
-                        
-                        <div class="course-price-section">
-                            <div>
-                                <span class="course-old-price">R$ 297,90</span>
-                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--success-color);">
-                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
-                            </div>
-                        </div>
-                        
-                        <div class="course-description">
-                            ${course.descricao}
-                        </div>
-                        
-                        <div class="course-features">
-                            ${course.features ? course.features.map(feature => `
-                                <div class="course-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${feature}</span>
-                                </div>
-                            `).join('') : ''}
-                        </div>
-                        
-                        <div class="course-actions">
-                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
-                                <i class="fas fa-shopping-cart"></i> Comprar Agora
-                            </button>
-                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
-                                <i class="fas fa-door-open"></i> Ver Conteúdo
-                            </button>
-                        </div>
-                        
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
-                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            displayCourses(filteredCourses.slice(0, coursesPerPage), container);
             updatePagination();
         }
         
@@ -2984,57 +2797,7 @@
                     break;
             }
             
-            container.innerHTML = filteredCourses.map(course => {
-                const ano = parseInt(course.categoria);
-                return `
-                    <div class="course-card special" data-year="${ano}">
-                        <div class="course-header">
-                            <h3 class="course-title">
-                                ${course.titulo}
-                                <span class="course-category">${ano}º ANO</span>
-                            </h3>
-                        </div>
-                        
-                        <div class="course-price-section">
-                            <div>
-                                <span class="course-old-price">R$ 297,90</span>
-                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--success-color);">
-                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
-                            </div>
-                        </div>
-                        
-                        <div class="course-description">
-                            ${course.descricao}
-                        </div>
-                        
-                        <div class="course-features">
-                            ${course.features ? course.features.map(feature => `
-                                <div class="course-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${feature}</span>
-                                </div>
-                            `).join('') : ''}
-                        </div>
-                        
-                        <div class="course-actions">
-                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
-                                <i class="fas fa-shopping-cart"></i> Comprar Agora
-                            </button>
-                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
-                                <i class="fas fa-door-open"></i> Ver Conteúdo
-                            </button>
-                        </div>
-                        
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
-                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            displayCourses(filteredCourses.slice(0, coursesPerPage), container);
             updatePagination();
         }
         
@@ -3060,58 +2823,7 @@
             const start = (page - 1) * coursesPerPage;
             const end = start + coursesPerPage;
             
-            const coursesToShow = filteredCourses.slice(start, end);
-            container.innerHTML = coursesToShow.map(course => {
-                const ano = parseInt(course.categoria);
-                return `
-                    <div class="course-card special" data-year="${ano}">
-                        <div class="course-header">
-                            <h3 class="course-title">
-                                ${course.titulo}
-                                <span class="course-category">${ano}º ANO</span>
-                            </h3>
-                        </div>
-                        
-                        <div class="course-price-section">
-                            <div>
-                                <span class="course-old-price">R$ 297,90</span>
-                                <span class="course-price">R$ ${course.valor.toFixed(2).replace('.', ',')}</span>
-                            </div>
-                            <div style="font-size: 0.9rem; color: var(--success-color);">
-                                <i class="fas fa-bolt"></i> PROMOÇÃO POR TEMPO LIMITADO
-                            </div>
-                        </div>
-                        
-                        <div class="course-description">
-                            ${course.descricao}
-                        </div>
-                        
-                        <div class="course-features">
-                            ${course.features ? course.features.map(feature => `
-                                <div class="course-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${feature}</span>
-                                </div>
-                            `).join('') : ''}
-                        </div>
-                        
-                        <div class="course-actions">
-                            <button class="btn btn-primary" onclick="viewCourseDetail(${course.id})">
-                                <i class="fas fa-shopping-cart"></i> Comprar Agora
-                            </button>
-                            <button class="btn btn-outline" onclick="openMatematicaPortal(${ano})">
-                                <i class="fas fa-door-open"></i> Ver Conteúdo
-                            </button>
-                        </div>
-                        
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}/5.0</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos} alunos</span>
-                            <span><i class="fas fa-check-circle" style="color: var(--success-color);"></i> BNCC</span>
-                        </div>
-                    </div>
-                `;
-            }).join('');
+            displayCourses(filteredCourses.slice(start, end), container);
             updatePagination();
         }
         
@@ -3145,34 +2857,24 @@
                 }
             ];
             
-            container.innerHTML = demoLessons.map(lesson => {
-                const ano = parseInt(lesson.categoria);
-                return `
-                    <div class="course-card">
-                        <div class="course-header">
-                            <h3 class="course-title">
-                                ${lesson.titulo}
-                                <span class="course-category">DEMO</span>
-                            </h3>
-                        </div>
-                        
-                        <div class="course-description">
-                            ${lesson.descricao}
-                        </div>
-                        
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${lesson.rating}/5.0</span>
-                            <span><i class="fas fa-play-circle"></i> AULA GRÁTIS</span>
-                        </div>
-                        
-                        <div class="course-actions">
-                            <button class="btn btn-primary btn-block" onclick="playDemoLesson(${lesson.id})">
-                                <i class="fas fa-play"></i> Assistir Aula
-                            </button>
-                        </div>
+            container.innerHTML = demoLessons.map(lesson => `
+                <div class="course-card">
+                    <div class="course-image" style="background: ${getCourseColor(lesson.categoria)};">
+                        <i class="fas fa-play-circle"></i>
                     </div>
-                `;
-            }).join('');
+                    <div class="course-content">
+                        <h3 class="course-title">${lesson.titulo}</h3>
+                        <p class="course-description">${lesson.descricao}</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${lesson.rating}</span>
+                            <span><i class="fas fa-play-circle"></i> DEMO</span>
+                        </div>
+                        <button class="btn btn-primary btn-block mt-2" onclick="playDemoLesson(${lesson.id})">
+                            <i class="fas fa-play"></i> Assistir Aula
+                        </button>
+                    </div>
+                </div>
+            `).join('');
         }
         
         function registerForDemo() {
@@ -3324,9 +3026,11 @@
             const description = document.getElementById('new-course-description').value;
             const price = parseFloat(document.getElementById('new-course-price').value);
             const category = document.getElementById('new-course-category').value;
+            const link = document.getElementById('new-course-link').value;
+            const video = document.getElementById('new-course-video').value;
             
             if (!title || !description || !price || !category) {
-                alert('Por favor, preencha todos os campos.');
+                alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
             
@@ -3340,12 +3044,8 @@
                 alunos: 0,
                 rating: 4.0,
                 dataCriacao: new Date().toISOString().split('T')[0],
-                features: [
-                    'Aulas completas',
-                    'Material em PDF',
-                    'Exercícios resolvidos',
-                    'Suporte via chat'
-                ]
+                linkConteudo: link,
+                linkVideoDemo: video
             };
             
             allCourses.push(newCourse);
@@ -3356,35 +3056,210 @@
             loadAdminDashboard();
         }
         
+        function loadAdminCourses() {
+            const table = document.getElementById('admin-courses-table').querySelector('tbody');
+            
+            table.innerHTML = allCourses.map(course => `
+                <tr>
+                    <td>${course.id}</td>
+                    <td>${course.titulo}</td>
+                    <td>${course.categoria}</td>
+                    <td>R$ ${course.valor.toFixed(2)}</td>
+                    <td>${course.alunos}</td>
+                    <td>
+                        <button class="btn-action btn-edit" onclick="editCourse(${course.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-action btn-delete" onclick="deleteCourse(${course.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function editCourse(courseId) {
+            const course = allCourses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            document.getElementById('edit-course-id').value = course.id;
+            document.getElementById('edit-course-title').value = course.titulo;
+            document.getElementById('edit-course-description').value = course.descricao;
+            document.getElementById('edit-course-price').value = course.valor;
+            document.getElementById('edit-course-category').value = course.categoria;
+            document.getElementById('edit-course-image').value = course.imagem || '';
+            document.getElementById('edit-course-link').value = course.linkConteudo || '';
+            document.getElementById('edit-course-video').value = course.linkVideoDemo || '';
+            
+            document.getElementById('edit-course-modal').classList.remove('hidden');
+        }
+        
+        function saveCourseEdit() {
+            const id = parseInt(document.getElementById('edit-course-id').value);
+            const title = document.getElementById('edit-course-title').value;
+            const description = document.getElementById('edit-course-description').value;
+            const price = parseFloat(document.getElementById('edit-course-price').value);
+            const category = document.getElementById('edit-course-category').value;
+            const image = document.getElementById('edit-course-image').value;
+            const link = document.getElementById('edit-course-link').value;
+            const video = document.getElementById('edit-course-video').value;
+            
+            const course = allCourses.find(c => c.id === id);
+            if (course) {
+                course.titulo = title;
+                course.descricao = description;
+                course.valor = price;
+                course.categoria = category;
+                course.imagem = image;
+                course.linkConteudo = link;
+                course.linkVideoDemo = video;
+                
+                localStorage.setItem('courses', JSON.stringify(allCourses));
+                alert('Curso atualizado com sucesso!');
+                closeModal();
+                loadAdminCourses();
+            }
+        }
+        
+        function deleteCourse(courseId) {
+            if (confirm('Tem certeza que deseja excluir este curso?')) {
+                allCourses = allCourses.filter(c => c.id !== courseId);
+                localStorage.setItem('courses', JSON.stringify(allCourses));
+                alert('Curso excluído com sucesso!');
+                loadAdminCourses();
+            }
+        }
+        
+        function loadContentLinks() {
+            const table = document.getElementById('content-links-table').querySelector('tbody');
+            
+            table.innerHTML = contentLinks.map(link => `
+                <tr>
+                    <td>${link.id}</td>
+                    <td>${link.titulo}</td>
+                    <td><a href="${link.url}" target="_blank">${link.url.substring(0, 30)}...</a></td>
+                    <td>${link.tipo}</td>
+                    <td>
+                        <button class="btn-action btn-edit" onclick="editContentLink(${link.id})">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-action btn-delete" onclick="deleteContentLink(${link.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function addContentLink() {
+            const title = document.getElementById('new-link-title').value;
+            const url = document.getElementById('new-link-url').value;
+            const type = document.getElementById('new-link-type').value;
+            
+            if (!title || !url) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            const newLink = {
+                id: contentLinks.length + 1,
+                titulo: title,
+                url: url,
+                tipo: type,
+                dataCriacao: new Date().toISOString().split('T')[0]
+            };
+            
+            contentLinks.push(newLink);
+            localStorage.setItem('contentLinks', JSON.stringify(contentLinks));
+            
+            alert('Link de conteúdo adicionado com sucesso!');
+            document.getElementById('add-content-link-form').reset();
+            loadContentLinks();
+        }
+        
+        function loadDemoVideos() {
+            const table = document.getElementById('demo-videos-table').querySelector('tbody');
+            const select = document.getElementById('new-video-course');
+            
+            select.innerHTML = '<option value="">Selecionar Curso</option>' + 
+                allCourses.map(course => `
+                    <option value="${course.id}">${course.titulo}</option>
+                `).join('');
+            
+            table.innerHTML = demoVideos.map(video => {
+                const curso = allCourses.find(c => c.id === video.cursoId);
+                return `
+                    <tr>
+                        <td>${video.id}</td>
+                        <td>${video.titulo}</td>
+                        <td><a href="${video.url}" target="_blank">${video.url.substring(0, 30)}...</a></td>
+                        <td>${curso ? curso.titulo : 'N/A'}</td>
+                        <td>
+                            <button class="btn-action btn-edit" onclick="editDemoVideo(${video.id})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-action btn-delete" onclick="deleteDemoVideo(${video.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function addDemoVideo() {
+            const title = document.getElementById('new-video-title').value;
+            const url = document.getElementById('new-video-url').value;
+            const courseId = parseInt(document.getElementById('new-video-course').value);
+            const description = document.getElementById('new-video-description').value;
+            
+            if (!title || !url) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+            
+            const newVideo = {
+                id: demoVideos.length + 1,
+                titulo: title,
+                url: url,
+                cursoId: courseId,
+                descricao: description,
+                dataCriacao: new Date().toISOString().split('T')[0]
+            };
+            
+            demoVideos.push(newVideo);
+            localStorage.setItem('demoVideos', JSON.stringify(demoVideos));
+            
+            alert('Vídeo demonstrativo adicionado com sucesso!');
+            document.getElementById('add-demo-video-form').reset();
+            loadDemoVideos();
+        }
+        
         function viewCourseDetail(courseId) {
             const course = allCourses.find(c => c.id === courseId);
             if (!course) return;
             
             const content = document.getElementById('course-detail-content');
-            const ano = parseInt(course.categoria);
-            
             content.innerHTML = `
                 <div style="max-width: 800px; margin: 0 auto;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                        <h1 style="font-size: 2.5rem; margin: 0;">${course.titulo}</h1>
-                        <span class="course-category" style="font-size: 1.2rem;">${ano}º ANO</span>
+                    <div style="background: ${getCourseColor(course.categoria)}; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; margin-bottom: 2rem;">
+                        <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
                     </div>
+                    
+                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${course.titulo}</h1>
                     
                     <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
                         <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
                             <div style="font-size: 0.9rem; color: var(--gray);">Valor</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">R$ ${course.valor.toFixed(2).replace('.', ',')}</div>
-                            <div style="font-size: 0.9rem; color: var(--gray); text-decoration: line-through;">R$ 297,90</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">R$ ${course.valor.toFixed(2)}</div>
                         </div>
                         <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
                             <div style="font-size: 0.9rem; color: var(--gray);">Avaliação</div>
                             <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">${course.rating}/5.0</div>
-                            <div style="font-size: 0.9rem; color: var(--gray);">${course.alunos} avaliações</div>
                         </div>
                         <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
                             <div style="font-size: 0.9rem; color: var(--gray);">Alunos</div>
                             <div style="font-size: 2rem; font-weight: bold; color: var(--secondary-color);">${course.alunos}</div>
-                            <div style="font-size: 0.9rem; color: var(--gray);">matriculados</div>
                         </div>
                     </div>
                     
@@ -3393,24 +3268,27 @@
                         <p style="font-size: 1.1rem; line-height: 1.6;">${course.descricao}</p>
                     </div>
                     
-                    <div style="margin-bottom: 2rem;">
-                        <h2 style="margin-bottom: 1rem;">O que você vai aprender</h2>
-                        <div class="course-features">
-                            ${course.features ? course.features.map(feature => `
-                                <div class="course-feature">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>${feature}</span>
-                                </div>
-                            `).join('') : ''}
+                    ${course.linkConteudo ? `
+                        <div style="margin-bottom: 2rem;">
+                            <h2 style="margin-bottom: 1rem;">Conteúdo do Curso</h2>
+                            <a href="${course.linkConteudo}" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Acessar Conteúdo Completo
+                            </a>
                         </div>
-                    </div>
+                    ` : ''}
+                    
+                    ${course.linkVideoDemo ? `
+                        <div style="margin-bottom: 2rem;">
+                            <h2 style="margin-bottom: 1rem;">Vídeo Demonstrativo</h2>
+                            <button class="btn btn-secondary" onclick="playDemoVideo('${course.linkVideoDemo}')">
+                                <i class="fas fa-play-circle"></i> Assistir Demonstração
+                            </button>
+                        </div>
+                    ` : ''}
                     
                     <div style="display: flex; gap: 1rem; margin-top: 3rem;">
                         <button class="btn btn-primary" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="startPayment(${course.id})">
-                            <i class="fas fa-shopping-cart"></i> Comprar Curso Agora
-                        </button>
-                        <button class="btn btn-outline" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="openMatematicaPortal(${ano})">
-                            <i class="fas fa-door-open"></i> Ver Conteúdo do Curso
+                            <i class="fas fa-shopping-cart"></i> Comprar Curso
                         </button>
                         <button class="btn btn-outline" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="navigateTo('cursos')">
                             <i class="fas fa-arrow-left"></i> Voltar para Cursos
@@ -3437,16 +3315,8 @@
                         <strong>${course.titulo}</strong>
                     </div>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span>Valor original:</span>
-                        <strong style="text-decoration: line-through; color: var(--gray);">R$ 297,90</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span>Desconto:</span>
-                        <strong style="color: var(--success-color);">-33%</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span>Valor final:</span>
-                        <strong style="color: var(--accent-color); font-size: 1.2rem;">R$ ${course.valor.toFixed(2).replace('.', ',')}</strong>
+                        <span>Valor:</span>
+                        <strong style="color: var(--accent-color); font-size: 1.2rem;">R$ ${course.valor.toFixed(2)}</strong>
                     </div>
                 </div>
             `;
@@ -3475,22 +3345,16 @@
         }
         
         function playDemoLesson(lessonId) {
-            const demoVideos = {
+            const demoVideos = [
                 1: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 2: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 3: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
-            };
+            ];
             
             const videoFrame = document.getElementById('video-frame');
             videoFrame.src = demoVideos[lessonId] || '';
             
             document.getElementById('video-modal').classList.remove('hidden');
-        }
-        
-        function closeModal() {
-            document.getElementById('video-modal').classList.add('hidden');
-            document.getElementById('edit-course-modal').classList.add('hidden');
-            document.getElementById('video-frame').src = '';
         }
         
         function subscribeNewsletter() {
