@@ -68,6 +68,7 @@
             transition: var(--transition);
             text-decoration: none;
             text-align: center;
+            font-size: 14px;
         }
         
         .btn-primary {
@@ -105,6 +106,26 @@
         .btn-danger {
             background-color: var(--danger-color);
             color: var(--white);
+        }
+        
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: var(--white);
+        }
+        
+        .btn-success {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 13px;
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
         }
         
         .btn-block {
@@ -157,9 +178,12 @@
             align-items: center;
             gap: 8px;
             transition: var(--transition);
+            padding: 8px 12px;
+            border-radius: 4px;
         }
         
         .nav-link:hover, .nav-link.active {
+            background-color: rgba(255, 255, 255, 0.1);
             color: var(--accent-color);
         }
         
@@ -236,6 +260,8 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
         
         .course-card:hover {
@@ -256,6 +282,9 @@
         
         .course-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .course-title {
@@ -268,6 +297,7 @@
             color: var(--gray);
             margin-bottom: 1rem;
             font-size: 0.95rem;
+            flex-grow: 1;
         }
         
         .course-price {
@@ -287,6 +317,29 @@
             border-top: 1px solid var(--gray-light);
             font-size: 0.9rem;
             color: var(--gray);
+        }
+        
+        .course-material-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .material-btn {
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: var(--gray-light);
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            transition: var(--transition);
+        }
+        
+        .material-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
         }
         
         /* ===== PÁGINA DE CURSOS ===== */
@@ -402,6 +455,11 @@
             outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
         }
         
         /* ===== MODAL DO PORTAL 6º ANO ===== */
@@ -684,6 +742,14 @@
             margin-bottom: 1.5rem;
         }
         
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         .admin-table {
             width: 100%;
             border-collapse: collapse;
@@ -735,6 +801,59 @@
         .btn-view {
             background-color: var(--secondary-color);
             color: var(--white);
+        }
+        
+        /* ===== CONFIGURAÇÕES DO SISTEMA ===== */
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .settings-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .settings-card h3 {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--gray-light);
+            color: var(--primary-color);
+        }
+        
+        .settings-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .settings-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .departments-list {
+            margin-top: 1rem;
+        }
+        
+        .department-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: var(--gray-light);
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .color-preview {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid var(--gray);
         }
         
         /* ===== PAGINAÇÃO ===== */
@@ -889,6 +1008,10 @@
             .lessons-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -898,6 +1021,15 @@
             
             .admin-stats {
                 grid-template-columns: 1fr;
+            }
+            
+            .admin-table {
+                font-size: 14px;
+            }
+            
+            .admin-table th,
+            .admin-table td {
+                padding: 8px;
             }
         }
         
@@ -923,7 +1055,9 @@
             text-align: center;
         }
         
+        .mt-1 { margin-top: 1rem; }
         .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
         .mb-2 { margin-bottom: 2rem; }
         .mt-3 { margin-top: 3rem; }
         .mb-3 { margin-bottom: 3rem; }
@@ -954,6 +1088,18 @@
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
     </style>
 </head>
 <body>
@@ -963,7 +1109,7 @@
             <nav class="nav-container">
                 <a href="#" class="logo" onclick="navigateTo('home')">
                     <i class="fas fa-graduation-cap"></i>
-                    <span>Matemática Fácil</span>
+                    <span id="site-title">Matemática Fácil</span>
                 </a>
                 
                 <div class="menu-toggle" id="mobile-menu">
@@ -991,8 +1137,8 @@
             <section class="hero">
                 <div class="container">
                     <div class="hero-content">
-                        <h1 class="hero-title">Aprenda Matemática de Forma Fácil e Divertida</h1>
-                        <p class="hero-subtitle">Cursos completos de matemática do 6º ao 9º ano, alinhados com a BNCC</p>
+                        <h1 class="hero-title" id="hero-title">Aprenda Matemática de Forma Fácil e Divertida</h1>
+                        <p class="hero-subtitle" id="hero-subtitle">Cursos completos de matemática do 6º ao 9º ano, alinhados com a BNCC</p>
                         <div class="hero-buttons">
                             <button class="btn btn-primary btn-large" onclick="navigateTo('cursos')">
                                 <i class="fas fa-search"></i> Explorar Cursos
@@ -1006,8 +1152,8 @@
             </section>
             
             <div class="container mt-3">
-                <h2 class="section-title">Cursos em Destaque</h2>
-                <p class="section-subtitle">Cursos completos de matemática por ano escolar</p>
+                <h2 class="section-title" id="featured-courses-title">Cursos em Destaque</h2>
+                <p class="section-subtitle" id="featured-courses-subtitle">Cursos completos de matemática por ano escolar</p>
                 
                 <div class="courses-grid" id="featured-courses">
                     <!-- Cursos serão carregados aqui -->
@@ -1094,8 +1240,8 @@
             <div class="auth-container">
                 <div class="auth-box">
                     <div class="auth-header">
-                        <h1><i class="fas fa-graduation-cap"></i> Matemática Fácil</h1>
-                        <p>Plataforma de Cursos de Matemática</p>
+                        <h1><i class="fas fa-graduation-cap"></i> <span id="login-title">Matemática Fácil</span></h1>
+                        <p id="login-subtitle">Plataforma de Cursos de Matemática</p>
                     </div>
                     
                     <div class="auth-tabs">
@@ -1151,7 +1297,7 @@
                 <!-- Sidebar -->
                 <div class="admin-sidebar" id="admin-sidebar">
                     <div class="sidebar-header">
-                        <h2><i class="fas fa-graduation-cap"></i> Matemática Fácil</h2>
+                        <h2><i class="fas fa-graduation-cap"></i> <span id="admin-site-title">Matemática Fácil</span></h2>
                         <p>Painel Administrativo</p>
                     </div>
                     
@@ -1162,6 +1308,7 @@
                             <li><a href="#" onclick="switchAdminTab('alunos')"><i class="fas fa-users"></i> Alunos</a></li>
                             <li><a href="#" onclick="switchAdminTab('pagamentos')"><i class="fas fa-dollar-sign"></i> Pagamentos</a></li>
                             <li><a href="#" onclick="switchAdminTab('leads')"><i class="fas fa-chart-line"></i> Leads</a></li>
+                            <li><a href="#" onclick="switchAdminTab('departamentos')"><i class="fas fa-building"></i> Departamentos</a></li>
                             <li><a href="#" onclick="switchAdminTab('configuracoes')"><i class="fas fa-cog"></i> Configurações</a></li>
                         </ul>
                     </nav>
@@ -1252,18 +1399,42 @@
                                     <h3><i class="fas fa-plus-circle"></i> Adicionar Novo Curso</h3>
                                     <form id="add-course-form" onsubmit="event.preventDefault(); addNewCourse();">
                                         <div class="form-group">
-                                            <input type="text" id="new-course-title" class="form-control" placeholder="Título do Curso" required>
+                                            <label for="new-course-title">Título do Curso</label>
+                                            <input type="text" id="new-course-title" class="form-control" placeholder="Ex: Matemática 6º Ano" required>
                                         </div>
                                         <div class="form-group">
-                                            <textarea id="new-course-description" class="form-control" placeholder="Descrição" rows="3"></textarea>
+                                            <label for="new-course-description">Descrição</label>
+                                            <textarea id="new-course-description" class="form-control" placeholder="Descreva o curso" rows="3"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-course-materials">Materiais do Curso (Links)</label>
+                                            <textarea id="new-course-materials" class="form-control" placeholder="Cada link em uma linha
+Ex: https://drive.google.com/material1.pdf
+https://drive.google.com/material2.pdf
+https://drive.google.com/material3.pdf" rows="4"></textarea>
+                                            <small style="color: var(--gray);">Coloque cada link em uma linha separada. Os links aparecerão como botões na página do curso.</small>
                                         </div>
                                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                                             <div class="form-group">
-                                                <input type="number" id="new-course-price" class="form-control" placeholder="Valor" step="0.01" required>
+                                                <label for="new-course-price">Valor (R$)</label>
+                                                <input type="number" id="new-course-price" class="form-control" placeholder="197.90" step="0.01" required>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" id="new-course-category" class="form-control" placeholder="Categoria">
+                                                <label for="new-course-category">Categoria</label>
+                                                <select id="new-course-category" class="form-control" required>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="6ano">6º Ano</option>
+                                                    <option value="7ano">7º Ano</option>
+                                                    <option value="8ano">8º Ano</option>
+                                                    <option value="9ano">9º Ano</option>
+                                                    <option value="reforco">Reforço</option>
+                                                    <option value="concursos">Concursos</option>
+                                                </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="new-course-image">URL da Imagem (opcional)</label>
+                                            <input type="text" id="new-course-image" class="form-control" placeholder="https://exemplo.com/imagem.jpg">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">
                                             <i class="fas fa-plus"></i> Adicionar Curso
@@ -1277,10 +1448,13 @@
                         <div id="cursos-tab" class="admin-tab hidden">
                             <div class="admin-card">
                                 <div class="card-header">
-                                    <h3><i class="fas fa-book"></i> Gerenciar Cursos</h3>
+                                    <h3 class="card-title"><i class="fas fa-book"></i> Gerenciar Cursos</h3>
                                     <button class="btn btn-primary" onclick="loadAdminCourses()">
                                         <i class="fas fa-sync"></i> Atualizar
                                     </button>
+                                </div>
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i> Você pode adicionar materiais aos cursos usando links. Cada link aparecerá como um botão na página principal.
                                 </div>
                                 <div style="overflow-x: auto;">
                                     <table class="admin-table" id="admin-courses-table">
@@ -1290,6 +1464,7 @@
                                                 <th>Título</th>
                                                 <th>Categoria</th>
                                                 <th>Valor</th>
+                                                <th>Materiais</th>
                                                 <th>Alunos</th>
                                                 <th>Ações</th>
                                             </tr>
@@ -1305,7 +1480,7 @@
                         <!-- Alunos -->
                         <div id="alunos-tab" class="admin-tab hidden">
                             <div class="admin-card">
-                                <h3><i class="fas fa-users"></i> Gerenciar Alunos</h3>
+                                <h3 class="card-title"><i class="fas fa-users"></i> Gerenciar Alunos</h3>
                                 <div style="overflow-x: auto;">
                                     <table class="admin-table" id="admin-students-table">
                                         <thead>
@@ -1326,25 +1501,250 @@
                             </div>
                         </div>
                         
-                        <!-- Outras abas... -->
+                        <!-- Pagamentos -->
                         <div id="pagamentos-tab" class="admin-tab hidden">
                             <div class="admin-card">
-                                <h3><i class="fas fa-dollar-sign"></i> Gerenciar Pagamentos</h3>
-                                <p>Em desenvolvimento...</p>
+                                <h3 class="card-title"><i class="fas fa-dollar-sign"></i> Gerenciar Pagamentos</h3>
+                                <div style="overflow-x: auto;">
+                                    <table class="admin-table" id="admin-payments-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Aluno</th>
+                                                <th>Curso</th>
+                                                <th>Valor</th>
+                                                <th>Data</th>
+                                                <th>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Pagamentos serão carregados aqui -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         
+                        <!-- Leads -->
                         <div id="leads-tab" class="admin-tab hidden">
                             <div class="admin-card">
-                                <h3><i class="fas fa-chart-line"></i> Gerenciar Leads</h3>
-                                <p>Em desenvolvimento...</p>
+                                <h3 class="card-title"><i class="fas fa-chart-line"></i> Gerenciar Leads</h3>
+                                <div style="overflow-x: auto;">
+                                    <table class="admin-table" id="admin-leads-table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nome</th>
+                                                <th>Email</th>
+                                                <th>Data</th>
+                                                <th>Origem</th>
+                                                <th>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Leads serão carregados aqui -->
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         
+                        <!-- Departamentos -->
+                        <div id="departamentos-tab" class="admin-tab hidden">
+                            <div class="admin-card">
+                                <h3 class="card-title"><i class="fas fa-building"></i> Gerenciar Departamentos</h3>
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i> Configure os departamentos da sua instituição para organizar os cursos e materiais.
+                                </div>
+                                
+                                <div class="settings-grid">
+                                    <div class="settings-card">
+                                        <h3>Adicionar Novo Departamento</h3>
+                                        <form id="add-department-form" onsubmit="event.preventDefault(); addNewDepartment();">
+                                            <div class="form-group">
+                                                <label for="new-department-name">Nome do Departamento</label>
+                                                <input type="text" id="new-department-name" class="form-control" placeholder="Ex: Departamento de Matemática" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="new-department-description">Descrição</label>
+                                                <textarea id="new-department-description" class="form-control" placeholder="Descreva as funções deste departamento" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="new-department-color">Cor de Identificação</label>
+                                                <input type="color" id="new-department-color" class="form-control" value="#3498db">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="new-department-responsible">Responsável</label>
+                                                <input type="text" id="new-department-responsible" class="form-control" placeholder="Nome do responsável">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-block">
+                                                <i class="fas fa-plus"></i> Adicionar Departamento
+                                            </button>
+                                        </form>
+                                    </div>
+                                    
+                                    <div class="settings-card">
+                                        <h3>Departamentos Existentes</h3>
+                                        <div class="departments-list" id="departments-list">
+                                            <!-- Departamentos serão carregados aqui -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Configurações -->
                         <div id="configuracoes-tab" class="admin-tab hidden">
                             <div class="admin-card">
-                                <h3><i class="fas fa-cog"></i> Configurações</h3>
-                                <p>Em desenvolvimento...</p>
+                                <h3 class="card-title"><i class="fas fa-cog"></i> Configurações do Sistema</h3>
+                                
+                                <div class="alert alert-warning">
+                                    <i class="fas fa-exclamation-triangle"></i> Somente administradores podem alterar estas configurações.
+                                </div>
+                                
+                                <div class="settings-grid">
+                                    <!-- Configurações Gerais -->
+                                    <div class="settings-card">
+                                        <h3><i class="fas fa-globe"></i> Configurações Gerais</h3>
+                                        
+                                        <div class="settings-group">
+                                            <label for="site-name">Nome do Site</label>
+                                            <input type="text" id="site-name" class="form-control" value="Matemática Fácil">
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="site-slogan">Slogan/Descrição</label>
+                                            <textarea id="site-slogan" class="form-control" rows="2">Plataforma de Cursos de Matemática</textarea>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="site-email">Email de Contato</label>
+                                            <input type="email" id="site-email" class="form-control" value="contato@matematicafacil.com">
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="site-phone">Telefone de Contato</label>
+                                            <input type="tel" id="site-phone" class="form-control" value="(11) 99999-9999">
+                                        </div>
+                                        
+                                        <button class="btn btn-primary" onclick="saveGeneralSettings()">
+                                            <i class="fas fa-save"></i> Salvar Configurações Gerais
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Configurações de Aparência -->
+                                    <div class="settings-card">
+                                        <h3><i class="fas fa-paint-brush"></i> Aparência</h3>
+                                        
+                                        <div class="settings-group">
+                                            <label for="primary-color">Cor Primária</label>
+                                            <input type="color" id="primary-color" class="form-control" value="#2c3e50">
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="secondary-color">Cor Secundária</label>
+                                            <input type="color" id="secondary-color" class="form-control" value="#3498db">
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="accent-color">Cor de Destaque</label>
+                                            <input type="color" id="accent-color" class="form-control" value="#1abc9c">
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="header-bg">Background do Header</label>
+                                            <select id="header-bg" class="form-control">
+                                                <option value="gradient">Gradiente</option>
+                                                <option value="solid">Sólido</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <button class="btn btn-primary" onclick="saveAppearanceSettings()">
+                                            <i class="fas fa-save"></i> Salvar Aparência
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Configurações de Cursos -->
+                                    <div class="settings-card">
+                                        <h3><i class="fas fa-book"></i> Configurações de Cursos</h3>
+                                        
+                                        <div class="settings-group">
+                                            <label for="course-price-default">Preço Padrão para Novos Cursos</label>
+                                            <input type="number" id="course-price-default" class="form-control" value="197.90" step="0.01">
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="course-currency">Moeda</label>
+                                            <select id="course-currency" class="form-control">
+                                                <option value="R$">Real (R$)</option>
+                                                <option value="$">Dólar ($)</option>
+                                                <option value="€">Euro (€)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label>
+                                                <input type="checkbox" id="course-ratings-enabled"> Habilitar Avaliações de Cursos
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label>
+                                                <input type="checkbox" id="course-materials-enabled" checked> Habilitar Materiais dos Cursos
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="material-links-style">Estilo dos Botões de Materiais</label>
+                                            <select id="material-links-style" class="form-control">
+                                                <option value="buttons">Botões</option>
+                                                <option value="links">Links</option>
+                                                <option value="cards">Cards</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <button class="btn btn-primary" onclick="saveCourseSettings()">
+                                            <i class="fas fa-save"></i> Salvar Configurações de Cursos
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Configurações de Usuários -->
+                                    <div class="settings-card">
+                                        <h3><i class="fas fa-users"></i> Configurações de Usuários</h3>
+                                        
+                                        <div class="settings-group">
+                                            <label>
+                                                <input type="checkbox" id="user-registration-enabled" checked> Permitir Registro de Novos Usuários
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label>
+                                                <input type="checkbox" id="user-email-verification"> Exigir Verificação de Email
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="user-default-role">Permissão Padrão para Novos Usuários</label>
+                                            <select id="user-default-role" class="form-control">
+                                                <option value="student">Aluno</option>
+                                                <option value="teacher">Professor</option>
+                                                <option value="assistant">Assistente</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="settings-group">
+                                            <label for="session-timeout">Timeout da Sessão (minutos)</label>
+                                            <input type="number" id="session-timeout" class="form-control" value="30" min="5" max="240">
+                                        </div>
+                                        
+                                        <button class="btn btn-primary" onclick="saveUserSettings()">
+                                            <i class="fas fa-save"></i> Salvar Configurações de Usuários
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1420,14 +1820,14 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3 class="footer-title">
-                        <i class="fas fa-graduation-cap"></i> Matemática Fácil
+                        <i class="fas fa-graduation-cap"></i> <span id="footer-site-title">Matemática Fácil</span>
                     </h3>
-                    <p>Transformando o aprendizado de matemática através de cursos online de qualidade.</p>
+                    <p id="footer-description">Transformando o aprendizado de matemática através de cursos online de qualidade.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" id="social-facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" id="social-instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" id="social-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" id="social-youtube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1444,9 +1844,9 @@
                 <div class="footer-col">
                     <h3 class="footer-title">Contato</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> contato@matematicafacil.com</li>
-                        <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
-                        <li><i class="fas fa-map-marker-alt"></i> São Paulo, SP</li>
+                        <li><i class="fas fa-envelope"></i> <span id="contact-email">contato@matematicafacil.com</span></li>
+                        <li><i class="fas fa-phone"></i> <span id="contact-phone">(11) 99999-9999</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span id="contact-address">São Paulo, SP</span></li>
                     </ul>
                 </div>
                 
@@ -1463,7 +1863,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Matemática Fácil. Todos os direitos reservados.</p>
+                <p id="footer-copyright">&copy; 2024 Matemática Fácil. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1542,6 +1942,12 @@
                         <textarea id="edit-course-description" class="form-control" rows="3" required></textarea>
                     </div>
                     
+                    <div class="form-group">
+                        <label>Materiais do Curso (Links)</label>
+                        <textarea id="edit-course-materials" class="form-control" rows="4" placeholder="Cada link em uma linha"></textarea>
+                        <small style="color: var(--gray);">Os links aparecerão como botões na página do curso.</small>
+                    </div>
+                    
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label>Valor (R$)</label>
@@ -1549,7 +1955,15 @@
                         </div>
                         <div class="form-group">
                             <label>Categoria</label>
-                            <input type="text" id="edit-course-category" class="form-control" required>
+                            <select id="edit-course-category" class="form-control" required>
+                                <option value="">Selecione...</option>
+                                <option value="6ano">6º Ano</option>
+                                <option value="7ano">7º Ano</option>
+                                <option value="8ano">8º Ano</option>
+                                <option value="9ano">9º Ano</option>
+                                <option value="reforco">Reforço</option>
+                                <option value="concursos">Concursos</option>
+                            </select>
                         </div>
                     </div>
                     
@@ -1562,6 +1976,23 @@
                         <i class="fas fa-save"></i> Salvar Alterações
                     </button>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DE CONFIRMAÇÃO ===== -->
+    <div class="modal-overlay hidden" id="confirmation-modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 id="confirmation-title">Confirmar Ação</h3>
+                <button class="modal-close" onclick="closeConfirmationModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmation-message">Tem certeza que deseja realizar esta ação?</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button class="btn btn-outline flex-1" onclick="closeConfirmationModal()">Cancelar</button>
+                    <button class="btn btn-danger flex-1" id="confirmation-action-btn">Confirmar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -1588,6 +2019,132 @@
 
     <!-- ===== SCRIPT PRINCIPAL ===== -->
     <script>
+        // ===== SISTEMA DE CONFIGURAÇÕES =====
+        class ConfigurationSystem {
+            constructor() {
+                this.settings = {
+                    general: {
+                        siteName: 'Matemática Fácil',
+                        siteSlogan: 'Plataforma de Cursos de Matemática',
+                        siteEmail: 'contato@matematicafacil.com',
+                        sitePhone: '(11) 99999-9999',
+                        contactAddress: 'São Paulo, SP'
+                    },
+                    appearance: {
+                        primaryColor: '#2c3e50',
+                        secondaryColor: '#3498db',
+                        accentColor: '#1abc9c',
+                        headerBackground: 'gradient'
+                    },
+                    courses: {
+                        defaultPrice: 197.90,
+                        currency: 'R$',
+                        ratingsEnabled: true,
+                        materialsEnabled: true,
+                        materialLinksStyle: 'buttons'
+                    },
+                    users: {
+                        registrationEnabled: true,
+                        emailVerification: false,
+                        defaultRole: 'student',
+                        sessionTimeout: 30
+                    },
+                    social: {
+                        facebook: '#',
+                        instagram: '#',
+                        twitter: '#',
+                        youtube: '#'
+                    }
+                };
+                
+                this.departments = [];
+                this.loadSettings();
+            }
+            
+            loadSettings() {
+                const saved = localStorage.getItem('siteSettings');
+                if (saved) {
+                    this.settings = JSON.parse(saved);
+                }
+                
+                const savedDepts = localStorage.getItem('siteDepartments');
+                if (savedDepts) {
+                    this.departments = JSON.parse(savedDepts);
+                }
+                
+                this.applySettings();
+            }
+            
+            saveSettings() {
+                localStorage.setItem('siteSettings', JSON.stringify(this.settings));
+                localStorage.setItem('siteDepartments', JSON.stringify(this.departments));
+                this.applySettings();
+            }
+            
+            applySettings() {
+                // Aplicar configurações gerais
+                document.getElementById('site-title').textContent = this.settings.general.siteName;
+                document.getElementById('login-title').textContent = this.settings.general.siteName;
+                document.getElementById('admin-site-title').textContent = this.settings.general.siteName;
+                document.getElementById('footer-site-title').textContent = this.settings.general.siteName;
+                document.getElementById('footer-description').textContent = this.settings.general.siteSlogan;
+                
+                document.getElementById('login-subtitle').textContent = this.settings.general.siteSlogan;
+                document.getElementById('hero-title').textContent = this.settings.general.siteSlogan;
+                document.getElementById('featured-courses-title').textContent = 'Cursos em Destaque';
+                
+                document.getElementById('contact-email').textContent = this.settings.general.siteEmail;
+                document.getElementById('contact-phone').textContent = this.settings.general.sitePhone;
+                document.getElementById('contact-address').textContent = this.settings.general.contactAddress;
+                
+                // Aplicar cores
+                document.documentElement.style.setProperty('--primary-color', this.settings.appearance.primaryColor);
+                document.documentElement.style.setProperty('--secondary-color', this.settings.appearance.secondaryColor);
+                document.documentElement.style.setProperty('--accent-color', this.settings.appearance.accentColor);
+                
+                // Aplicar configurações de cursos
+                if (!this.settings.courses.materialsEnabled) {
+                    document.querySelectorAll('.material-btn').forEach(btn => btn.style.display = 'none');
+                }
+            }
+            
+            updateSetting(category, key, value) {
+                if (this.settings[category]) {
+                    this.settings[category][key] = value;
+                    this.saveSettings();
+                }
+            }
+            
+            addDepartment(name, description, color, responsible) {
+                const department = {
+                    id: Date.now(),
+                    name,
+                    description,
+                    color,
+                    responsible,
+                    createdAt: new Date().toISOString(),
+                    courses: []
+                };
+                
+                this.departments.push(department);
+                this.saveSettings();
+                return department;
+            }
+            
+            removeDepartment(id) {
+                this.departments = this.departments.filter(dept => dept.id !== id);
+                this.saveSettings();
+            }
+            
+            updateDepartment(id, updates) {
+                const index = this.departments.findIndex(dept => dept.id === id);
+                if (index !== -1) {
+                    this.departments[index] = { ...this.departments[index], ...updates };
+                    this.saveSettings();
+                }
+            }
+        }
+
         // ===== DADOS DAS AULAS 6º ANO =====
         const lessonsData6ano = {
             1: [
@@ -1688,11 +2245,12 @@
         let filteredCourses = [];
         let currentPage = 1;
         const coursesPerPage = 6;
+        let configSystem = new ConfigurationSystem();
         
         // Variáveis específicas do portal
         let currentStudentName = '';
         let currentBimester = 1;
-        let currentPortalType = '6ano'; // '6ano' ou '7ano'
+        let currentPortalType = '6ano';
         let allStudentData = [];
         let lessonTimers = {};
         let currentLessonCode = '';
@@ -1708,21 +2266,16 @@
         
         // ===== FUNÇÕES DE INICIALIZAÇÃO =====
         function initApp() {
-            // Verificar autenticação
             currentUser = JSON.parse(localStorage.getItem('currentUser'));
             currentAdmin = JSON.parse(localStorage.getItem('currentAdmin'));
             
-            // Carregar dados do aluno
             currentStudentName = localStorage.getItem('currentStudentName') || '';
             currentPortalType = localStorage.getItem('currentPortalType') || '6ano';
             
-            // Atualizar navegação baseada no login
             updateNavigation();
             
-            // Carregar cursos do localStorage
             allCourses = JSON.parse(localStorage.getItem('courses')) || [];
             
-            // Configurar menu mobile
             const menuToggle = document.getElementById('mobile-menu');
             const navMenu = document.getElementById('nav-menu');
             
@@ -1733,17 +2286,43 @@
                 });
             }
             
-            // Fechar menu ao clicar em link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
             });
+            
+            loadConfigurationValues();
+        }
+        
+        function loadConfigurationValues() {
+            // Carregar valores nos formulários de configuração
+            document.getElementById('site-name').value = configSystem.settings.general.siteName;
+            document.getElementById('site-slogan').value = configSystem.settings.general.siteSlogan;
+            document.getElementById('site-email').value = configSystem.settings.general.siteEmail;
+            document.getElementById('site-phone').value = configSystem.settings.general.sitePhone;
+            
+            document.getElementById('primary-color').value = configSystem.settings.appearance.primaryColor;
+            document.getElementById('secondary-color').value = configSystem.settings.appearance.secondaryColor;
+            document.getElementById('accent-color').value = configSystem.settings.appearance.accentColor;
+            document.getElementById('header-bg').value = configSystem.settings.appearance.headerBackground;
+            
+            document.getElementById('course-price-default').value = configSystem.settings.courses.defaultPrice;
+            document.getElementById('course-currency').value = configSystem.settings.courses.currency;
+            document.getElementById('course-ratings-enabled').checked = configSystem.settings.courses.ratingsEnabled;
+            document.getElementById('course-materials-enabled').checked = configSystem.settings.courses.materialsEnabled;
+            document.getElementById('material-links-style').value = configSystem.settings.courses.materialLinksStyle;
+            
+            document.getElementById('user-registration-enabled').checked = configSystem.settings.users.registrationEnabled;
+            document.getElementById('user-email-verification').checked = configSystem.settings.users.emailVerification;
+            document.getElementById('user-default-role').value = configSystem.settings.users.defaultRole;
+            document.getElementById('session-timeout').value = configSystem.settings.users.sessionTimeout;
+            
+            loadDepartmentsList();
         }
         
         function setupEventListeners() {
-            // Filtros de cursos
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1752,7 +2331,6 @@
                 });
             });
             
-            // Ordenação de cursos
             const sortSelect = document.getElementById('sort-courses');
             if (sortSelect) {
                 sortSelect.addEventListener('change', function() {
@@ -1762,7 +2340,6 @@
         }
         
         function loadSampleData() {
-            // Se não existirem cursos, criar dados de exemplo
             if (allCourses.length === 0) {
                 allCourses = [
                     {
@@ -1772,6 +2349,11 @@
                         valor: 197.90,
                         categoria: '6ano',
                         imagem: '',
+                        materiais: [
+                            'https://drive.google.com/file/d/1/material1.pdf',
+                            'https://drive.google.com/file/d/1/material2.pdf',
+                            'https://drive.google.com/file/d/1/material3.pdf'
+                        ],
                         alunos: 1500,
                         rating: 4.9,
                         dataCriacao: '2024-01-15'
@@ -1783,60 +2365,19 @@
                         valor: 197.90,
                         categoria: '7ano',
                         imagem: '',
+                        materiais: [
+                            'https://drive.google.com/file/d/2/material1.pdf',
+                            'https://drive.google.com/file/d/2/material2.pdf'
+                        ],
                         alunos: 1200,
                         rating: 4.8,
                         dataCriacao: '2024-02-10'
-                    },
-                    {
-                        id: 3,
-                        titulo: 'Matemática 8º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas organizadas por bimestre.',
-                        valor: 197.90,
-                        categoria: '8ano',
-                        imagem: '',
-                        alunos: 950,
-                        rating: 4.7,
-                        dataCriacao: '2024-03-05'
-                    },
-                    {
-                        id: 4,
-                        titulo: 'Matemática 9º Ano - Completo',
-                        descricao: 'Sistema completo de aulas de matemática do 9º ano alinhado com a BNCC. Preparação para o Ensino Médio.',
-                        valor: 197.90,
-                        categoria: '9ano',
-                        imagem: '',
-                        alunos: 850,
-                        rating: 4.8,
-                        dataCriacao: '2024-01-20'
-                    },
-                    {
-                        id: 5,
-                        titulo: 'Reforço Matemático - Fundamental II',
-                        descricao: 'Reforço completo de matemática para alunos do 6º ao 9º ano. Foco nas principais dificuldades.',
-                        valor: 247.90,
-                        categoria: 'reforco',
-                        imagem: '',
-                        alunos: 720,
-                        rating: 4.6,
-                        dataCriacao: '2024-02-28'
-                    },
-                    {
-                        id: 6,
-                        titulo: 'Matemática para Concursos',
-                        descricao: 'Preparação completa em matemática para concursos públicos. Foco em raciocínio lógico e matemática básica.',
-                        valor: 297.90,
-                        categoria: 'concursos',
-                        imagem: '',
-                        alunos: 540,
-                        rating: 4.9,
-                        dataCriacao: '2024-01-10'
                     }
                 ];
                 
                 localStorage.setItem('courses', JSON.stringify(allCourses));
             }
             
-            // Criar usuário admin padrão se não existir
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const adminExists = users.some(u => u.email === 'admin@matematicafacil.com');
             
@@ -1865,21 +2406,113 @@
             localStorage.setItem('studentProgressData', JSON.stringify(allStudentData));
         }
         
+        // ===== CONFIGURAÇÕES DO SISTEMA =====
+        function saveGeneralSettings() {
+            configSystem.updateSetting('general', 'siteName', document.getElementById('site-name').value);
+            configSystem.updateSetting('general', 'siteSlogan', document.getElementById('site-slogan').value);
+            configSystem.updateSetting('general', 'siteEmail', document.getElementById('site-email').value);
+            configSystem.updateSetting('general', 'sitePhone', document.getElementById('site-phone').value);
+            
+            showAlert('Configurações gerais salvas com sucesso!', 'success');
+        }
+        
+        function saveAppearanceSettings() {
+            configSystem.updateSetting('appearance', 'primaryColor', document.getElementById('primary-color').value);
+            configSystem.updateSetting('appearance', 'secondaryColor', document.getElementById('secondary-color').value);
+            configSystem.updateSetting('appearance', 'accentColor', document.getElementById('accent-color').value);
+            configSystem.updateSetting('appearance', 'headerBackground', document.getElementById('header-bg').value);
+            
+            configSystem.applySettings();
+            showAlert('Configurações de aparência salvas com sucesso!', 'success');
+        }
+        
+        function saveCourseSettings() {
+            configSystem.updateSetting('courses', 'defaultPrice', parseFloat(document.getElementById('course-price-default').value));
+            configSystem.updateSetting('courses', 'currency', document.getElementById('course-currency').value);
+            configSystem.updateSetting('courses', 'ratingsEnabled', document.getElementById('course-ratings-enabled').checked);
+            configSystem.updateSetting('courses', 'materialsEnabled', document.getElementById('course-materials-enabled').checked);
+            configSystem.updateSetting('courses', 'materialLinksStyle', document.getElementById('material-links-style').value);
+            
+            showAlert('Configurações de cursos salvas com sucesso!', 'success');
+        }
+        
+        function saveUserSettings() {
+            configSystem.updateSetting('users', 'registrationEnabled', document.getElementById('user-registration-enabled').checked);
+            configSystem.updateSetting('users', 'emailVerification', document.getElementById('user-email-verification').checked);
+            configSystem.updateSetting('users', 'defaultRole', document.getElementById('user-default-role').value);
+            configSystem.updateSetting('users', 'sessionTimeout', parseInt(document.getElementById('session-timeout').value));
+            
+            showAlert('Configurações de usuários salvas com sucesso!', 'success');
+        }
+        
+        function addNewDepartment() {
+            const name = document.getElementById('new-department-name').value;
+            const description = document.getElementById('new-department-description').value;
+            const color = document.getElementById('new-department-color').value;
+            const responsible = document.getElementById('new-department-responsible').value;
+            
+            if (!name) {
+                showAlert('Por favor, insira um nome para o departamento.', 'error');
+                return;
+            }
+            
+            configSystem.addDepartment(name, description, color, responsible);
+            loadDepartmentsList();
+            
+            document.getElementById('add-department-form').reset();
+            showAlert('Departamento adicionado com sucesso!', 'success');
+        }
+        
+        function loadDepartmentsList() {
+            const list = document.getElementById('departments-list');
+            list.innerHTML = '';
+            
+            if (configSystem.departments.length === 0) {
+                list.innerHTML = '<p style="text-align: center; color: var(--gray);">Nenhum departamento cadastrado.</p>';
+                return;
+            }
+            
+            configSystem.departments.forEach(dept => {
+                const div = document.createElement('div');
+                div.className = 'department-item';
+                div.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div class="color-preview" style="background-color: ${dept.color}"></div>
+                        <div>
+                            <strong>${dept.name}</strong>
+                            <div style="font-size: 0.9rem; color: var(--gray);">${dept.description}</div>
+                            <div style="font-size: 0.8rem; color: var(--gray);">Responsável: ${dept.responsible}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn-action btn-danger btn-small" onclick="deleteDepartment(${dept.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+        
+        function deleteDepartment(id) {
+            if (confirm('Tem certeza que deseja excluir este departamento?')) {
+                configSystem.removeDepartment(id);
+                loadDepartmentsList();
+                showAlert('Departamento excluído com sucesso!', 'success');
+            }
+        }
+        
         // ===== NAVEGAÇÃO =====
         function navigateTo(page) {
-            // Esconder todas as páginas
             document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
             
-            // Mostrar página solicitada
             const targetPage = document.getElementById(`${page}-page`);
             if (targetPage) {
                 targetPage.classList.remove('hidden');
             }
             
-            // Atualizar navegação ativa
             updateActiveNav(page);
             
-            // Carregar conteúdo específico da página
             switch(page) {
                 case 'home':
                     loadFeaturedCourses();
@@ -1893,7 +2526,7 @@
                 case 'admin':
                     if (!currentAdmin) {
                         navigateTo('login');
-                        alert('Acesso restrito. Faça login como administrador.');
+                        showAlert('Acesso restrito. Faça login como administrador.', 'error');
                         return;
                     }
                     loadAdminDashboard();
@@ -1901,14 +2534,13 @@
                 case 'pagamento':
                     if (!currentUser) {
                         navigateTo('login');
-                        alert('Faça login para continuar com a compra.');
+                        showAlert('Faça login para continuar com a compra.', 'error');
                         return;
                     }
                     loadPaymentPage();
                     break;
             }
             
-            // Scroll para topo
             window.scrollTo(0, 0);
         }
         
@@ -1917,7 +2549,6 @@
                 link.classList.remove('active');
             });
             
-            // Mapear páginas para índices de navegação
             const navMap = {
                 'home': 0,
                 'cursos': 1,
@@ -1937,7 +2568,6 @@
         
         function updateNavigation() {
             if (currentUser) {
-                // Atualizar link de login para perfil
                 const loginLink = document.querySelector('.nav-link[onclick*="login"]');
                 if (loginLink) {
                     loginLink.innerHTML = '<i class="fas fa-user"></i> Minha Conta';
@@ -1946,7 +2576,6 @@
             }
             
             if (currentAdmin) {
-                // Atualizar link admin para dashboard
                 const adminLink = document.querySelector('.nav-link[onclick*="admin"]');
                 if (adminLink) {
                     adminLink.innerHTML = '<i class="fas fa-tachometer-alt"></i> Dashboard';
@@ -1960,88 +2589,286 @@
             const container = document.getElementById('featured-courses');
             if (!container) return;
             
-            // Adicionar os cards especiais
-            const featuredCourses = [
-                {
-                    id: 'matematica-6ano',
-                    titulo: 'Matemática 6º Ano - Completo',
-                    descricao: 'Sistema completo de aulas de matemática do 6º ano alinhado com a BNCC. Inclui 34 aulas organizadas por bimestre.',
-                    categoria: '6ano',
-                    alunos: 1500,
-                    rating: 4.9,
-                    especial: true,
-                    ano: 6,
-                    cor: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)'
-                },
-                {
-                    id: 'matematica-7ano',
-                    titulo: 'Matemática 7º Ano - Completo',
-                    descricao: 'Sistema completo de aulas de matemática do 7º ano alinhado com a BNCC. Inclui 33 aulas organizadas por bimestre.',
-                    categoria: '7ano',
-                    alunos: 1200,
-                    rating: 4.8,
-                    especial: true,
-                    ano: 7,
-                    cor: 'linear-gradient(135deg, #059669 0%, #047857 100%)'
-                },
-                {
-                    id: 'matematica-8ano',
-                    titulo: 'Matemática 8º Ano - Completo',
-                    descricao: 'Sistema completo de aulas de matemática do 8º ano alinhado com a BNCC. Inclui 35 aulas organizadas por bimestre.',
-                    categoria: '8ano',
-                    alunos: 950,
-                    rating: 4.7,
-                    especial: true,
-                    ano: 8,
-                    cor: 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)'
-                }
-            ];
+            const featuredCourses = allCourses.slice(0, 3);
             
             container.innerHTML = featuredCourses.map(course => {
-                if (course.especial) {
-                    return `
-                        <div class="course-card">
-                            <div class="course-image" style="background: ${course.cor};">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <div class="course-content">
-                                <h3 class="course-title">${course.titulo}</h3>
-                                <p class="course-description">${course.descricao}</p>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
-                                    <span><i class="fas fa-users"></i> ${course.alunos}</span>
-                                    <span><i class="fas fa-graduation-cap"></i> BNCC</span>
-                                </div>
-                                <button class="btn btn-primary btn-block mt-2" onclick="openMatematicaPortal(${course.ano})">
-                                    <i class="fas fa-door-open"></i> Acessar Portal
-                                </button>
-                                <button class="btn btn-outline btn-block mt-2" onclick="showPortalInfo(${course.ano})">
-                                    <i class="fas fa-info-circle"></i> Saiba Mais
-                                </button>
-                            </div>
+                const materialButtons = course.materiais && course.materiais.length > 0 
+                    ? `
+                        <div class="course-material-links">
+                            ${course.materiais.map((material, index) => `
+                                <a href="${material}" target="_blank" class="material-btn">
+                                    <i class="fas fa-download"></i> Material ${index + 1}
+                                </a>
+                            `).join('')}
                         </div>
-                    `;
-                } else {
-                    return `
-                        <div class="course-card">
-                            <div class="course-image">
-                                <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
-                            </div>
-                            <div class="course-content">
-                                <h3 class="course-title">${course.titulo}</h3>
-                                <p class="course-description">${course.descricao.substring(0, 100)}...</p>
-                                <span class="course-price">R$ ${course.valor.toFixed(2)}</span>
-                                <div class="course-meta">
-                                    <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
-                                    <span><i class="fas fa-users"></i> ${course.alunos}</span>
-                                </div>
-                                <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
-                                    <i class="fas fa-eye"></i> Ver Detalhes
-                                </button>
-                            </div>
+                    `
+                    : '';
+                
+                return `
+                    <div class="course-card">
+                        <div class="course-image" style="background: ${getCourseColor(course.categoria)};">
+                            <i class="fas fa-calculator"></i>
                         </div>
-                    `;
-                }
+                        <div class="course-content">
+                            <h3 class="course-title">${course.titulo}</h3>
+                            <p class="course-description">${course.descricao}</p>
+                            ${materialButtons}
+                            <div class="course-meta">
+                                <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
+                                <span><i class="fas fa-users"></i> ${course.alunos}</span>
+                                <span><i class="fas fa-graduation-cap"></i> BNCC</span>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // ===== FUNÇÕES DE CURSOS =====
+        function addNewCourse() {
+            const title = document.getElementById('new-course-title').value;
+            const description = document.getElementById('new-course-description').value;
+            const materialsText = document.getElementById('new-course-materials').value;
+            const price = parseFloat(document.getElementById('new-course-price').value);
+            const category = document.getElementById('new-course-category').value;
+            const image = document.getElementById('new-course-image').value;
+            
+            if (!title || !description || !price || !category) {
+                showAlert('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            const materials = materialsText
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0 && line.startsWith('http'));
+            
+            const newCourse = {
+                id: allCourses.length > 0 ? Math.max(...allCourses.map(c => c.id)) + 1 : 1,
+                titulo: title,
+                descricao: description,
+                valor: price,
+                categoria: category,
+                imagem: image,
+                materiais: materials,
+                alunos: 0,
+                rating: 4.0,
+                dataCriacao: new Date().toISOString().split('T')[0]
+            };
+            
+            allCourses.push(newCourse);
+            localStorage.setItem('courses', JSON.stringify(allCourses));
+            
+            showAlert('Curso adicionado com sucesso! Os materiais aparecerão como botões na página do curso.', 'success');
+            document.getElementById('add-course-form').reset();
+            loadAdminDashboard();
+        }
+        
+        function loadAdminCourses() {
+            const table = document.getElementById('admin-courses-table').querySelector('tbody');
+            table.innerHTML = '';
+            
+            allCourses.forEach(course => {
+                const materialsCount = course.materiais ? course.materiais.length : 0;
+                
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>${course.id}</td>
+                    <td>${course.titulo}</td>
+                    <td><span class="badge">${course.categoria}</span></td>
+                    <td>R$ ${course.valor.toFixed(2)}</td>
+                    <td>${materialsCount} material(is)</td>
+                    <td>${course.alunos}</td>
+                    <td>
+                        <button class="btn-action btn-edit" onclick="editCourse(${course.id})" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-action btn-danger" onclick="deleteCourse(${course.id})" title="Excluir">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+            });
+        }
+        
+        function editCourse(id) {
+            const course = allCourses.find(c => c.id === id);
+            if (!course) return;
+            
+            document.getElementById('edit-course-id').value = course.id;
+            document.getElementById('edit-course-title').value = course.titulo;
+            document.getElementById('edit-course-description').value = course.descricao;
+            document.getElementById('edit-course-materials').value = course.materiais ? course.materiais.join('\n') : '';
+            document.getElementById('edit-course-price').value = course.valor;
+            document.getElementById('edit-course-category').value = course.categoria;
+            document.getElementById('edit-course-image').value = course.imagem || '';
+            
+            document.getElementById('edit-course-modal').classList.remove('hidden');
+        }
+        
+        function saveCourseEdit() {
+            const id = parseInt(document.getElementById('edit-course-id').value);
+            const courseIndex = allCourses.findIndex(c => c.id === id);
+            
+            if (courseIndex === -1) return;
+            
+            const materialsText = document.getElementById('edit-course-materials').value;
+            const materials = materialsText
+                .split('\n')
+                .map(line => line.trim())
+                .filter(line => line.length > 0 && line.startsWith('http'));
+            
+            allCourses[courseIndex] = {
+                ...allCourses[courseIndex],
+                titulo: document.getElementById('edit-course-title').value,
+                descricao: document.getElementById('edit-course-description').value,
+                valor: parseFloat(document.getElementById('edit-course-price').value),
+                categoria: document.getElementById('edit-course-category').value,
+                imagem: document.getElementById('edit-course-image').value,
+                materiais: materials
+            };
+            
+            localStorage.setItem('courses', JSON.stringify(allCourses));
+            
+            showAlert('Curso atualizado com sucesso!', 'success');
+            closeModal();
+            loadAdminCourses();
+            loadFeaturedCourses();
+        }
+        
+        function deleteCourse(id) {
+            if (confirm('Tem certeza que deseja excluir este curso?')) {
+                allCourses = allCourses.filter(c => c.id !== id);
+                localStorage.setItem('courses', JSON.stringify(allCourses));
+                
+                showAlert('Curso excluído com sucesso!', 'success');
+                loadAdminCourses();
+                loadFeaturedCourses();
+            }
+        }
+        
+        function viewCourseDetail(courseId) {
+            const course = allCourses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            const materialButtons = course.materiais && course.materiais.length > 0 
+                ? `
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="margin-bottom: 1rem;"><i class="fas fa-download"></i> Materiais do Curso</h3>
+                        <div class="course-material-links">
+                            ${course.materiais.map((material, index) => `
+                                <a href="${material}" target="_blank" class="material-btn">
+                                    <i class="fas fa-external-link-alt"></i> Acessar Material ${index + 1}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                `
+                : '';
+            
+            const content = document.getElementById('course-detail-content');
+            content.innerHTML = `
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="background: ${getCourseColor(course.categoria)}; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; margin-bottom: 2rem;">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    
+                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${course.titulo}</h1>
+                    
+                    <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
+                            <div style="font-size: 0.9rem; color: var(--gray);">Valor</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">R$ ${course.valor.toFixed(2)}</div>
+                        </div>
+                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
+                            <div style="font-size: 0.9rem; color: var(--gray);">Avaliação</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">${course.rating}/5.0</div>
+                        </div>
+                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
+                            <div style="font-size: 0.9rem; color: var(--gray);">Alunos</div>
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--secondary-color);">${course.alunos}</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <h2 style="margin-bottom: 1rem;">Descrição do Curso</h2>
+                        <p style="font-size: 1.1rem; line-height: 1.6;">${course.descricao}</p>
+                    </div>
+                    
+                    ${materialButtons}
+                    
+                    <div style="display: flex; gap: 1rem; margin-top: 3rem;">
+                        <button class="btn btn-primary" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="startPayment(${course.id})">
+                            <i class="fas fa-shopping-cart"></i> Comprar Curso
+                        </button>
+                        <button class="btn btn-outline" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="navigateTo('cursos')">
+                            <i class="fas fa-arrow-left"></i> Voltar para Cursos
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            navigateTo('curso-detalhe');
+        }
+        
+        function getCourseColor(category) {
+            const colors = {
+                '6ano': 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)',
+                '7ano': 'linear-gradient(135deg, #059669 0%, #047857 100%)',
+                '8ano': 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)',
+                '9ano': 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+                'reforco': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                'concursos': 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'
+            };
+            return colors[category] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        }
+        
+        // ===== FUNÇÕES RESTANTES DO SISTEMA =====
+        function loadAllCoursesPage() {
+            const container = document.getElementById('all-courses');
+            filteredCourses = [...allCourses];
+            displayCourses(filteredCourses, container);
+            updatePagination();
+        }
+        
+        function displayCourses(courses, container) {
+            container.innerHTML = courses.map(course => {
+                const materialButtons = course.materiais && course.materiais.length > 0 && configSystem.settings.courses.materialsEnabled
+                    ? `
+                        <div class="course-material-links">
+                            ${course.materiais.slice(0, 2).map((material, index) => `
+                                <a href="${material}" target="_blank" class="material-btn">
+                                    <i class="fas fa-external-link-alt"></i> Mat. ${index + 1}
+                                </a>
+                            `).join('')}
+                            ${course.materiais.length > 2 ? `<span class="badge">+${course.materiais.length - 2}</span>` : ''}
+                        </div>
+                    `
+                    : '';
+                
+                return `
+                    <div class="course-card">
+                        <div class="course-image" style="background: ${getCourseColor(course.categoria)};">
+                            <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">${course.titulo}</h3>
+                            <p class="course-description">${course.descricao.substring(0, 100)}...</p>
+                            ${materialButtons}
+                            <span class="course-price">${configSystem.settings.courses.currency} ${course.valor.toFixed(2)}</span>
+                            <div class="course-meta">
+                                <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
+                                <span><i class="fas fa-users"></i> ${course.alunos}</span>
+                            </div>
+                            <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
+                                <i class="fas fa-eye"></i> Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                `;
             }).join('');
         }
         
@@ -2055,538 +2882,6 @@
                 'concursos': 'file-alt'
             };
             return icons[category] || 'book';
-        }
-        
-        // ===== PORTAL MATEMÁTICA =====
-        function openMatematicaPortal(ano) {
-            currentPortalType = ano + 'ano';
-            localStorage.setItem('currentPortalType', currentPortalType);
-            
-            if (!currentStudentName) {
-                showLoginPortal(ano);
-            } else {
-                if (ano === 6) {
-                    render6AnoPortalContent();
-                } else if (ano === 7) {
-                    render7AnoPortalContent();
-                }
-            }
-        }
-        
-        function showLoginPortal(ano) {
-            const portalId = ano === 6 ? 'portal-6ano-content' : 'portal-7ano-content';
-            const modalId = ano === 6 ? 'portal-6ano-modal' : 'portal-7ano-modal';
-            const portalContent = document.getElementById(portalId);
-            
-            portalContent.innerHTML = `
-                <div class="auth-box" style="max-width: 400px; margin: 0 auto;">
-                    <div class="auth-header">
-                        <h3><i class="fas fa-calculator"></i> Portal de Aulas</h3>
-                        <p>Matemática ${ano}º Ano</p>
-                    </div>
-                    <div class="auth-form">
-                        <div class="form-group">
-                            <label>Digite seu nome:</label>
-                            <input type="text" id="portal-student-name" class="form-control" placeholder="Seu nome completo" required>
-                        </div>
-                        <button class="btn btn-primary btn-block" onclick="loginToPortal(${ano})">
-                            <i class="fas fa-sign-in-alt"></i> Entrar no Portal
-                        </button>
-                        <div class="text-center mt-3">
-                            <p style="color: var(--gray); font-size: 0.9rem;">
-                                Seu progresso será salvo automaticamente
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            document.getElementById(modalId).classList.remove('hidden');
-        }
-        
-        function loginToPortal(ano) {
-            const name = document.getElementById('portal-student-name').value.trim();
-            if (name) {
-                currentStudentName = name;
-                currentPortalType = ano + 'ano';
-                localStorage.setItem('currentStudentName', name);
-                localStorage.setItem('currentPortalType', currentPortalType);
-                
-                // Verificar se é um novo aluno
-                const studentExists = allStudentData.some(d => d.student_name === name && d.portal_type === currentPortalType);
-                if (!studentExists) {
-                    // Criar registro inicial para o aluno
-                    allStudentData.push({
-                        student_name: name,
-                        portal_type: currentPortalType,
-                        first_login: new Date().toISOString()
-                    });
-                    saveStudentData();
-                }
-                
-                if (ano === 6) {
-                    render6AnoPortalContent();
-                } else if (ano === 7) {
-                    render7AnoPortalContent();
-                }
-            } else {
-                alert('Por favor, digite seu nome.');
-            }
-        }
-        
-        function render6AnoPortalContent() {
-            const portalContent = document.getElementById('portal-6ano-content');
-            const lessonData = lessonsData6ano;
-            
-            portalContent.innerHTML = `
-                <div class="portal-container">
-                    <div class="portal-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
-                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 6º Ano</p>
-                            </div>
-                            <button class="btn btn-danger" onclick="logoutFromPortal(6)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
-                                <i class="fas fa-sign-out-alt"></i> Sair
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #2563eb;" id="completed-count-6">0</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #10b981;" id="total-time-6">0min</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-6">0%</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
-                        <div id="ranking-list-6">
-                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
-                        
-                        <div class="bimester-tabs">
-                            ${[1, 2, 3, 4].map(b => `
-                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
-                                        onclick="switchBimester(${b}, 6)">
-                                    ${b}º Bimestre
-                                </button>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="lessons-grid" id="lessons-container-6">
-                            <!-- Aulas serão carregadas aqui -->
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            updatePortalStats(6);
-            renderPortalLessons(6);
-            
-            // Mostrar modal
-            document.getElementById('portal-6ano-modal').classList.remove('hidden');
-        }
-        
-        function render7AnoPortalContent() {
-            const portalContent = document.getElementById('portal-7ano-content');
-            const lessonData = lessonsData7ano;
-            
-            portalContent.innerHTML = `
-                <div class="portal-container">
-                    <div class="portal-header" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
-                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 7º Ano</p>
-                            </div>
-                            <button class="btn btn-danger" onclick="logoutFromPortal(7)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
-                                <i class="fas fa-sign-out-alt"></i> Sair
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #059669;" id="completed-count-7">0</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #10b981;" id="total-time-7">0min</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-7">0%</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
-                        <div id="ranking-list-7">
-                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
-                        
-                        <div class="bimester-tabs">
-                            ${[1, 2, 3, 4].map(b => `
-                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
-                                        onclick="switchBimester(${b}, 7)">
-                                    ${b}º Bimestre
-                                </button>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="lessons-grid" id="lessons-container-7">
-                            <!-- Aulas serão carregadas aqui -->
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            updatePortalStats(7);
-            renderPortalLessons(7);
-            
-            // Mostrar modal
-            document.getElementById('portal-7ano-modal').classList.remove('hidden');
-        }
-        
-        function updatePortalStats(ano) {
-            const studentData = allStudentData.filter(d => d.student_name === currentStudentName && d.portal_type === (ano + 'ano'));
-            
-            const completed = studentData.filter(d => d.completed).length;
-            document.getElementById(`completed-count-${ano}`).textContent = completed;
-
-            const totalTime = studentData.reduce((sum, d) => sum + (d.time_spent || 0), 0);
-            document.getElementById(`total-time-${ano}`).textContent = `${Math.round(totalTime / 60)}min`;
-
-            const validScores = studentData.filter(d => d.score !== null && d.score !== undefined);
-            const avgScore = validScores.length > 0 
-                ? validScores.reduce((sum, d) => sum + d.score, 0) / validScores.length 
-                : 0;
-            document.getElementById(`avg-score-${ano}`).textContent = `${Math.round(avgScore)}%`;
-
-            renderPortalRanking(ano);
-        }
-        
-        function renderPortalRanking(ano) {
-            const rankingList = document.getElementById(`ranking-list-${ano}`);
-            const sorted = [...allStudentData]
-                .filter(d => d.student_name === currentStudentName && 
-                            d.portal_type === (ano + 'ano') && 
-                            d.score !== null && d.score !== undefined)
-                .sort((a, b) => b.score - a.score)
-                .slice(0, 3);
-
-            if (sorted.length === 0) {
-                rankingList.innerHTML = `<p style="text-align: center; color: #6b7280;">Nenhuma aula com nota registrada ainda</p>`;
-                return;
-            }
-
-            rankingList.innerHTML = sorted.map((d, i) => `
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: white; border-radius: 6px; margin-bottom: 0.5rem;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 1.25rem;">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '🎯'}</span>
-                        <div>
-                            <div style="font-weight: 600; color: #1f2937;">${d.lesson_code}</div>
-                            <div style="font-size: 0.75rem; color: #6b7280;">${d.bimester}º Bimestre</div>
-                        </div>
-                    </div>
-                    <div style="font-weight: 700; color: #10b981;">${d.score}%</div>
-                </div>
-            `).join('');
-        }
-        
-        function renderPortalLessons(ano) {
-            const container = document.getElementById(`lessons-container-${ano}`);
-            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
-            const lessons = lessonData[currentBimester] || [];
-
-            container.innerHTML = lessons.map((lesson, index) => {
-                const studentLesson = allStudentData.find(
-                    d => d.student_name === currentStudentName && 
-                         d.portal_type === (ano + 'ano') &&
-                         d.lesson_code === lesson.code && 
-                         d.bimester === currentBimester
-                );
-
-                const isCompleted = studentLesson?.completed || false;
-                const timeSpent = studentLesson?.time_spent || 0;
-                const score = studentLesson?.score;
-
-                return `
-                    <div class="lesson-card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="lesson-code">${lesson.code}</span>
-                            ${isCompleted ? `<span style="color: #10b981; font-size: 1.25rem;">✅</span>` : ''}
-                        </div>
-                        <div class="lesson-title">${lesson.title}</div>
-                        <div class="lesson-desc">${lesson.desc || lesson.description}</div>
-                        
-                        ${timeSpent > 0 ? `
-                            <div style="margin-bottom: 0.5rem;">
-                                <div style="font-size: 0.75rem; color: #6b7280;">Tempo: ${Math.round(timeSpent / 60)}min</div>
-                            </div>
-                        ` : ''}
-                        
-                        ${score !== null && score !== undefined ? `
-                            <div style="margin-bottom: 1rem;">
-                                <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 0.25rem;">Acertos: ${score}%</div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: ${score}%"></div>
-                                </div>
-                            </div>
-                        ` : ''}
-                        
-                        <button class="btn btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.875rem;" 
-                                onclick="startPortalLesson('${lesson.code}', ${index}, ${ano})">
-                            ${isCompleted ? 'Revisar Aula' : 'Iniciar Aula'}
-                        </button>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        function switchBimester(bimester, ano) {
-            currentBimester = bimester;
-            
-            // Atualizar tabs ativas
-            document.querySelectorAll(`#portal-${ano}ano-content .bimester-tab`).forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Encontrar e ativar o botão correto
-            document.querySelectorAll(`#portal-${ano}ano-content .bimester-tab`).forEach(btn => {
-                if (btn.textContent.includes(`${bimester}º`)) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            renderPortalLessons(ano);
-        }
-        
-        function startPortalLesson(lessonCode, index, ano) {
-            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
-            const lesson = lessonData[currentBimester][index];
-            currentLessonCode = lessonCode;
-            
-            // Iniciar timer
-            const timerKey = `${currentStudentName}-${ano}ano-${lessonCode}-${currentBimester}`;
-            
-            if (!lessonTimers[timerKey]) {
-                lessonTimers[timerKey] = {
-                    startTime: Date.now(),
-                    interval: setInterval(() => {
-                        updatePortalLessonTime(lessonCode, ano);
-                    }, 30000) // Atualiza a cada 30 segundos
-                };
-            }
-
-            // Abrir aula em nova aba
-            window.open(lesson.url, '_blank', 'noopener,noreferrer');
-
-            // Mostrar prompt de nota após 5 segundos
-            setTimeout(() => {
-                showScorePrompt(ano);
-            }, 5000);
-        }
-        
-        function updatePortalLessonTime(lessonCode, ano) {
-            const timerKey = `${currentStudentName}-${ano}ano-${lessonCode}-${currentBimester}`;
-            const timer = lessonTimers[timerKey];
-
-            if (!timer) return;
-
-            const existingRecord = allStudentData.find(
-                d => d.student_name === currentStudentName && 
-                     d.portal_type === (ano + 'ano') &&
-                     d.lesson_code === lessonCode && 
-                     d.bimester === currentBimester
-            );
-
-            const elapsedSeconds = Math.floor((Date.now() - timer.startTime) / 1000);
-            const totalTime = (existingRecord?.time_spent || 0) + elapsedSeconds;
-
-            if (existingRecord) {
-                existingRecord.time_spent = totalTime;
-                existingRecord.last_access = new Date().toISOString();
-            } else {
-                allStudentData.push({
-                    student_name: currentStudentName,
-                    portal_type: ano + 'ano',
-                    lesson_code: lessonCode,
-                    bimester: currentBimester,
-                    time_spent: totalTime,
-                    score: null,
-                    completed: false,
-                    last_access: new Date().toISOString()
-                });
-            }
-
-            saveStudentData();
-            timer.startTime = Date.now();
-        }
-        
-        function showScorePrompt(ano) {
-            const timerKey = `${currentStudentName}-${ano}ano-${currentLessonCode}-${currentBimester}`;
-            
-            // Parar timer
-            if (lessonTimers[timerKey]?.interval) {
-                clearInterval(lessonTimers[timerKey].interval);
-            }
-
-            document.getElementById('score-modal').classList.remove('hidden');
-            document.getElementById('score-input').value = '';
-            document.getElementById('score-input').focus();
-            
-            // Armazenar ano atual para salvar a nota
-            document.getElementById('score-input').dataset.ano = ano;
-        }
-        
-        function saveLessonScore() {
-            const scoreInput = document.getElementById('score-input');
-            const score = parseInt(scoreInput.value);
-            const ano = parseInt(scoreInput.dataset.ano);
-            
-            if (isNaN(score) || score < 0 || score > 100) {
-                alert('Por favor, digite uma nota válida entre 0 e 100.');
-                return;
-            }
-
-            const existingRecord = allStudentData.find(
-                d => d.student_name === currentStudentName && 
-                     d.portal_type === (ano + 'ano') &&
-                     d.lesson_code === currentLessonCode && 
-                     d.bimester === currentBimester
-            );
-
-            if (existingRecord) {
-                existingRecord.score = score;
-                existingRecord.completed = true;
-                existingRecord.last_access = new Date().toISOString();
-            } else {
-                allStudentData.push({
-                    student_name: currentStudentName,
-                    portal_type: ano + 'ano',
-                    lesson_code: currentLessonCode,
-                    bimester: currentBimester,
-                    time_spent: 0,
-                    score: score,
-                    completed: true,
-                    last_access: new Date().toISOString()
-                });
-            }
-
-            saveStudentData();
-            closeScoreModal();
-            
-            // Atualizar portal
-            updatePortalStats(ano);
-            renderPortalLessons(ano);
-            
-            alert(`Nota ${score}% registrada com sucesso!`);
-        }
-        
-        function logoutFromPortal(ano) {
-            if (confirm('Deseja sair do portal?')) {
-                // Parar todos os timers
-                Object.keys(lessonTimers).forEach(key => {
-                    if (lessonTimers[key].interval) {
-                        clearInterval(lessonTimers[key].interval);
-                    }
-                });
-                
-                currentStudentName = '';
-                currentPortalType = '6ano';
-                localStorage.removeItem('currentStudentName');
-                localStorage.removeItem('currentPortalType');
-                lessonTimers = {};
-                
-                if (ano === 6) {
-                    closePortalModal();
-                } else {
-                    closePortal7Modal();
-                }
-            }
-        }
-        
-        function closePortalModal() {
-            document.getElementById('portal-6ano-modal').classList.add('hidden');
-        }
-        
-        function closePortal7Modal() {
-            document.getElementById('portal-7ano-modal').classList.add('hidden');
-        }
-        
-        function closeScoreModal() {
-            document.getElementById('score-modal').classList.add('hidden');
-        }
-        
-        function showPortalInfo(ano) {
-            if (ano === 6) {
-                alert(`Portal de Matemática 6º Ano\n\n• 34 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
-            } else if (ano === 7) {
-                alert(`Portal de Matemática 7º Ano\n\n• 33 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
-            } else if (ano === 8) {
-                alert(`Portal de Matemática 8º Ano\n\n• 35 aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
-            }
-        }
-        
-        // ===== FUNÇÕES RESTANTES DO SISTEMA =====
-        function loadAllCoursesPage() {
-            const container = document.getElementById('all-courses');
-            filteredCourses = [...allCourses];
-            displayCourses(filteredCourses, container);
-            updatePagination();
-        }
-        
-        function displayCourses(courses, container) {
-            container.innerHTML = courses.map(course => `
-                <div class="course-card">
-                    <div class="course-image" style="background: ${getCourseColor(course.categoria)};">
-                        <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">${course.titulo}</h3>
-                        <p class="course-description">${course.descricao.substring(0, 100)}...</p>
-                        <span class="course-price">R$ ${course.valor.toFixed(2)}</span>
-                        <div class="course-meta">
-                            <span><i class="fas fa-star" style="color: var(--warning-color);"></i> ${course.rating}</span>
-                            <span><i class="fas fa-users"></i> ${course.alunos}</span>
-                        </div>
-                        <button class="btn btn-primary btn-block mt-2" onclick="viewCourseDetail(${course.id})">
-                            <i class="fas fa-eye"></i> Ver Detalhes
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function getCourseColor(category) {
-            const colors = {
-                '6ano': 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)',
-                '7ano': 'linear-gradient(135deg, #059669 0%, #047857 100%)',
-                '8ano': 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)',
-                '9ano': 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
-                'reforco': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                'concursos': 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)'
-            };
-            return colors[category] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         }
         
         function applyFilter(filter) {
@@ -2702,22 +2997,33 @@
         }
         
         function registerForDemo() {
+            if (!configSystem.settings.users.registrationEnabled) {
+                showAlert('O registro de novos usuários está temporariamente desabilitado.', 'error');
+                return;
+            }
+            
             const name = document.getElementById('demo-name').value;
             const email = document.getElementById('demo-email').value;
             const password = document.getElementById('demo-password').value;
             
             if (!name || !email || !password) {
-                alert('Por favor, preencha todos os campos.');
+                showAlert('Por favor, preencha todos os campos.', 'error');
                 return;
             }
             
             if (password.length < 6) {
-                alert('A senha deve ter pelo menos 6 caracteres.');
+                showAlert('A senha deve ter pelo menos 6 caracteres.', 'error');
                 return;
             }
             
-            // Simular cadastro
             const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(u => u.email === email);
+            
+            if (userExists) {
+                showAlert('Este email já está cadastrado.', 'error');
+                return;
+            }
+            
             const newUser = {
                 id: Date.now(),
                 nome: name,
@@ -2733,7 +3039,7 @@
             currentUser = newUser;
             localStorage.setItem('currentUser', JSON.stringify(newUser));
             
-            alert('Cadastro realizado com sucesso! Você já pode acessar as aulas demo.');
+            showAlert('Cadastro realizado com sucesso! Você já pode acessar as aulas demo.', 'success');
             updateNavigation();
         }
         
@@ -2761,11 +3067,11 @@
             if (user) {
                 currentUser = user;
                 localStorage.setItem('currentUser', JSON.stringify(user));
-                alert('Login realizado com sucesso!');
+                showAlert('Login realizado com sucesso!', 'success');
                 updateNavigation();
                 navigateTo('home');
             } else {
-                alert('Email ou senha incorretos.');
+                showAlert('Email ou senha incorretos.', 'error');
             }
         }
         
@@ -2779,18 +3085,18 @@
             if (admin) {
                 currentAdmin = admin;
                 localStorage.setItem('currentAdmin', JSON.stringify(admin));
-                alert('Login administrativo realizado com sucesso!');
+                showAlert('Login administrativo realizado com sucesso!', 'success');
                 updateNavigation();
                 navigateTo('admin');
             } else {
-                alert('Credenciais administrativas incorretas.');
+                showAlert('Credenciais administrativas incorretas.', 'error');
             }
         }
         
         function logoutAdmin() {
             currentAdmin = null;
             localStorage.removeItem('currentAdmin');
-            alert('Logout realizado com sucesso!');
+            showAlert('Logout realizado com sucesso!', 'success');
             updateNavigation();
             navigateTo('home');
         }
@@ -2807,21 +3113,24 @@
             document.querySelector(`.sidebar-menu a[onclick*="${tab}"]`).classList.add('active');
             document.getElementById('admin-page-title').textContent = 
                 tab.charAt(0).toUpperCase() + tab.slice(1);
+            
+            if (tab === 'departamentos') {
+                loadDepartmentsList();
+            } else if (tab === 'cursos') {
+                loadAdminCourses();
+            }
         }
         
         function loadAdminDashboard() {
             switchAdminTab('dashboard');
             
-            // Atualizar estatísticas
             document.getElementById('total-courses').textContent = allCourses.length;
             document.getElementById('total-students').textContent = 
                 (JSON.parse(localStorage.getItem('users')) || []).filter(u => u.tipo === 'aluno').length;
             
-            // Simular receita
             const totalRevenue = allCourses.reduce((sum, course) => sum + (course.valor * course.alunos), 0);
-            document.getElementById('total-revenue').textContent = `R$ ${totalRevenue.toFixed(2)}`;
+            document.getElementById('total-revenue').textContent = `${configSystem.settings.courses.currency} ${totalRevenue.toFixed(2)}`;
             
-            // Simular leads
             const demoUsers = (JSON.parse(localStorage.getItem('users')) || []).filter(u => u.dataCadastro);
             document.getElementById('total-leads').textContent = demoUsers.length;
             
@@ -2831,101 +3140,20 @@
         function loadRecentSales() {
             const table = document.getElementById('recent-sales').querySelector('tbody');
             
-            // Dados simulados
             const sales = [
                 { aluno: 'João Silva', curso: 'Matemática 6º Ano', valor: 197.90, data: '2024-01-15' },
                 { aluno: 'Maria Santos', curso: 'Matemática 7º Ano', valor: 197.90, data: '2024-01-18' },
-                { aluno: 'Pedro Oliveira', curso: 'Reforço Matemático', valor: 247.90, data: '2024-01-20' },
-                { aluno: 'Ana Costa', curso: 'Matemática 8º Ano', valor: 197.90, data: '2024-01-22' },
-                { aluno: 'Carlos Lima', curso: 'Matemática para Concursos', valor: 297.90, data: '2024-01-25' }
+                { aluno: 'Pedro Oliveira', curso: 'Reforço Matemático', valor: 247.90, data: '2024-01-20' }
             ];
             
             table.innerHTML = sales.map(sale => `
                 <tr>
                     <td>${sale.aluno}</td>
                     <td>${sale.curso}</td>
-                    <td>R$ ${sale.valor.toFixed(2)}</td>
+                    <td>${configSystem.settings.courses.currency} ${sale.valor.toFixed(2)}</td>
                     <td>${sale.data}</td>
                 </tr>
             `).join('');
-        }
-        
-        function addNewCourse() {
-            const title = document.getElementById('new-course-title').value;
-            const description = document.getElementById('new-course-description').value;
-            const price = parseFloat(document.getElementById('new-course-price').value);
-            const category = document.getElementById('new-course-category').value;
-            
-            if (!title || !description || !price || !category) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-            
-            const newCourse = {
-                id: allCourses.length + 1,
-                titulo: title,
-                descricao: description,
-                valor: price,
-                categoria: category,
-                imagem: '',
-                alunos: 0,
-                rating: 4.0,
-                dataCriacao: new Date().toISOString().split('T')[0]
-            };
-            
-            allCourses.push(newCourse);
-            localStorage.setItem('courses', JSON.stringify(allCourses));
-            
-            alert('Curso adicionado com sucesso!');
-            document.getElementById('add-course-form').reset();
-            loadAdminDashboard();
-        }
-        
-        function viewCourseDetail(courseId) {
-            const course = allCourses.find(c => c.id === courseId);
-            if (!course) return;
-            
-            const content = document.getElementById('course-detail-content');
-            content.innerHTML = `
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div style="background: ${getCourseColor(course.categoria)}; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; margin-bottom: 2rem;">
-                        <i class="fas fa-${getCategoryIcon(course.categoria)}"></i>
-                    </div>
-                    
-                    <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${course.titulo}</h1>
-                    
-                    <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
-                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
-                            <div style="font-size: 0.9rem; color: var(--gray);">Valor</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">R$ ${course.valor.toFixed(2)}</div>
-                        </div>
-                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
-                            <div style="font-size: 0.9rem; color: var(--gray);">Avaliação</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--warning-color);">${course.rating}/5.0</div>
-                        </div>
-                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; flex: 1;">
-                            <div style="font-size: 0.9rem; color: var(--gray);">Alunos</div>
-                            <div style="font-size: 2rem; font-weight: bold; color: var(--secondary-color);">${course.alunos}</div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 2rem;">
-                        <h2 style="margin-bottom: 1rem;">Descrição do Curso</h2>
-                        <p style="font-size: 1.1rem; line-height: 1.6;">${course.descricao}</p>
-                    </div>
-                    
-                    <div style="display: flex; gap: 1rem; margin-top: 3rem;">
-                        <button class="btn btn-primary" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="startPayment(${course.id})">
-                            <i class="fas fa-shopping-cart"></i> Comprar Curso
-                        </button>
-                        <button class="btn btn-outline" style="flex: 1; padding: 1rem; font-size: 1.1rem;" onclick="navigateTo('cursos')">
-                            <i class="fas fa-arrow-left"></i> Voltar para Cursos
-                        </button>
-                    </div>
-                </div>
-            `;
-            
-            navigateTo('curso-detalhe');
         }
         
         function startPayment(courseId) {
@@ -2944,7 +3172,7 @@
                     </div>
                     <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
                         <span>Valor:</span>
-                        <strong style="color: var(--accent-color); font-size: 1.2rem;">R$ ${course.valor.toFixed(2)}</strong>
+                        <strong style="color: var(--accent-color); font-size: 1.2rem;">${configSystem.settings.courses.currency} ${course.valor.toFixed(2)}</strong>
                     </div>
                 </div>
             `;
@@ -2959,24 +3187,22 @@
             const cvv = document.getElementById('payment-cvv').value;
             
             if (!name || !card || !expiry || !cvv) {
-                alert('Por favor, preencha todos os campos do pagamento.');
+                showAlert('Por favor, preencha todos os campos do pagamento.', 'error');
                 return;
             }
             
-            // Simular processamento do pagamento
             const success = document.getElementById('payment-success');
             success.classList.remove('hidden');
             
             setTimeout(() => {
-                alert('Pagamento processado com sucesso! Curso adquirido.');
+                showAlert('Pagamento processado com sucesso! Curso adquirido.', 'success');
                 navigateTo('home');
             }, 2000);
         }
         
         function playDemoLesson(lessonId) {
-            // URLs de exemplo para aulas demo
             const demoVideos = {
-                1: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // URL exemplo
+                1: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 2: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
                 3: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
             };
@@ -2993,19 +3219,520 @@
             document.getElementById('video-frame').src = '';
         }
         
+        function closeConfirmationModal() {
+            document.getElementById('confirmation-modal').classList.add('hidden');
+        }
+        
         function subscribeNewsletter() {
             const email = document.getElementById('newsletter-email').value;
             
             if (!email) {
-                alert('Por favor, digite seu e-mail.');
+                showAlert('Por favor, digite seu e-mail.', 'error');
                 return;
             }
             
             if (email.includes('@')) {
-                alert('Obrigado por se inscrever em nossa newsletter!');
+                showAlert('Obrigado por se inscrever em nossa newsletter!', 'success');
                 document.getElementById('newsletter-email').value = '';
             } else {
-                alert('Por favor, digite um e-mail válido.');
+                showAlert('Por favor, digite um e-mail válido.', 'error');
+            }
+        }
+        
+        // ===== FUNÇÕES DO PORTAL (mantidas do código anterior) =====
+        function openMatematicaPortal(ano) {
+            currentPortalType = ano + 'ano';
+            localStorage.setItem('currentPortalType', currentPortalType);
+            
+            if (!currentStudentName) {
+                showLoginPortal(ano);
+            } else {
+                if (ano === 6) {
+                    render6AnoPortalContent();
+                } else if (ano === 7) {
+                    render7AnoPortalContent();
+                }
+            }
+        }
+        
+        function showLoginPortal(ano) {
+            const portalId = ano === 6 ? 'portal-6ano-content' : 'portal-7ano-content';
+            const modalId = ano === 6 ? 'portal-6ano-modal' : 'portal-7ano-modal';
+            const portalContent = document.getElementById(portalId);
+            
+            portalContent.innerHTML = `
+                <div class="auth-box" style="max-width: 400px; margin: 0 auto;">
+                    <div class="auth-header">
+                        <h3><i class="fas fa-calculator"></i> Portal de Aulas</h3>
+                        <p>Matemática ${ano}º Ano</p>
+                    </div>
+                    <div class="auth-form">
+                        <div class="form-group">
+                            <label>Digite seu nome:</label>
+                            <input type="text" id="portal-student-name" class="form-control" placeholder="Seu nome completo" required>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="loginToPortal(${ano})">
+                            <i class="fas fa-sign-in-alt"></i> Entrar no Portal
+                        </button>
+                        <div class="text-center mt-3">
+                            <p style="color: var(--gray); font-size: 0.9rem;">
+                                Seu progresso será salvo automaticamente
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+        
+        function loginToPortal(ano) {
+            const name = document.getElementById('portal-student-name').value.trim();
+            if (name) {
+                currentStudentName = name;
+                currentPortalType = ano + 'ano';
+                localStorage.setItem('currentStudentName', name);
+                localStorage.setItem('currentPortalType', currentPortalType);
+                
+                const studentExists = allStudentData.some(d => d.student_name === name && d.portal_type === currentPortalType);
+                if (!studentExists) {
+                    allStudentData.push({
+                        student_name: name,
+                        portal_type: currentPortalType,
+                        first_login: new Date().toISOString()
+                    });
+                    saveStudentData();
+                }
+                
+                if (ano === 6) {
+                    render6AnoPortalContent();
+                } else if (ano === 7) {
+                    render7AnoPortalContent();
+                }
+            } else {
+                showAlert('Por favor, digite seu nome.', 'error');
+            }
+        }
+        
+        function render6AnoPortalContent() {
+            const portalContent = document.getElementById('portal-6ano-content');
+            portalContent.innerHTML = `
+                <div class="portal-container">
+                    <div class="portal-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
+                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 6º Ano</p>
+                            </div>
+                            <button class="btn btn-danger" onclick="logoutFromPortal(6)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #2563eb;" id="completed-count-6">0</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #10b981;" id="total-time-6">0min</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-6">0%</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
+                        <div id="ranking-list-6">
+                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
+                        
+                        <div class="bimester-tabs">
+                            ${[1, 2, 3, 4].map(b => `
+                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
+                                        onclick="switchBimester(${b}, 6)">
+                                    ${b}º Bimestre
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="lessons-grid" id="lessons-container-6">
+                            <!-- Aulas serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            updatePortalStats(6);
+            renderPortalLessons(6);
+            
+            document.getElementById('portal-6ano-modal').classList.remove('hidden');
+        }
+        
+        function render7AnoPortalContent() {
+            const portalContent = document.getElementById('portal-7ano-content');
+            portalContent.innerHTML = `
+                <div class="portal-container">
+                    <div class="portal-header" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
+                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 7º Ano</p>
+                            </div>
+                            <button class="btn btn-danger" onclick="logoutFromPortal(7)" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #059669;" id="completed-count-7">0</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #10b981;" id="total-time-7">0min</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score-7">0%</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
+                        <div id="ranking-list-7">
+                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
+                        
+                        <div class="bimester-tabs">
+                            ${[1, 2, 3, 4].map(b => `
+                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
+                                        onclick="switchBimester(${b}, 7)">
+                                    ${b}º Bimestre
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="lessons-grid" id="lessons-container-7">
+                            <!-- Aulas serão carregadas aqui -->
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            updatePortalStats(7);
+            renderPortalLessons(7);
+            
+            document.getElementById('portal-7ano-modal').classList.remove('hidden');
+        }
+        
+        function updatePortalStats(ano) {
+            const studentData = allStudentData.filter(d => d.student_name === currentStudentName && d.portal_type === (ano + 'ano'));
+            
+            const completed = studentData.filter(d => d.completed).length;
+            document.getElementById(`completed-count-${ano}`).textContent = completed;
+
+            const totalTime = studentData.reduce((sum, d) => sum + (d.time_spent || 0), 0);
+            document.getElementById(`total-time-${ano}`).textContent = `${Math.round(totalTime / 60)}min`;
+
+            const validScores = studentData.filter(d => d.score !== null && d.score !== undefined);
+            const avgScore = validScores.length > 0 
+                ? validScores.reduce((sum, d) => sum + d.score, 0) / validScores.length 
+                : 0;
+            document.getElementById(`avg-score-${ano}`).textContent = `${Math.round(avgScore)}%`;
+
+            renderPortalRanking(ano);
+        }
+        
+        function renderPortalRanking(ano) {
+            const rankingList = document.getElementById(`ranking-list-${ano}`);
+            const sorted = [...allStudentData]
+                .filter(d => d.student_name === currentStudentName && 
+                            d.portal_type === (ano + 'ano') && 
+                            d.score !== null && d.score !== undefined)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3);
+
+            if (sorted.length === 0) {
+                rankingList.innerHTML = `<p style="text-align: center; color: #6b7280;">Nenhuma aula com nota registrada ainda</p>`;
+                return;
+            }
+
+            rankingList.innerHTML = sorted.map((d, i) => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: white; border-radius: 6px; margin-bottom: 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 1.25rem;">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '🎯'}</span>
+                        <div>
+                            <div style="font-weight: 600; color: #1f2937;">${d.lesson_code}</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">${d.bimester}º Bimestre</div>
+                        </div>
+                    </div>
+                    <div style="font-weight: 700; color: #10b981;">${d.score}%</div>
+                </div>
+            `).join('');
+        }
+        
+        function renderPortalLessons(ano) {
+            const container = document.getElementById(`lessons-container-${ano}`);
+            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
+            const lessons = lessonData[currentBimester] || [];
+
+            container.innerHTML = lessons.map((lesson, index) => {
+                const studentLesson = allStudentData.find(
+                    d => d.student_name === currentStudentName && 
+                         d.portal_type === (ano + 'ano') &&
+                         d.lesson_code === lesson.code && 
+                         d.bimester === currentBimester
+                );
+
+                const isCompleted = studentLesson?.completed || false;
+                const timeSpent = studentLesson?.time_spent || 0;
+                const score = studentLesson?.score;
+
+                return `
+                    <div class="lesson-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="lesson-code">${lesson.code}</span>
+                            ${isCompleted ? `<span style="color: #10b981; font-size: 1.25rem;">✅</span>` : ''}
+                        </div>
+                        <div class="lesson-title">${lesson.title}</div>
+                        <div class="lesson-desc">${lesson.desc || lesson.description}</div>
+                        
+                        ${timeSpent > 0 ? `
+                            <div style="margin-bottom: 0.5rem;">
+                                <div style="font-size: 0.75rem; color: #6b7280;">Tempo: ${Math.round(timeSpent / 60)}min</div>
+                            </div>
+                        ` : ''}
+                        
+                        ${score !== null && score !== undefined ? `
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 0.25rem;">Acertos: ${score}%</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${score}%"></div>
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        <button class="btn btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.875rem;" 
+                                onclick="startPortalLesson('${lesson.code}', ${index}, ${ano})">
+                            ${isCompleted ? 'Revisar Aula' : 'Iniciar Aula'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function switchBimester(bimester, ano) {
+            currentBimester = bimester;
+            
+            document.querySelectorAll(`#portal-${ano}ano-content .bimester-tab`).forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.querySelectorAll(`#portal-${ano}ano-content .bimester-tab`).forEach(btn => {
+                if (btn.textContent.includes(`${bimester}º`)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            renderPortalLessons(ano);
+        }
+        
+        function startPortalLesson(lessonCode, index, ano) {
+            const lessonData = ano === 6 ? lessonsData6ano : lessonsData7ano;
+            const lesson = lessonData[currentBimester][index];
+            currentLessonCode = lessonCode;
+            
+            const timerKey = `${currentStudentName}-${ano}ano-${lessonCode}-${currentBimester}`;
+            
+            if (!lessonTimers[timerKey]) {
+                lessonTimers[timerKey] = {
+                    startTime: Date.now(),
+                    interval: setInterval(() => {
+                        updatePortalLessonTime(lessonCode, ano);
+                    }, 30000)
+                };
+            }
+
+            window.open(lesson.url, '_blank', 'noopener,noreferrer');
+
+            setTimeout(() => {
+                showScorePrompt(ano);
+            }, 5000);
+        }
+        
+        function updatePortalLessonTime(lessonCode, ano) {
+            const timerKey = `${currentStudentName}-${ano}ano-${lessonCode}-${currentBimester}`;
+            const timer = lessonTimers[timerKey];
+
+            if (!timer) return;
+
+            const existingRecord = allStudentData.find(
+                d => d.student_name === currentStudentName && 
+                     d.portal_type === (ano + 'ano') &&
+                     d.lesson_code === lessonCode && 
+                     d.bimester === currentBimester
+            );
+
+            const elapsedSeconds = Math.floor((Date.now() - timer.startTime) / 1000);
+            const totalTime = (existingRecord?.time_spent || 0) + elapsedSeconds;
+
+            if (existingRecord) {
+                existingRecord.time_spent = totalTime;
+                existingRecord.last_access = new Date().toISOString();
+            } else {
+                allStudentData.push({
+                    student_name: currentStudentName,
+                    portal_type: ano + 'ano',
+                    lesson_code: lessonCode,
+                    bimester: currentBimester,
+                    time_spent: totalTime,
+                    score: null,
+                    completed: false,
+                    last_access: new Date().toISOString()
+                });
+            }
+
+            saveStudentData();
+            timer.startTime = Date.now();
+        }
+        
+        function showScorePrompt(ano) {
+            const timerKey = `${currentStudentName}-${ano}ano-${currentLessonCode}-${currentBimester}`;
+            
+            if (lessonTimers[timerKey]?.interval) {
+                clearInterval(lessonTimers[timerKey].interval);
+            }
+
+            document.getElementById('score-modal').classList.remove('hidden');
+            document.getElementById('score-input').value = '';
+            document.getElementById('score-input').focus();
+            
+            document.getElementById('score-input').dataset.ano = ano;
+        }
+        
+        function saveLessonScore() {
+            const scoreInput = document.getElementById('score-input');
+            const score = parseInt(scoreInput.value);
+            const ano = parseInt(scoreInput.dataset.ano);
+            
+            if (isNaN(score) || score < 0 || score > 100) {
+                showAlert('Por favor, digite uma nota válida entre 0 e 100.', 'error');
+                return;
+            }
+
+            const existingRecord = allStudentData.find(
+                d => d.student_name === currentStudentName && 
+                     d.portal_type === (ano + 'ano') &&
+                     d.lesson_code === currentLessonCode && 
+                     d.bimester === currentBimester
+            );
+
+            if (existingRecord) {
+                existingRecord.score = score;
+                existingRecord.completed = true;
+                existingRecord.last_access = new Date().toISOString();
+            } else {
+                allStudentData.push({
+                    student_name: currentStudentName,
+                    portal_type: ano + 'ano',
+                    lesson_code: currentLessonCode,
+                    bimester: currentBimester,
+                    time_spent: 0,
+                    score: score,
+                    completed: true,
+                    last_access: new Date().toISOString()
+                });
+            }
+
+            saveStudentData();
+            closeScoreModal();
+            
+            updatePortalStats(ano);
+            renderPortalLessons(ano);
+            
+            showAlert(`Nota ${score}% registrada com sucesso!`, 'success');
+        }
+        
+        function logoutFromPortal(ano) {
+            if (confirm('Deseja sair do portal?')) {
+                Object.keys(lessonTimers).forEach(key => {
+                    if (lessonTimers[key].interval) {
+                        clearInterval(lessonTimers[key].interval);
+                    }
+                });
+                
+                currentStudentName = '';
+                currentPortalType = '6ano';
+                localStorage.removeItem('currentStudentName');
+                localStorage.removeItem('currentPortalType');
+                lessonTimers = {};
+                
+                if (ano === 6) {
+                    closePortalModal();
+                } else {
+                    closePortal7Modal();
+                }
+            }
+        }
+        
+        function closePortalModal() {
+            document.getElementById('portal-6ano-modal').classList.add('hidden');
+        }
+        
+        function closePortal7Modal() {
+            document.getElementById('portal-7ano-modal').classList.add('hidden');
+        }
+        
+        function closeScoreModal() {
+            document.getElementById('score-modal').classList.add('hidden');
+        }
+        
+        function showPortalInfo(ano) {
+            alert(`Portal de Matemática ${ano}º Ano\n\n• Aulas completas\n• Organizadas por bimestre\n• Alinhadas com a BNCC\n• Sistema de progresso\n• Acompanhamento de tempo\n• Registro de notas\n• Ranking de desempenho\n\nAcesse gratuitamente!`);
+        }
+        
+        // ===== FUNÇÕES UTILITÁRIAS =====
+        function showAlert(message, type = 'info') {
+            const types = {
+                'success': { icon: 'check-circle', color: 'alert-success' },
+                'error': { icon: 'exclamation-circle', color: 'alert-error' },
+                'warning': { icon: 'exclamation-triangle', color: 'alert-warning' },
+                'info': { icon: 'info-circle', color: 'alert-info' }
+            };
+            
+            const alertType = types[type] || types.info;
+            
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert ${alertType.color}`;
+            alertDiv.innerHTML = `
+                <i class="fas fa-${alertType.icon}"></i> ${message}
+            `;
+            
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3000);
+        }
+        
+        function showUserMenu() {
+            if (currentUser) {
+                alert(`Bem-vindo(a), ${currentUser.nome}!\n\nSeus cursos:\n• Matemática 6º Ano\n• Reforço Matemático\n\nPróximas aulas:\n• Frações - 6º Ano\n• Números Inteiros - 7º Ano`);
             }
         }
     </script>
