@@ -803,6 +803,95 @@
             color: var(--white);
         }
         
+        /* ===== SETOR FINANCEIRO ===== */
+        .finance-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .finance-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+        }
+        
+        .finance-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.25rem;
+        }
+        
+        .icon-revenue { background-color: var(--success-color); }
+        .icon-pending { background-color: var(--warning-color); }
+        .icon-refunds { background-color: var(--danger-color); }
+        .icon-average { background-color: var(--secondary-color); }
+        
+        .finance-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-method {
+            background: var(--gray-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ===== ÁREA DE LEADS ===== */
+        .leads-filters {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .lead-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .status-new { background-color: #e3f2fd; color: #1976d2; }
+        .status-contact { background-color: #fff3e0; color: #f57c00; }
+        .status-proposal { background-color: #f3e5f5; color: #7b1fa2; }
+        .status-converted { background-color: #e8f5e9; color: #388e3c; }
+        .status-lost { background-color: #ffebee; color: #d32f2f; }
+        
         /* ===== CONFIGURAÇÕES DO SISTEMA ===== */
         .settings-grid {
             display: grid;
@@ -1012,6 +1101,10 @@
             .settings-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .finance-stats {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1071,6 +1164,26 @@
             font-weight: 600;
         }
         
+        .badge-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .badge-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        
         .alert {
             padding: 1rem;
             border-radius: 4px;
@@ -1099,6 +1212,44 @@
             background-color: #d1ecf1;
             color: #0c5460;
             border: 1px solid #bee5eb;
+        }
+        
+        .d-flex {
+            display: flex;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .align-center {
+            align-items: center;
+        }
+        
+        .gap-1 { gap: 0.5rem; }
+        .gap-2 { gap: 1rem; }
+        .gap-3 { gap: 1.5rem; }
+        
+        .flex-1 { flex: 1; }
+        
+        /* ===== GRAFICOS ===== */
+        .chart-container {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-placeholder {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-light);
+            border-radius: 8px;
+            color: var(--gray);
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -1308,6 +1459,7 @@
                             <li><a href="#" onclick="switchAdminTab('alunos')"><i class="fas fa-users"></i> Alunos</a></li>
                             <li><a href="#" onclick="switchAdminTab('pagamentos')"><i class="fas fa-dollar-sign"></i> Pagamentos</a></li>
                             <li><a href="#" onclick="switchAdminTab('leads')"><i class="fas fa-chart-line"></i> Leads</a></li>
+                            <li><a href="#" onclick="switchAdminTab('financeiro')"><i class="fas fa-chart-pie"></i> Financeiro</a></li>
                             <li><a href="#" onclick="switchAdminTab('departamentos')"><i class="fas fa-building"></i> Departamentos</a></li>
                             <li><a href="#" onclick="switchAdminTab('configuracoes')"><i class="fas fa-cog"></i> Configurações</a></li>
                         </ul>
@@ -1386,6 +1538,7 @@
                                                     <th>Curso</th>
                                                     <th>Valor</th>
                                                     <th>Data</th>
+                                                    <th>Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -1490,6 +1643,7 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                                                 <th>Email</th>
                                                 <th>Data Cadastro</th>
                                                 <th>Cursos</th>
+                                                <th>Status</th>
                                                 <th>Ações</th>
                                             </tr>
                                         </thead>
@@ -1505,6 +1659,23 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                         <div id="pagamentos-tab" class="admin-tab hidden">
                             <div class="admin-card">
                                 <h3 class="card-title"><i class="fas fa-dollar-sign"></i> Gerenciar Pagamentos</h3>
+                                <div class="d-flex justify-between align-center mb-3">
+                                    <div class="filter-row">
+                                        <select class="form-control" style="max-width: 200px;" id="payment-filter">
+                                            <option value="all">Todos os Pagamentos</option>
+                                            <option value="pending">Pendentes</option>
+                                            <option value="completed">Concluídos</option>
+                                            <option value="failed">Falhos</option>
+                                            <option value="refunded">Reembolsados</option>
+                                        </select>
+                                        <input type="date" class="form-control" id="payment-date-from" style="max-width: 150px;">
+                                        <input type="date" class="form-control" id="payment-date-to" style="max-width: 150px;">
+                                        <button class="btn btn-primary" onclick="filterPayments()">Filtrar</button>
+                                    </div>
+                                    <button class="btn btn-success" onclick="exportPayments()">
+                                        <i class="fas fa-file-export"></i> Exportar
+                                    </button>
+                                </div>
                                 <div style="overflow-x: auto;">
                                     <table class="admin-table" id="admin-payments-table">
                                         <thead>
@@ -1514,6 +1685,7 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                                                 <th>Curso</th>
                                                 <th>Valor</th>
                                                 <th>Data</th>
+                                                <th>Método</th>
                                                 <th>Status</th>
                                                 <th>Ações</th>
                                             </tr>
@@ -1530,6 +1702,43 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                         <div id="leads-tab" class="admin-tab hidden">
                             <div class="admin-card">
                                 <h3 class="card-title"><i class="fas fa-chart-line"></i> Gerenciar Leads</h3>
+                                
+                                <div class="leads-filters">
+                                    <div class="filter-row">
+                                        <select class="form-control" id="lead-status-filter">
+                                            <option value="all">Todos os Status</option>
+                                            <option value="new">Novos</option>
+                                            <option value="contact">Em contato</option>
+                                            <option value="proposal">Proposta enviada</option>
+                                            <option value="converted">Convertidos</option>
+                                            <option value="lost">Perdidos</option>
+                                        </select>
+                                        <input type="date" class="form-control" id="lead-date-from">
+                                        <input type="date" class="form-control" id="lead-date-to">
+                                        <select class="form-control" id="lead-source-filter">
+                                            <option value="all">Todas as Fontes</option>
+                                            <option value="demo">Aula Demo</option>
+                                            <option value="website">Site</option>
+                                            <option value="social">Redes Sociais</option>
+                                            <option value="indication">Indicação</option>
+                                        </select>
+                                        <button class="btn btn-primary" onclick="filterLeads()">Filtrar</button>
+                                    </div>
+                                    <div class="d-flex justify-between align-center">
+                                        <div>
+                                            <button class="btn btn-success" onclick="exportLeads()">
+                                                <i class="fas fa-file-export"></i> Exportar Leads
+                                            </button>
+                                            <button class="btn btn-info" onclick="showLeadStats()">
+                                                <i class="fas fa-chart-pie"></i> Estatísticas
+                                            </button>
+                                        </div>
+                                        <button class="btn btn-primary" onclick="showAddLeadModal()">
+                                            <i class="fas fa-plus"></i> Adicionar Lead Manualmente
+                                        </button>
+                                    </div>
+                                </div>
+                                
                                 <div style="overflow-x: auto;">
                                     <table class="admin-table" id="admin-leads-table">
                                         <thead>
@@ -1537,9 +1746,11 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                                                 <th>ID</th>
                                                 <th>Nome</th>
                                                 <th>Email</th>
+                                                <th>Telefone</th>
                                                 <th>Data</th>
                                                 <th>Origem</th>
                                                 <th>Status</th>
+                                                <th>Último Contato</th>
                                                 <th>Ações</th>
                                             </tr>
                                         </thead>
@@ -1547,6 +1758,153 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                                             <!-- Leads serão carregados aqui -->
                                         </tbody>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Financeiro -->
+                        <div id="financeiro-tab" class="admin-tab hidden">
+                            <div class="admin-card">
+                                <h3 class="card-title"><i class="fas fa-chart-pie"></i> Dashboard Financeiro</h3>
+                                
+                                <div class="finance-stats">
+                                    <div class="finance-card">
+                                        <div class="finance-icon icon-revenue">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                        </div>
+                                        <h4>Receita Total</h4>
+                                        <div class="finance-value" id="finance-revenue">R$ 0,00</div>
+                                        <small>Últimos 30 dias: <span id="finance-revenue-change" style="color: var(--success-color);">+0%</span></small>
+                                    </div>
+                                    
+                                    <div class="finance-card">
+                                        <div class="finance-icon icon-pending">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <h4>Pagamentos Pendentes</h4>
+                                        <div class="finance-value" id="finance-pending">R$ 0,00</div>
+                                        <small>Total de transações: <span id="pending-count">0</span></small>
+                                    </div>
+                                    
+                                    <div class="finance-card">
+                                        <div class="finance-icon icon-refunds">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <h4>Reembolsos</h4>
+                                        <div class="finance-value" id="finance-refunds">R$ 0,00</div>
+                                        <small>Últimos 30 dias</small>
+                                    </div>
+                                    
+                                    <div class="finance-card">
+                                        <div class="finance-icon icon-average">
+                                            <i class="fas fa-calculator"></i>
+                                        </div>
+                                        <h4>Ticket Médio</h4>
+                                        <div class="finance-value" id="finance-average">R$ 0,00</div>
+                                        <small>Por aluno</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="chart-container">
+                                    <h4><i class="fas fa-chart-line"></i> Receita Mensal (últimos 6 meses)</h4>
+                                    <div class="chart-placeholder" id="revenue-chart">
+                                        Gráfico de Receita - Dados seriam carregados aqui
+                                    </div>
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                                    <div class="chart-container">
+                                        <h4><i class="fas fa-chart-pie"></i> Métodos de Pagamento</h4>
+                                        <div class="chart-placeholder" id="payment-methods-chart">
+                                            Gráfico de Métodos de Pagamento
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="chart-container">
+                                        <h4><i class="fas fa-chart-bar"></i> Top Cursos (Receita)</h4>
+                                        <div class="chart-placeholder" id="top-courses-chart">
+                                            Gráfico de Top Cursos
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="admin-card mt-3">
+                                    <h4><i class="fas fa-cog"></i> Configurações Financeiras</h4>
+                                    <div class="payment-methods">
+                                        <div class="payment-method">
+                                            <div class="payment-icon">
+                                                <i class="fab fa-cc-visa"></i>
+                                            </div>
+                                            <h5>Cartão de Crédito</h5>
+                                            <div class="form-group">
+                                                <label class="switch">
+                                                    <input type="checkbox" id="cc-enabled" checked>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="payment-method">
+                                            <div class="payment-icon">
+                                                <i class="fas fa-barcode"></i>
+                                            </div>
+                                            <h5>Boleto Bancário</h5>
+                                            <div class="form-group">
+                                                <label class="switch">
+                                                    <input type="checkbox" id="boleto-enabled" checked>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="payment-method">
+                                            <div class="payment-icon">
+                                                <i class="fas fa-university"></i>
+                                            </div>
+                                            <h5>Transferência</h5>
+                                            <div class="form-group">
+                                                <label class="switch">
+                                                    <input type="checkbox" id="transfer-enabled" checked>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="payment-method">
+                                            <div class="payment-icon">
+                                                <i class="fab fa-paypal"></i>
+                                            </div>
+                                            <h5>PayPal</h5>
+                                            <div class="form-group">
+                                                <label class="switch">
+                                                    <input type="checkbox" id="paypal-enabled">
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="payment-method">
+                                            <div class="payment-icon">
+                                                <i class="fas fa-pix"></i>
+                                            </div>
+                                            <h5>PIX</h5>
+                                            <div class="form-group">
+                                                <label class="switch">
+                                                    <input type="checkbox" id="pix-enabled" checked>
+                                                    <span class="slider"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-between align-center mt-3">
+                                        <button class="btn btn-primary" onclick="savePaymentSettings()">
+                                            <i class="fas fa-save"></i> Salvar Configurações
+                                        </button>
+                                        <button class="btn btn-info" onclick="generateFinancialReport()">
+                                            <i class="fas fa-file-pdf"></i> Gerar Relatório Financeiro
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1755,7 +2113,7 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
         <!-- PÁGINA DE PAGAMENTO -->
         <div id="pagamento-page" class="page hidden">
             <div class="container">
-                <div class="auth-box" style="max-width: 600px; margin: 0 auto;">
+                <div class="auth-box" style="max-width: 800px; margin: 0 auto;">
                     <div class="auth-header">
                         <h2><i class="fas fa-shopping-cart"></i> Finalizar Compra</h2>
                     </div>
@@ -1764,40 +2122,138 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                             <!-- Informações do curso serão carregadas aqui -->
                         </div>
                         
-                        <h3 class="mb-2">Informações de Pagamento</h3>
-                        
-                        <div class="form-group">
-                            <label>Nome Completo</label>
-                            <input type="text" id="payment-name" class="form-control" placeholder="Como no cartão" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Número do Cartão</label>
-                            <input type="text" id="payment-card" class="form-control" placeholder="1234 5678 9012 3456" required>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                            <div class="form-group">
-                                <label>Validade</label>
-                                <input type="text" id="payment-expiry" class="form-control" placeholder="MM/AA" required>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+                            <div>
+                                <h3 class="mb-2">Forma de Pagamento</h3>
+                                
+                                <div class="payment-methods" style="grid-template-columns: 1fr;">
+                                    <div class="payment-method selected" onclick="selectPaymentMethod('credit-card')" style="cursor: pointer;">
+                                        <div class="payment-icon">
+                                            <i class="fab fa-cc-visa"></i>
+                                        </div>
+                                        <h5>Cartão de Crédito</h5>
+                                        <p style="font-size: 0.9rem; color: var(--gray);">Pague em até 12x</p>
+                                    </div>
+                                    
+                                    <div class="payment-method" onclick="selectPaymentMethod('pix')" style="cursor: pointer;">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-pix"></i>
+                                        </div>
+                                        <h5>PIX</h5>
+                                        <p style="font-size: 0.9rem; color: var(--gray);">Pagamento instantâneo</p>
+                                    </div>
+                                    
+                                    <div class="payment-method" onclick="selectPaymentMethod('boleto')" style="cursor: pointer;">
+                                        <div class="payment-icon">
+                                            <i class="fas fa-barcode"></i>
+                                        </div>
+                                        <h5>Boleto Bancário</h5>
+                                        <p style="font-size: 0.9rem; color: var(--gray);">Vencimento em 3 dias</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Formulário Cartão de Crédito -->
+                                <div id="credit-card-form" class="payment-form">
+                                    <h4 class="mt-3">Dados do Cartão</h4>
+                                    <div class="form-group">
+                                        <label>Nome Completo (como no cartão)</label>
+                                        <input type="text" id="payment-name" class="form-control" placeholder="NOME NO CARTÃO" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Número do Cartão</label>
+                                        <input type="text" id="payment-card" class="form-control" placeholder="1234 5678 9012 3456" required>
+                                    </div>
+                                    
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                        <div class="form-group">
+                                            <label>Validade</label>
+                                            <input type="text" id="payment-expiry" class="form-control" placeholder="MM/AA" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>CVV</label>
+                                            <input type="text" id="payment-cvv" class="form-control" placeholder="123" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Parcelas</label>
+                                        <select id="payment-installments" class="form-control">
+                                            <option value="1">1x de R$ 197,90 (sem juros)</option>
+                                            <option value="2">2x de R$ 98,95 (sem juros)</option>
+                                            <option value="3">3x de R$ 65,97 (sem juros)</option>
+                                            <option value="4">4x de R$ 49,48 (sem juros)</option>
+                                            <option value="5">5x de R$ 39,58 (sem juros)</option>
+                                            <option value="6">6x de R$ 32,98 (sem juros)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <!-- Formulário PIX -->
+                                <div id="pix-form" class="payment-form hidden">
+                                    <h4 class="mt-3">Pagamento via PIX</h4>
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle"></i> O código PIX será gerado após a confirmação do pagamento.
+                                    </div>
+                                    <div style="text-align: center; padding: 2rem;">
+                                        <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                            <i class="fas fa-qrcode"></i>
+                                        </div>
+                                        <p>Escaneie o QR Code ou copie o código para pagar via PIX.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Formulário Boleto -->
+                                <div id="boleto-form" class="payment-form hidden">
+                                    <h4 class="mt-3">Boleto Bancário</h4>
+                                    <div class="alert alert-info">
+                                        <i class="fas fa-info-circle"></i> O boleto será gerado após a confirmação e poderá ser impresso ou pago online.
+                                    </div>
+                                    <div style="text-align: center; padding: 2rem;">
+                                        <div style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;">
+                                            <i class="fas fa-barcode"></i>
+                                        </div>
+                                        <p>O boleto terá vencimento em 3 dias úteis.</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>CVV</label>
-                                <input type="text" id="payment-cvv" class="form-control" placeholder="123" required>
+                            
+                            <div>
+                                <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px;">
+                                    <h4 style="margin-bottom: 1rem;">Resumo do Pedido</h4>
+                                    <div id="order-summary">
+                                        <!-- Resumo será carregado aqui -->
+                                    </div>
+                                    
+                                    <div style="border-top: 2px solid var(--gray); padding-top: 1rem; margin-top: 1rem;">
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                            <span>Subtotal:</span>
+                                            <span id="subtotal">R$ 0,00</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                            <span>Desconto:</span>
+                                            <span id="discount" style="color: var(--success-color);">R$ 0,00</span>
+                                        </div>
+                                        <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold;">
+                                            <span>Total:</span>
+                                            <span id="total" style="color: var(--accent-color);">R$ 0,00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="alert alert-success hidden" id="payment-success">
+                                    <i class="fas fa-check-circle"></i> Pagamento processado com sucesso! Redirecionando...
+                                </div>
+                                
+                                <button class="btn btn-primary btn-block mt-3" onclick="processPayment()" style="padding: 1rem; font-size: 1.1rem;">
+                                    <i class="fas fa-lock"></i> Finalizar Pagamento
+                                </button>
+                                
+                                <button class="btn btn-outline btn-block mt-2" onclick="navigateTo('cursos')">
+                                    <i class="fas fa-arrow-left"></i> Voltar para Cursos
+                                </button>
                             </div>
                         </div>
-                        
-                        <div class="alert alert-success hidden" id="payment-success">
-                            <i class="fas fa-check-circle"></i> Pagamento processado com sucesso! Redirecionando...
-                        </div>
-                        
-                        <button class="btn btn-primary btn-block" onclick="processPayment()">
-                            <i class="fas fa-lock"></i> Finalizar Pagamento
-                        </button>
-                        
-                        <button class="btn btn-outline btn-block mt-2" onclick="navigateTo('cursos')">
-                            <i class="fas fa-arrow-left"></i> Voltar para Cursos
-                        </button>
                     </div>
                 </div>
             </div>
@@ -2017,6 +2473,97 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
         </div>
     </div>
 
+    <!-- ===== MODAL DE ADICIONAR LEAD ===== -->
+    <div class="modal-overlay hidden" id="add-lead-modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3>Adicionar Novo Lead</h3>
+                <button class="modal-close" onclick="closeAddLeadModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-lead-form" onsubmit="event.preventDefault(); saveNewLead();">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" id="new-lead-name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="new-lead-email" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Telefone</label>
+                        <input type="tel" id="new-lead-phone" class="form-control">
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label>Fonte</label>
+                            <select id="new-lead-source" class="form-control" required>
+                                <option value="website">Site</option>
+                                <option value="social">Redes Sociais</option>
+                                <option value="demo">Aula Demo</option>
+                                <option value="indication">Indicação</option>
+                                <option value="event">Evento</option>
+                                <option value="manual">Manual</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select id="new-lead-status" class="form-control" required>
+                                <option value="new">Novo</option>
+                                <option value="contact">Em contato</option>
+                                <option value="proposal">Proposta enviada</option>
+                                <option value="converted">Convertido</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Observações</label>
+                        <textarea id="new-lead-notes" class="form-control" rows="3" placeholder="Observações sobre o lead..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-save"></i> Salvar Lead
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DE DETALHES DO LEAD ===== -->
+    <div class="modal-overlay hidden" id="lead-details-modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3>Detalhes do Lead</h3>
+                <button class="modal-close" onclick="closeLeadDetailsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="lead-details-content">
+                    <!-- Detalhes do lead serão carregados aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DE ESTATÍSTICAS DE LEADS ===== -->
+    <div class="modal-overlay hidden" id="lead-stats-modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3>Estatísticas de Leads</h3>
+                <button class="modal-close" onclick="closeLeadStatsModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="lead-stats-content">
+                    <!-- Estatísticas serão carregadas aqui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== SCRIPT PRINCIPAL ===== -->
     <script>
         // ===== SISTEMA DE CONFIGURAÇÕES =====
@@ -2058,6 +2605,14 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                 };
                 
                 this.departments = [];
+                this.paymentMethods = {
+                    creditCard: true,
+                    pix: true,
+                    boleto: true,
+                    transfer: true,
+                    paypal: false
+                };
+                
                 this.loadSettings();
             }
             
@@ -2072,12 +2627,18 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                     this.departments = JSON.parse(savedDepts);
                 }
                 
+                const savedPayments = localStorage.getItem('paymentMethods');
+                if (savedPayments) {
+                    this.paymentMethods = JSON.parse(savedPayments);
+                }
+                
                 this.applySettings();
             }
             
             saveSettings() {
                 localStorage.setItem('siteSettings', JSON.stringify(this.settings));
                 localStorage.setItem('siteDepartments', JSON.stringify(this.departments));
+                localStorage.setItem('paymentMethods', JSON.stringify(this.paymentMethods));
                 this.applySettings();
             }
             
@@ -2106,6 +2667,13 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                 if (!this.settings.courses.materialsEnabled) {
                     document.querySelectorAll('.material-btn').forEach(btn => btn.style.display = 'none');
                 }
+                
+                // Aplicar configurações de pagamentos
+                document.getElementById('cc-enabled').checked = this.paymentMethods.creditCard;
+                document.getElementById('pix-enabled').checked = this.paymentMethods.pix;
+                document.getElementById('boleto-enabled').checked = this.paymentMethods.boleto;
+                document.getElementById('transfer-enabled').checked = this.paymentMethods.transfer;
+                document.getElementById('paypal-enabled').checked = this.paymentMethods.paypal;
             }
             
             updateSetting(category, key, value) {
@@ -2142,6 +2710,11 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                     this.departments[index] = { ...this.departments[index], ...updates };
                     this.saveSettings();
                 }
+            }
+            
+            updatePaymentMethod(method, enabled) {
+                this.paymentMethods[method] = enabled;
+                this.saveSettings();
             }
         }
 
@@ -2246,6 +2819,7 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
         let currentPage = 1;
         const coursesPerPage = 6;
         let configSystem = new ConfigurationSystem();
+        let selectedPaymentMethod = 'credit-card';
         
         // Variáveis específicas do portal
         let currentStudentName = '';
@@ -2255,6 +2829,15 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
         let lessonTimers = {};
         let currentLessonCode = '';
         
+        // Variáveis para o setor financeiro
+        let payments = [];
+        let leads = [];
+        let financialData = {
+            monthlyRevenue: [],
+            paymentMethods: {},
+            topCourses: []
+        };
+
         // ===== INICIALIZAÇÃO =====
         document.addEventListener('DOMContentLoaded', function() {
             initApp();
@@ -2275,6 +2858,13 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
             updateNavigation();
             
             allCourses = JSON.parse(localStorage.getItem('courses')) || [];
+            payments = JSON.parse(localStorage.getItem('payments')) || [];
+            leads = JSON.parse(localStorage.getItem('leads')) || [];
+            financialData = JSON.parse(localStorage.getItem('financialData')) || {
+                monthlyRevenue: [],
+                paymentMethods: {},
+                topCourses: []
+            };
             
             const menuToggle = document.getElementById('mobile-menu');
             const navMenu = document.getElementById('nav-menu');
@@ -2340,6 +2930,7 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
         }
         
         function loadSampleData() {
+            // Carregar cursos
             if (allCourses.length === 0) {
                 allCourses = [
                     {
@@ -2378,6 +2969,7 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                 localStorage.setItem('courses', JSON.stringify(allCourses));
             }
             
+            // Carregar usuários
             const users = JSON.parse(localStorage.getItem('users')) || [];
             const adminExists = users.some(u => u.email === 'admin@matematicafacil.com');
             
@@ -2392,6 +2984,118 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
                 });
                 
                 localStorage.setItem('users', JSON.stringify(users));
+            }
+            
+            // Carregar pagamentos de exemplo
+            if (payments.length === 0) {
+                payments = [
+                    {
+                        id: 1,
+                        alunoId: 1,
+                        alunoNome: 'João Silva',
+                        cursoId: 1,
+                        cursoNome: 'Matemática 6º Ano',
+                        valor: 197.90,
+                        data: '2024-01-15',
+                        metodo: 'cartao',
+                        status: 'completed',
+                        parcelas: 1
+                    },
+                    {
+                        id: 2,
+                        alunoId: 2,
+                        alunoNome: 'Maria Santos',
+                        cursoId: 2,
+                        cursoNome: 'Matemática 7º Ano',
+                        valor: 197.90,
+                        data: '2024-01-18',
+                        metodo: 'pix',
+                        status: 'completed',
+                        parcelas: 1
+                    },
+                    {
+                        id: 3,
+                        alunoId: 3,
+                        alunoNome: 'Pedro Oliveira',
+                        cursoId: 1,
+                        cursoNome: 'Matemática 6º Ano',
+                        valor: 197.90,
+                        data: '2024-01-20',
+                        metodo: 'boleto',
+                        status: 'pending',
+                        parcelas: 1
+                    }
+                ];
+                
+                localStorage.setItem('payments', JSON.stringify(payments));
+            }
+            
+            // Carregar leads de exemplo
+            if (leads.length === 0) {
+                leads = [
+                    {
+                        id: 1,
+                        nome: 'Ana Costa',
+                        email: 'ana@email.com',
+                        telefone: '(11) 99999-9999',
+                        data: '2024-01-10',
+                        origem: 'demo',
+                        status: 'converted',
+                        ultimoContato: '2024-01-15',
+                        observacoes: 'Convertida após aula demo'
+                    },
+                    {
+                        id: 2,
+                        nome: 'Carlos Oliveira',
+                        email: 'carlos@email.com',
+                        telefone: '(11) 98888-8888',
+                        data: '2024-01-12',
+                        origem: 'website',
+                        status: 'proposal',
+                        ultimoContato: '2024-01-18',
+                        observacoes: 'Interessado no curso 7º ano'
+                    },
+                    {
+                        id: 3,
+                        nome: 'Fernanda Lima',
+                        email: 'fernanda@email.com',
+                        telefone: '(11) 97777-7777',
+                        data: '2024-01-14',
+                        origem: 'social',
+                        status: 'contact',
+                        ultimoContato: '2024-01-16',
+                        observacoes: 'Contatada via Instagram'
+                    }
+                ];
+                
+                localStorage.setItem('leads', JSON.stringify(leads));
+            }
+            
+            // Carregar dados financeiros de exemplo
+            if (financialData.monthlyRevenue.length === 0) {
+                financialData = {
+                    monthlyRevenue: [
+                        { mes: 'Jan/24', receita: 15000 },
+                        { mes: 'Fev/24', receita: 18000 },
+                        { mes: 'Mar/24', receita: 22000 },
+                        { mes: 'Abr/24', receita: 19000 },
+                        { mes: 'Mai/24', receita: 25000 },
+                        { mes: 'Jun/24', receita: 28000 }
+                    ],
+                    paymentMethods: {
+                        cartao: 65,
+                        pix: 20,
+                        boleto: 10,
+                        transferencia: 5
+                    },
+                    topCourses: [
+                        { curso: 'Matemática 6º Ano', receita: 45000 },
+                        { curso: 'Matemática 7º Ano', receita: 38000 },
+                        { curso: 'Reforço Matemático', receita: 22000 }
+                    ]
+                };
+                
+                localStorage.setItem('financialData', JSON.stringify(financialData));
             }
         }
         
@@ -2443,6 +3147,16 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
             configSystem.updateSetting('users', 'sessionTimeout', parseInt(document.getElementById('session-timeout').value));
             
             showAlert('Configurações de usuários salvas com sucesso!', 'success');
+        }
+        
+        function savePaymentSettings() {
+            configSystem.updatePaymentMethod('creditCard', document.getElementById('cc-enabled').checked);
+            configSystem.updatePaymentMethod('pix', document.getElementById('pix-enabled').checked);
+            configSystem.updatePaymentMethod('boleto', document.getElementById('boleto-enabled').checked);
+            configSystem.updatePaymentMethod('transfer', document.getElementById('transfer-enabled').checked);
+            configSystem.updatePaymentMethod('paypal', document.getElementById('paypal-enabled').checked);
+            
+            showAlert('Configurações de pagamento salvas com sucesso!', 'success');
         }
         
         function addNewDepartment() {
@@ -2826,6 +3540,736 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
             return colors[category] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         }
         
+        // ===== SETOR FINANCEIRO =====
+        function switchAdminTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(`${tab}-tab`).classList.remove('hidden');
+            document.querySelector(`.sidebar-menu a[onclick*="${tab}"]`).classList.add('active');
+            document.getElementById('admin-page-title').textContent = 
+                tab.charAt(0).toUpperCase() + tab.slice(1);
+            
+            if (tab === 'departamentos') {
+                loadDepartmentsList();
+            } else if (tab === 'cursos') {
+                loadAdminCourses();
+            } else if (tab === 'pagamentos') {
+                loadPayments();
+            } else if (tab === 'leads') {
+                loadLeads();
+            } else if (tab === 'financeiro') {
+                loadFinancialDashboard();
+            }
+        }
+        
+        function loadFinancialDashboard() {
+            // Calcular totais
+            const totalRevenue = payments
+                .filter(p => p.status === 'completed')
+                .reduce((sum, p) => sum + p.valor, 0);
+            
+            const pendingRevenue = payments
+                .filter(p => p.status === 'pending')
+                .reduce((sum, p) => sum + p.valor, 0);
+            
+            const refunds = payments
+                .filter(p => p.status === 'refunded')
+                .reduce((sum, p) => sum + p.valor, 0);
+            
+            const students = JSON.parse(localStorage.getItem('users') || '[]')
+                .filter(u => u.tipo === 'aluno').length;
+            
+            const averageTicket = students > 0 ? totalRevenue / students : 0;
+            
+            // Atualizar estatísticas
+            document.getElementById('finance-revenue').textContent = 
+                `R$ ${totalRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            
+            document.getElementById('finance-pending').textContent = 
+                `R$ ${pendingRevenue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            
+            document.getElementById('pending-count').textContent = 
+                payments.filter(p => p.status === 'pending').length;
+            
+            document.getElementById('finance-refunds').textContent = 
+                `R$ ${refunds.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            
+            document.getElementById('finance-average').textContent = 
+                `R$ ${averageTicket.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+            
+            // Calcular mudança na receita
+            const lastMonthRevenue = financialData.monthlyRevenue.length >= 2 
+                ? financialData.monthlyRevenue[financialData.monthlyRevenue.length - 2].receita 
+                : 0;
+            
+            const currentMonthRevenue = financialData.monthlyRevenue.length >= 1 
+                ? financialData.monthlyRevenue[financialData.monthlyRevenue.length - 1].receita 
+                : 0;
+            
+            const revenueChange = lastMonthRevenue > 0 
+                ? ((currentMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100).toFixed(1)
+                : 0;
+            
+            document.getElementById('finance-revenue-change').textContent = 
+                `${revenueChange > 0 ? '+' : ''}${revenueChange}%`;
+            
+            document.getElementById('finance-revenue-change').style.color = 
+                revenueChange >= 0 ? 'var(--success-color)' : 'var(--danger-color)';
+        }
+        
+        function loadPayments() {
+            const table = document.getElementById('admin-payments-table').querySelector('tbody');
+            table.innerHTML = '';
+            
+            payments.forEach(payment => {
+                const statusMap = {
+                    'completed': { text: 'Concluído', class: 'badge-success' },
+                    'pending': { text: 'Pendente', class: 'badge-warning' },
+                    'failed': { text: 'Falhou', class: 'badge-danger' },
+                    'refunded': { text: 'Reembolsado', class: 'badge-info' }
+                };
+                
+                const methodMap = {
+                    'cartao': 'Cartão',
+                    'pix': 'PIX',
+                    'boleto': 'Boleto',
+                    'transfer': 'Transferência'
+                };
+                
+                const status = statusMap[payment.status] || { text: payment.status, class: 'badge' };
+                const method = methodMap[payment.metodo] || payment.metodo;
+                
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>#${payment.id.toString().padStart(4, '0')}</td>
+                    <td>${payment.alunoNome}</td>
+                    <td>${payment.cursoNome}</td>
+                    <td>R$ ${payment.valor.toFixed(2)}</td>
+                    <td>${payment.data}</td>
+                    <td>${method}</td>
+                    <td><span class="badge ${status.class}">${status.text}</span></td>
+                    <td>
+                        <button class="btn-action btn-view" onclick="viewPaymentDetails(${payment.id})" title="Detalhes">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        ${payment.status === 'pending' ? `
+                            <button class="btn-action btn-success" onclick="approvePayment(${payment.id})" title="Aprovar">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        ` : ''}
+                    </td>
+                `;
+            });
+        }
+        
+        function filterPayments() {
+            const status = document.getElementById('payment-filter').value;
+            const from = document.getElementById('payment-date-from').value;
+            const to = document.getElementById('payment-date-to').value;
+            
+            let filtered = payments;
+            
+            if (status !== 'all') {
+                filtered = filtered.filter(p => p.status === status);
+            }
+            
+            if (from) {
+                filtered = filtered.filter(p => p.data >= from);
+            }
+            
+            if (to) {
+                filtered = filtered.filter(p => p.data <= to);
+            }
+            
+            const table = document.getElementById('admin-payments-table').querySelector('tbody');
+            table.innerHTML = '';
+            
+            filtered.forEach(payment => {
+                const statusMap = {
+                    'completed': { text: 'Concluído', class: 'badge-success' },
+                    'pending': { text: 'Pendente', class: 'badge-warning' },
+                    'failed': { text: 'Falhou', class: 'badge-danger' },
+                    'refunded': { text: 'Reembolsado', class: 'badge-info' }
+                };
+                
+                const methodMap = {
+                    'cartao': 'Cartão',
+                    'pix': 'PIX',
+                    'boleto': 'Boleto',
+                    'transfer': 'Transferência'
+                };
+                
+                const statusInfo = statusMap[payment.status] || { text: payment.status, class: 'badge' };
+                const method = methodMap[payment.metodo] || payment.metodo;
+                
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>#${payment.id.toString().padStart(4, '0')}</td>
+                    <td>${payment.alunoNome}</td>
+                    <td>${payment.cursoNome}</td>
+                    <td>R$ ${payment.valor.toFixed(2)}</td>
+                    <td>${payment.data}</td>
+                    <td>${method}</td>
+                    <td><span class="badge ${statusInfo.class}">${statusInfo.text}</span></td>
+                    <td>
+                        <button class="btn-action btn-view" onclick="viewPaymentDetails(${payment.id})" title="Detalhes">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                `;
+            });
+        }
+        
+        function approvePayment(paymentId) {
+            if (confirm('Deseja aprovar este pagamento?')) {
+                const paymentIndex = payments.findIndex(p => p.id === paymentId);
+                if (paymentIndex !== -1) {
+                    payments[paymentIndex].status = 'completed';
+                    localStorage.setItem('payments', JSON.stringify(payments));
+                    showAlert('Pagamento aprovado com sucesso!', 'success');
+                    loadPayments();
+                }
+            }
+        }
+        
+        function exportPayments() {
+            // Simulação de exportação
+            const dataStr = JSON.stringify(payments, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `pagamentos_${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showAlert('Exportação iniciada!', 'success');
+        }
+        
+        function generateFinancialReport() {
+            // Simulação de geração de relatório
+            const report = {
+                data: new Date().toISOString(),
+                receitaTotal: payments.filter(p => p.status === 'completed').reduce((s, p) => s + p.valor, 0),
+                pagamentosPendentes: payments.filter(p => p.status === 'pending').reduce((s, p) => s + p.valor, 0),
+                totalAlunos: JSON.parse(localStorage.getItem('users') || '[]').filter(u => u.tipo === 'aluno').length,
+                totalCursos: allCourses.length,
+                pagamentosPorMetodo: {},
+                topCursos: allCourses.sort((a, b) => b.alunos - a.alunos).slice(0, 5)
+            };
+            
+            // Agrupar pagamentos por método
+            payments.forEach(p => {
+                if (!report.pagamentosPorMetodo[p.metodo]) {
+                    report.pagamentosPorMetodo[p.metodo] = 0;
+                }
+                report.pagamentosPorMetodo[p.metodo] += p.valor;
+            });
+            
+            const dataStr = JSON.stringify(report, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `relatorio_financeiro_${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showAlert('Relatório financeiro gerado com sucesso!', 'success');
+        }
+        
+        // ===== ÁREA DE LEADS =====
+        function loadLeads() {
+            const table = document.getElementById('admin-leads-table').querySelector('tbody');
+            table.innerHTML = '';
+            
+            leads.forEach(lead => {
+                const statusMap = {
+                    'new': { text: 'Novo', class: 'status-new' },
+                    'contact': { text: 'Em contato', class: 'status-contact' },
+                    'proposal': { text: 'Proposta', class: 'status-proposal' },
+                    'converted': { text: 'Convertido', class: 'status-converted' },
+                    'lost': { text: 'Perdido', class: 'status-lost' }
+                };
+                
+                const sourceMap = {
+                    'demo': 'Aula Demo',
+                    'website': 'Site',
+                    'social': 'Redes Sociais',
+                    'indication': 'Indicação',
+                    'event': 'Evento',
+                    'manual': 'Manual'
+                };
+                
+                const status = statusMap[lead.status] || { text: lead.status, class: '' };
+                const source = sourceMap[lead.origem] || lead.origem;
+                
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>#${lead.id.toString().padStart(4, '0')}</td>
+                    <td>${lead.nome}</td>
+                    <td>${lead.email}</td>
+                    <td>${lead.telefone || 'Não informado'}</td>
+                    <td>${lead.data}</td>
+                    <td>${source}</td>
+                    <td><span class="lead-status ${status.class}">${status.text}</span></td>
+                    <td>${lead.ultimoContato || 'Nunca'}</td>
+                    <td>
+                        <button class="btn-action btn-view" onclick="viewLeadDetails(${lead.id})" title="Detalhes">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn-action btn-edit" onclick="editLead(${lead.id})" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </td>
+                `;
+            });
+        }
+        
+        function filterLeads() {
+            const status = document.getElementById('lead-status-filter').value;
+            const source = document.getElementById('lead-source-filter').value;
+            const from = document.getElementById('lead-date-from').value;
+            const to = document.getElementById('lead-date-to').value;
+            
+            let filtered = leads;
+            
+            if (status !== 'all') {
+                filtered = filtered.filter(l => l.status === status);
+            }
+            
+            if (source !== 'all') {
+                filtered = filtered.filter(l => l.origem === source);
+            }
+            
+            if (from) {
+                filtered = filtered.filter(l => l.data >= from);
+            }
+            
+            if (to) {
+                filtered = filtered.filter(l => l.data <= to);
+            }
+            
+            const table = document.getElementById('admin-leads-table').querySelector('tbody');
+            table.innerHTML = '';
+            
+            filtered.forEach(lead => {
+                const statusMap = {
+                    'new': { text: 'Novo', class: 'status-new' },
+                    'contact': { text: 'Em contato', class: 'status-contact' },
+                    'proposal': { text: 'Proposta', class: 'status-proposal' },
+                    'converted': { text: 'Convertido', class: 'status-converted' },
+                    'lost': { text: 'Perdido', class: 'status-lost' }
+                };
+                
+                const sourceMap = {
+                    'demo': 'Aula Demo',
+                    'website': 'Site',
+                    'social': 'Redes Sociais',
+                    'indication': 'Indicação',
+                    'event': 'Evento',
+                    'manual': 'Manual'
+                };
+                
+                const statusInfo = statusMap[lead.status] || { text: lead.status, class: '' };
+                const source = sourceMap[lead.origem] || lead.origem;
+                
+                const row = table.insertRow();
+                row.innerHTML = `
+                    <td>#${lead.id.toString().padStart(4, '0')}</td>
+                    <td>${lead.nome}</td>
+                    <td>${lead.email}</td>
+                    <td>${lead.telefone || 'Não informado'}</td>
+                    <td>${lead.data}</td>
+                    <td>${source}</td>
+                    <td><span class="lead-status ${statusInfo.class}">${statusInfo.text}</span></td>
+                    <td>${lead.ultimoContato || 'Nunca'}</td>
+                    <td>
+                        <button class="btn-action btn-view" onclick="viewLeadDetails(${lead.id})" title="Detalhes">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                `;
+            });
+        }
+        
+        function showAddLeadModal() {
+            document.getElementById('add-lead-modal').classList.remove('hidden');
+        }
+        
+        function closeAddLeadModal() {
+            document.getElementById('add-lead-modal').classList.add('hidden');
+            document.getElementById('add-lead-form').reset();
+        }
+        
+        function saveNewLead() {
+            const name = document.getElementById('new-lead-name').value;
+            const email = document.getElementById('new-lead-email').value;
+            const phone = document.getElementById('new-lead-phone').value;
+            const source = document.getElementById('new-lead-source').value;
+            const status = document.getElementById('new-lead-status').value;
+            const notes = document.getElementById('new-lead-notes').value;
+            
+            if (!name || !email) {
+                showAlert('Nome e email são obrigatórios!', 'error');
+                return;
+            }
+            
+            const newLead = {
+                id: leads.length > 0 ? Math.max(...leads.map(l => l.id)) + 1 : 1,
+                nome: name,
+                email: email,
+                telefone: phone,
+                data: new Date().toISOString().split('T')[0],
+                origem: source,
+                status: status,
+                ultimoContato: new Date().toISOString().split('T')[0],
+                observacoes: notes
+            };
+            
+            leads.push(newLead);
+            localStorage.setItem('leads', JSON.stringify(leads));
+            
+            showAlert('Lead adicionado com sucesso!', 'success');
+            closeAddLeadModal();
+            loadLeads();
+        }
+        
+        function viewLeadDetails(leadId) {
+            const lead = leads.find(l => l.id === leadId);
+            if (!lead) return;
+            
+            const sourceMap = {
+                'demo': 'Aula Demo',
+                'website': 'Site',
+                'social': 'Redes Sociais',
+                'indication': 'Indicação',
+                'event': 'Evento',
+                'manual': 'Manual'
+            };
+            
+            const statusMap = {
+                'new': { text: 'Novo', color: '#1976d2' },
+                'contact': { text: 'Em contato', color: '#f57c00' },
+                'proposal': { text: 'Proposta enviada', color: '#7b1fa2' },
+                'converted': { text: 'Convertido', color: '#388e3c' },
+                'lost': { text: 'Perdido', color: '#d32f2f' }
+            };
+            
+            const status = statusMap[lead.status] || { text: lead.status, color: '#666' };
+            const source = sourceMap[lead.origem] || lead.origem;
+            
+            const content = document.getElementById('lead-details-content');
+            content.innerHTML = `
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <div>
+                            <h2 style="margin: 0;">${lead.nome}</h2>
+                            <p style="margin: 0; color: var(--gray);">${lead.email}</p>
+                        </div>
+                        <span class="lead-status" style="background-color: ${status.color}; color: white; padding: 0.5rem 1rem;">
+                            ${status.text}
+                        </span>
+                    </div>
+                    
+                    <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h3 style="margin-bottom: 1rem;">Informações do Lead</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div>
+                                <strong>Telefone:</strong><br>
+                                ${lead.telefone || 'Não informado'}
+                            </div>
+                            <div>
+                                <strong>Data de Criação:</strong><br>
+                                ${lead.data}
+                            </div>
+                            <div>
+                                <strong>Origem:</strong><br>
+                                ${source}
+                            </div>
+                            <div>
+                                <strong>Último Contato:</strong><br>
+                                ${lead.ultimoContato || 'Nunca'}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h3 style="margin-bottom: 1rem;">Observações</h3>
+                        <p>${lead.observacoes || 'Nenhuma observação registrada.'}</p>
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-primary" onclick="changeLeadStatus(${leadId})">
+                            <i class="fas fa-exchange-alt"></i> Alterar Status
+                        </button>
+                        <button class="btn btn-outline" onclick="closeLeadDetailsModal()">
+                            <i class="fas fa-times"></i> Fechar
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('lead-details-modal').classList.remove('hidden');
+        }
+        
+        function closeLeadDetailsModal() {
+            document.getElementById('lead-details-modal').classList.add('hidden');
+        }
+        
+        function changeLeadStatus(leadId) {
+            const lead = leads.find(l => l.id === leadId);
+            if (!lead) return;
+            
+            const newStatus = prompt('Novo status (new, contact, proposal, converted, lost):', lead.status);
+            
+            if (newStatus && ['new', 'contact', 'proposal', 'converted', 'lost'].includes(newStatus)) {
+                lead.status = newStatus;
+                lead.ultimoContato = new Date().toISOString().split('T')[0];
+                localStorage.setItem('leads', JSON.stringify(leads));
+                showAlert('Status do lead atualizado com sucesso!', 'success');
+                closeLeadDetailsModal();
+                loadLeads();
+            }
+        }
+        
+        function editLead(leadId) {
+            // Implementar edição de lead
+            showAlert('Funcionalidade de edição em desenvolvimento!', 'info');
+        }
+        
+        function exportLeads() {
+            const dataStr = JSON.stringify(leads, null, 2);
+            const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+            
+            const exportFileDefaultName = `leads_${new Date().toISOString().split('T')[0]}.json`;
+            
+            const linkElement = document.createElement('a');
+            linkElement.setAttribute('href', dataUri);
+            linkElement.setAttribute('download', exportFileDefaultName);
+            linkElement.click();
+            
+            showAlert('Exportação de leads iniciada!', 'success');
+        }
+        
+        function showLeadStats() {
+            const stats = {
+                total: leads.length,
+                byStatus: {},
+                bySource: {},
+                conversionRate: 0
+            };
+            
+            // Contar por status
+            leads.forEach(lead => {
+                if (!stats.byStatus[lead.status]) {
+                    stats.byStatus[lead.status] = 0;
+                }
+                stats.byStatus[lead.status]++;
+                
+                if (!stats.bySource[lead.origem]) {
+                    stats.bySource[lead.origem] = 0;
+                }
+                stats.bySource[lead.origem]++;
+            });
+            
+            // Calcular taxa de conversão
+            const converted = leads.filter(l => l.status === 'converted').length;
+            stats.conversionRate = leads.length > 0 ? (converted / leads.length * 100).toFixed(1) : 0;
+            
+            const content = document.getElementById('lead-stats-content');
+            content.innerHTML = `
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <h3 style="text-align: center; margin-bottom: 2rem;">Estatísticas de Leads</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">
+                                ${stats.total}
+                            </div>
+                            <div>Total de Leads</div>
+                        </div>
+                        
+                        <div style="background: var(--gray-light); padding: 1rem; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--success-color);">
+                                ${stats.conversionRate}%
+                            </div>
+                            <div>Taxa de Conversão</div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4>Leads por Status</h4>
+                        ${Object.entries(stats.byStatus).map(([status, count]) => `
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>${status}:</span>
+                                <span><strong>${count}</strong> (${((count/stats.total)*100).toFixed(1)}%)</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px;">
+                        <h4>Leads por Fonte</h4>
+                        ${Object.entries(stats.bySource).map(([source, count]) => `
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>${source}:</span>
+                                <span><strong>${count}</strong> (${((count/stats.total)*100).toFixed(1)}%)</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-outline" onclick="closeLeadStatsModal()">
+                            <i class="fas fa-times"></i> Fechar
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('lead-stats-modal').classList.remove('hidden');
+        }
+        
+        function closeLeadStatsModal() {
+            document.getElementById('lead-stats-modal').classList.add('hidden');
+        }
+        
+        // ===== SISTEMA DE PAGAMENTOS =====
+        function startPayment(courseId) {
+            const course = allCourses.find(c => c.id === courseId);
+            if (!course) return;
+            
+            currentCourseId = courseId;
+            
+            const paymentInfo = document.getElementById('payment-course-info');
+            const orderSummary = document.getElementById('order-summary');
+            
+            paymentInfo.innerHTML = `
+                <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem;">Resumo da Compra</h3>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Curso:</span>
+                        <strong>${course.titulo}</strong>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Valor:</span>
+                        <strong style="color: var(--accent-color); font-size: 1.2rem;">R$ ${course.valor.toFixed(2)}</strong>
+                    </div>
+                </div>
+            `;
+            
+            orderSummary.innerHTML = `
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                    <span>${course.titulo}</span>
+                    <span>R$ ${course.valor.toFixed(2)}</span>
+                </div>
+            `;
+            
+            document.getElementById('subtotal').textContent = `R$ ${course.valor.toFixed(2)}`;
+            document.getElementById('discount').textContent = 'R$ 0,00';
+            document.getElementById('total').textContent = `R$ ${course.valor.toFixed(2)}`;
+            
+            // Selecionar método de pagamento padrão
+            selectPaymentMethod('credit-card');
+            
+            navigateTo('pagamento');
+        }
+        
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            
+            // Remover seleção de todos os métodos
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Adicionar seleção ao método escolhido
+            const selectedEl = document.querySelector(`.payment-method[onclick*="${method}"]`);
+            if (selectedEl) {
+                selectedEl.classList.add('selected');
+                selectedEl.style.border = '2px solid var(--secondary-color)';
+            }
+            
+            // Mostrar formulário correspondente
+            document.querySelectorAll('.payment-form').forEach(form => {
+                form.classList.add('hidden');
+            });
+            
+            document.getElementById(`${method}-form`).classList.remove('hidden');
+        }
+        
+        function processPayment() {
+            const course = allCourses.find(c => c.id === currentCourseId);
+            if (!course) return;
+            
+            // Validação básica para cartão de crédito
+            if (selectedPaymentMethod === 'credit-card') {
+                const name = document.getElementById('payment-name').value;
+                const card = document.getElementById('payment-card').value;
+                const expiry = document.getElementById('payment-expiry').value;
+                const cvv = document.getElementById('payment-cvv').value;
+                
+                if (!name || !card || !expiry || !cvv) {
+                    showAlert('Por favor, preencha todos os campos do cartão.', 'error');
+                    return;
+                }
+            }
+            
+            // Criar registro de pagamento
+            const newPayment = {
+                id: payments.length > 0 ? Math.max(...payments.map(p => p.id)) + 1 : 1,
+                alunoId: currentUser?.id || 0,
+                alunoNome: currentUser?.nome || 'Usuário',
+                cursoId: currentCourseId,
+                cursoNome: course.titulo,
+                valor: course.valor,
+                data: new Date().toISOString().split('T')[0],
+                metodo: selectedPaymentMethod === 'credit-card' ? 'cartao' : selectedPaymentMethod,
+                status: 'pending',
+                parcelas: selectedPaymentMethod === 'credit-card' ? 
+                    parseInt(document.getElementById('payment-installments').value) : 1
+            };
+            
+            payments.push(newPayment);
+            localStorage.setItem('payments', JSON.stringify(payments));
+            
+            // Atualizar número de alunos no curso
+            const courseIndex = allCourses.findIndex(c => c.id === currentCourseId);
+            if (courseIndex !== -1) {
+                allCourses[courseIndex].alunos++;
+                localStorage.setItem('courses', JSON.stringify(allCourses));
+            }
+            
+            const success = document.getElementById('payment-success');
+            success.classList.remove('hidden');
+            
+            setTimeout(() => {
+                showAlert('Pagamento processado com sucesso! Curso adquirido.', 'success');
+                
+                // Criar lead se for um novo usuário
+                if (currentUser && !leads.some(l => l.email === currentUser.email)) {
+                    const newLead = {
+                        id: leads.length > 0 ? Math.max(...leads.map(l => l.id)) + 1 : 1,
+                        nome: currentUser.nome,
+                        email: currentUser.email,
+                        telefone: '',
+                        data: new Date().toISOString().split('T')[0],
+                        origem: 'demo',
+                        status: 'converted',
+                        ultimoContato: new Date().toISOString().split('T')[0],
+                        observacoes: 'Convertido após compra de curso'
+                    };
+                    
+                    leads.push(newLead);
+                    localStorage.setItem('leads', JSON.stringify(leads));
+                }
+                
+                navigateTo('home');
+            }, 2000);
+        }
+        
         // ===== FUNÇÕES RESTANTES DO SISTEMA =====
         function loadAllCoursesPage() {
             const container = document.getElementById('all-courses');
@@ -3036,6 +4480,22 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
             
+            // Criar lead para o novo usuário
+            const newLead = {
+                id: leads.length > 0 ? Math.max(...leads.map(l => l.id)) + 1 : 1,
+                nome: name,
+                email: email,
+                telefone: '',
+                data: new Date().toISOString().split('T')[0],
+                origem: 'demo',
+                status: 'new',
+                ultimoContato: new Date().toISOString().split('T')[0],
+                observacoes: 'Cadastrado através da aula demo'
+            };
+            
+            leads.push(newLead);
+            localStorage.setItem('leads', JSON.stringify(leads));
+            
             currentUser = newUser;
             localStorage.setItem('currentUser', JSON.stringify(newUser));
             
@@ -3105,22 +4565,6 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
             document.getElementById('admin-sidebar').classList.toggle('active');
         }
         
-        function switchAdminTab(tab) {
-            document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
-            document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
-            
-            document.getElementById(`${tab}-tab`).classList.remove('hidden');
-            document.querySelector(`.sidebar-menu a[onclick*="${tab}"]`).classList.add('active');
-            document.getElementById('admin-page-title').textContent = 
-                tab.charAt(0).toUpperCase() + tab.slice(1);
-            
-            if (tab === 'departamentos') {
-                loadDepartmentsList();
-            } else if (tab === 'cursos') {
-                loadAdminCourses();
-            }
-        }
-        
         function loadAdminDashboard() {
             switchAdminTab('dashboard');
             
@@ -3128,11 +4572,12 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
             document.getElementById('total-students').textContent = 
                 (JSON.parse(localStorage.getItem('users')) || []).filter(u => u.tipo === 'aluno').length;
             
-            const totalRevenue = allCourses.reduce((sum, course) => sum + (course.valor * course.alunos), 0);
-            document.getElementById('total-revenue').textContent = `${configSystem.settings.courses.currency} ${totalRevenue.toFixed(2)}`;
+            const totalRevenue = payments
+                .filter(p => p.status === 'completed')
+                .reduce((sum, p) => sum + p.valor, 0);
+            document.getElementById('total-revenue').textContent = `R$ ${totalRevenue.toFixed(2)}`;
             
-            const demoUsers = (JSON.parse(localStorage.getItem('users')) || []).filter(u => u.dataCadastro);
-            document.getElementById('total-leads').textContent = demoUsers.length;
+            document.getElementById('total-leads').textContent = leads.length;
             
             loadRecentSales();
         }
@@ -3140,64 +4585,21 @@ https://drive.google.com/material3.pdf" rows="4"></textarea>
         function loadRecentSales() {
             const table = document.getElementById('recent-sales').querySelector('tbody');
             
-            const sales = [
-                { aluno: 'João Silva', curso: 'Matemática 6º Ano', valor: 197.90, data: '2024-01-15' },
-                { aluno: 'Maria Santos', curso: 'Matemática 7º Ano', valor: 197.90, data: '2024-01-18' },
-                { aluno: 'Pedro Oliveira', curso: 'Reforço Matemático', valor: 247.90, data: '2024-01-20' }
-            ];
+            // Pegar os 5 pagamentos mais recentes concluídos
+            const recentPayments = payments
+                .filter(p => p.status === 'completed')
+                .sort((a, b) => new Date(b.data) - new Date(a.data))
+                .slice(0, 5);
             
-            table.innerHTML = sales.map(sale => `
+            table.innerHTML = recentPayments.map(payment => `
                 <tr>
-                    <td>${sale.aluno}</td>
-                    <td>${sale.curso}</td>
-                    <td>${configSystem.settings.courses.currency} ${sale.valor.toFixed(2)}</td>
-                    <td>${sale.data}</td>
+                    <td>${payment.alunoNome}</td>
+                    <td>${payment.cursoNome}</td>
+                    <td>R$ ${payment.valor.toFixed(2)}</td>
+                    <td>${payment.data}</td>
+                    <td><span class="badge badge-success">Concluído</span></td>
                 </tr>
             `).join('');
-        }
-        
-        function startPayment(courseId) {
-            const course = allCourses.find(c => c.id === courseId);
-            if (!course) return;
-            
-            currentCourseId = courseId;
-            
-            const paymentInfo = document.getElementById('payment-course-info');
-            paymentInfo.innerHTML = `
-                <div style="background: var(--gray-light); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Resumo da Compra</h3>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span>Curso:</span>
-                        <strong>${course.titulo}</strong>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span>Valor:</span>
-                        <strong style="color: var(--accent-color); font-size: 1.2rem;">${configSystem.settings.courses.currency} ${course.valor.toFixed(2)}</strong>
-                    </div>
-                </div>
-            `;
-            
-            navigateTo('pagamento');
-        }
-        
-        function processPayment() {
-            const name = document.getElementById('payment-name').value;
-            const card = document.getElementById('payment-card').value;
-            const expiry = document.getElementById('payment-expiry').value;
-            const cvv = document.getElementById('payment-cvv').value;
-            
-            if (!name || !card || !expiry || !cvv) {
-                showAlert('Por favor, preencha todos os campos do pagamento.', 'error');
-                return;
-            }
-            
-            const success = document.getElementById('payment-success');
-            success.classList.remove('hidden');
-            
-            setTimeout(() => {
-                showAlert('Pagamento processado com sucesso! Curso adquirido.', 'success');
-                navigateTo('home');
-            }, 2000);
         }
         
         function playDemoLesson(lessonId) {
