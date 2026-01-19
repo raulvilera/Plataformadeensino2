@@ -322,29 +322,6 @@
             color: var(--gray);
         }
         
-        .course-material-links {
-            margin-top: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .material-btn {
-            display: inline-block;
-            padding: 6px 12px;
-            background-color: var(--gray-light);
-            color: var(--dark-color);
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 13px;
-            transition: var(--transition);
-        }
-        
-        .material-btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-        
         /* ===== PÁGINA DE CURSOS ===== */
         .filters {
             display: flex;
@@ -376,13 +353,6 @@
             border-color: var(--secondary-color);
         }
         
-        .sort-select {
-            padding: 8px 16px;
-            border: 1px solid var(--gray);
-            border-radius: 4px;
-            background-color: var(--white);
-        }
-        
         /* ===== PÁGINA DE LOGIN ===== */
         .auth-container {
             min-height: 100vh;
@@ -407,27 +377,6 @@
             color: var(--white);
             padding: 2rem;
             text-align: center;
-        }
-        
-        .auth-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--gray-light);
-        }
-        
-        .auth-tab {
-            flex: 1;
-            padding: 1rem;
-            background: none;
-            border: none;
-            font-weight: 600;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .auth-tab.active {
-            color: var(--secondary-color);
-            border-bottom: 3px solid var(--secondary-color);
         }
         
         .auth-form {
@@ -458,11 +407,6 @@
             outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
         }
         
         /* ===== MODAL DO PORTAL 6º ANO ===== */
@@ -703,33 +647,6 @@
             margin-bottom: 2rem;
         }
         
-        .stat-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: var(--transition);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: var(--white);
-            font-size: 1.5rem;
-        }
-        
         .admin-card {
             background: var(--white);
             padding: 1.5rem;
@@ -799,70 +716,6 @@
         .btn-delete {
             background-color: var(--danger-color);
             color: var(--white);
-        }
-        
-        .btn-view {
-            background-color: var(--secondary-color);
-            color: var(--white);
-        }
-        
-        /* ===== SETOR FINANCEIRO ===== */
-        .finance-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .finance-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            position: relative;
-        }
-        
-        .finance-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            color: var(--white);
-            font-size: 1.25rem;
-        }
-        
-        .icon-revenue { background-color: var(--success-color); }
-        .icon-pending { background-color: var(--warning-color); }
-        .icon-refunds { background-color: var(--danger-color); }
-        .icon-average { background-color: var(--secondary-color); }
-        
-        .finance-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0.5rem 0;
-        }
-        
-        .payment-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .payment-method {
-            background: var(--gray-light);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .payment-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
         }
         
         /* ===== FOOTER ===== */
@@ -999,15 +852,6 @@
             .admin-stats {
                 grid-template-columns: 1fr;
             }
-            
-            .admin-table {
-                font-size: 14px;
-            }
-            
-            .admin-table th,
-            .admin-table td {
-                padding: 8px;
-            }
         }
         
         /* ===== ANIMAÇÕES ===== */
@@ -1063,11 +907,6 @@
             color: #721c24;
         }
         
-        .badge-info {
-            background-color: #d1ecf1;
-            color: #0c5460;
-        }
-        
         .alert {
             padding: 1rem;
             border-radius: 4px;
@@ -1097,24 +936,6 @@
             color: #0c5460;
             border: 1px solid #bee5eb;
         }
-        
-        .d-flex {
-            display: flex;
-        }
-        
-        .justify-between {
-            justify-content: space-between;
-        }
-        
-        .align-center {
-            align-items: center;
-        }
-        
-        .gap-1 { gap: 0.5rem; }
-        .gap-2 { gap: 1rem; }
-        .gap-3 { gap: 1.5rem; }
-        
-        .flex-1 { flex: 1; }
     </style>
 </head>
 <body>
@@ -1145,14 +966,13 @@
 
     <!-- ===== PÁGINAS ===== -->
     <main id="main-content">
-        
         <!-- PÁGINA INICIAL -->
         <div id="home-page" class="page">
             <section class="hero">
                 <div class="container">
                     <div class="hero-content">
-                        <h1 class="hero-title" id="hero-title">Aprenda Matemática de Forma Fácil e Divertida</h1>
-                        <p class="hero-subtitle" id="hero-subtitle">Cursos completos de matemática do 6º ao 9º ano, alinhados com a BNCC</p>
+                        <h1 class="hero-title">Aprenda Matemática de Forma Fácil e Divertida</h1>
+                        <p class="hero-subtitle">Cursos completos de matemática do 6º ao 9º ano, alinhados com a BNCC</p>
                         <div class="hero-buttons">
                             <button class="btn btn-primary btn-large" onclick="navigateTo('cursos')">
                                 <i class="fas fa-search"></i> Explorar Cursos
@@ -1166,11 +986,11 @@
             </section>
             
             <div class="container mt-3">
-                <h2 class="section-title" id="featured-courses-title">Cursos em Destaque</h2>
-                <p class="section-subtitle" id="featured-courses-subtitle">Cursos completos de matemática por ano escolar</p>
+                <h2 class="section-title">Cursos em Destaque</h2>
+                <p class="section-subtitle">Cursos completos de matemática por ano escolar</p>
                 
                 <div class="courses-grid" id="featured-courses">
-                    <!-- Cursos serão carregados do Supabase -->
+                    <!-- Cursos serão carregados dinamicamente -->
                 </div>
             </div>
         </div>
@@ -1192,7 +1012,7 @@
                 </div>
                 
                 <div class="courses-grid" id="all-courses">
-                    <!-- Cursos serão carregados do Supabase -->
+                    <!-- Cursos serão carregados dinamicamente -->
                 </div>
             </div>
         </div>
@@ -1202,8 +1022,8 @@
             <div class="auth-container">
                 <div class="auth-box">
                     <div class="auth-header">
-                        <h1><i class="fas fa-graduation-cap"></i> <span id="login-title">Matemática Fácil</span></h1>
-                        <p id="login-subtitle">Painel Administrativo</p>
+                        <h1><i class="fas fa-graduation-cap"></i> Matemática Fácil</h1>
+                        <p>Painel Administrativo</p>
                     </div>
                     
                     <div class="auth-form" id="admin-form">
@@ -1234,7 +1054,7 @@
                 <!-- Sidebar -->
                 <div class="admin-sidebar" id="admin-sidebar">
                     <div class="sidebar-header">
-                        <h2><i class="fas fa-graduation-cap"></i> <span id="admin-site-title">Matemática Fácil</span></h2>
+                        <h2><i class="fas fa-graduation-cap"></i> Matemática Fácil</h2>
                         <p>Painel Administrativo</p>
                     </div>
                     
@@ -1330,7 +1150,7 @@
                                 
                                 <div class="admin-card">
                                     <h3><i class="fas fa-plus-circle"></i> Adicionar Novo Curso</h3>
-                                    <form id="add-course-form" onsubmit="event.preventDefault(); addNewCourse();">
+                                    <form id="add-course-form">
                                         <div class="form-group">
                                             <label for="new-course-title">Título do Curso</label>
                                             <input type="text" id="new-course-title" class="form-control" placeholder="Ex: Matemática 6º Ano" required>
@@ -1355,7 +1175,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-block">
+                                        <button type="button" class="btn btn-primary btn-block" onclick="addNewCourse()">
                                             <i class="fas fa-plus"></i> Adicionar Curso
                                         </button>
                                     </form>
@@ -1393,7 +1213,7 @@
                             
                             <div class="admin-card">
                                 <h3 class="card-title"><i class="fas fa-plus-circle"></i> Adicionar Módulo ao Portal 6º Ano</h3>
-                                <form id="add-module-form" onsubmit="event.preventDefault(); addNewModule();">
+                                <form id="add-module-form">
                                     <div class="form-group">
                                         <label for="module-bimester">Bimestre</label>
                                         <select id="module-bimester" class="form-control" required>
@@ -1419,7 +1239,7 @@
                                         <label for="module-url">URL da Aula</label>
                                         <input type="url" id="module-url" class="form-control" placeholder="https://exemplo.com/aula" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block">
+                                    <button type="button" class="btn btn-primary btn-block" onclick="addNewModule()">
                                         <i class="fas fa-plus"></i> Adicionar Módulo
                                     </button>
                                 </form>
@@ -1495,22 +1315,21 @@
                 </div>
             </div>
         </div>
-        
     </main>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="footer" id="main-footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3 class="footer-title">
-                        <i class="fas fa-graduation-cap"></i> <span id="footer-site-title">Matemática Fácil</span>
+                        <i class="fas fa-graduation-cap"></i> Matemática Fácil
                     </h3>
-                    <p id="footer-description">Transformando o aprendizado de matemática através de cursos online de qualidade.</p>
+                    <p>Transformando o aprendizado de matemática através de cursos online de qualidade.</p>
                     <div class="social-links">
-                        <a href="#" id="social-facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" id="social-instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" id="social-youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1533,7 +1352,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p id="footer-copyright">&copy; 2024 Matemática Fácil. Todos os direitos reservados.</p>
+                <p>&copy; 2024 Matemática Fácil. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1555,17 +1374,13 @@
 
     <!-- ===== SCRIPT PRINCIPAL ===== -->
     <script>
-        // ===== CONFIGURAÇÃO DO SUPABASE =====
-        const SUPABASE_URL = 'sb_publishable_uJFnWU81Il5P52624U6JHw_BvoQRuO6';
-        const SUPABASE_ANON_KEY = 'sb_secret_TJp4AbRrVX5f6XgHVbxFjQ_sFZuP9JY';
-        
+        // ===== VARIÁVEIS GLOBAIS =====
         let supabase;
         let currentUser = null;
         let isAdmin = false;
         let currentBimester = 1;
         let currentStudentName = '';
         let portalModules = [];
-        let studentProgress = [];
         let lessonTimers = {};
 
         // ===== INICIALIZAÇÃO =====
@@ -1575,81 +1390,34 @@
         });
         
         async function initApp() {
-            // Inicializar Supabase
-            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            
-            // Verificar sessão existente
-            const { data: { session } } = await supabase.auth.getSession();
-            
-            if (session) {
-                currentUser = session.user;
-                await checkUserRole();
-                if (isAdmin) {
-                    // Admin logado, mostrar link para admin
-                    updateAdminNav();
-                }
-            }
-            
-            // Carregar cursos
-            await loadCourses();
-            
-            // Configurar listener para mudanças de autenticação
-            supabase.auth.onAuthStateChange(async (event, session) => {
+            try {
+                // Configuração do Supabase
+                const SUPABASE_URL = 'https://seu-projeto.supabase.co';
+                const SUPABASE_ANON_KEY = 'sua-chave-anon';
+                
+                supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                
+                // Verificar se há usuário logado
+                const { data: { session } } = await supabase.auth.getSession();
                 if (session) {
                     currentUser = session.user;
                     await checkUserRole();
-                    if (isAdmin) {
-                        updateAdminNav();
-                    }
-                } else {
-                    currentUser = null;
-                    isAdmin = false;
                 }
-            });
-            
-            // Inicializar navegação
-            navigateTo('home');
-        }
-        
-        async function checkUserRole() {
-            if (!currentUser) {
-                isAdmin = false;
-                return;
-            }
-            
-            try {
-                // Verificar se o usuário é admin pelo email
-                // Em produção, use uma tabela de roles
-                const adminEmails = ['admin@matematicafacil.com']; // Adicione emails de admin aqui
-                isAdmin = adminEmails.includes(currentUser.email);
                 
-                // Ou use uma tabela de roles no Supabase
-                // const { data, error } = await supabase
-                //     .from('user_roles')
-                //     .select('role')
-                //     .eq('user_id', currentUser.id)
-                //     .single();
-                // isAdmin = data?.role === 'admin';
+                // Carregar dados iniciais
+                await loadCourses();
+                
+                // Configurar navegação inicial
+                const initialPage = window.location.hash.substring(1) || 'home';
+                navigateTo(initialPage);
+                
             } catch (error) {
-                console.error('Erro ao verificar role:', error);
-                isAdmin = false;
-            }
-        }
-        
-        function updateAdminNav() {
-            const navMenu = document.getElementById('nav-menu');
-            const adminNav = navMenu.querySelector('li:last-child');
-            
-            if (isAdmin) {
-                adminNav.innerHTML = `
-                    <a href="#" class="nav-link" onclick="navigateTo('admin')">
-                        <i class="fas fa-tachometer-alt"></i> Admin
-                    </a>
-                `;
+                console.error('Erro na inicialização:', error);
             }
         }
         
         function setupEventListeners() {
+            // Menu mobile
             const menuToggle = document.getElementById('mobile-menu');
             const navMenu = document.getElementById('nav-menu');
             
@@ -1660,6 +1428,7 @@
                 });
             }
             
+            // Fechar menu ao clicar em um link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     menuToggle.classList.remove('active');
@@ -1677,707 +1446,96 @@
             });
         }
         
-        // ===== NAVEGAÇÃO =====
+        // ===== NAVEGAÇÃO PRINCIPAL =====
         function navigateTo(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            
-            const targetPage = document.getElementById(`${page}-page`);
-            if (targetPage) {
-                targetPage.classList.remove('hidden');
-            }
-            
-            // Ativar link de navegação correspondente
-            const navMap = {
-                'home': 0,
-                'cursos': 1,
-                'login': 3
-            };
-            
-            if (navMap[page] !== undefined) {
-                const navLinks = document.querySelectorAll('.nav-link');
-                if (navLinks[navMap[page]]) {
-                    navLinks[navMap[page]].classList.add('active');
-                }
-            }
-            
-            switch(page) {
-                case 'home':
-                    loadFeaturedCourses();
-                    break;
-                case 'cursos':
-                    loadAllCoursesPage();
-                    break;
-                case 'admin':
-                    if (!isAdmin) {
-                        navigateTo('login');
-                        return;
+            try {
+                // Esconder todas as páginas
+                document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+                
+                // Remover active de todos os links
+                document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                
+                // Mostrar a página solicitada
+                const targetPage = document.getElementById(`${page}-page`);
+                if (targetPage) {
+                    targetPage.classList.remove('hidden');
+                    
+                    // Ativar o link correspondente no menu
+                    const activeLink = document.querySelector(`.nav-link[onclick*="${page}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
                     }
-                    loadAdminDashboard();
-                    break;
+                    
+                    // Executar ações específicas da página
+                    switch(page) {
+                        case 'home':
+                            loadFeaturedCourses();
+                            break;
+                        case 'cursos':
+                            loadAllCourses();
+                            break;
+                        case 'admin':
+                            if (!isAdmin) {
+                                navigateTo('login');
+                                return;
+                            }
+                            loadAdminDashboard();
+                            break;
+                    }
+                    
+                    // Atualizar URL
+                    window.location.hash = page;
+                }
+            } catch (error) {
+                console.error('Erro na navegação:', error);
             }
-            
-            window.scrollTo(0, 0);
         }
         
-        // ===== FUNÇÕES DO SUPABASE =====
+        // ===== CURSOS PÚBLICOS =====
         async function loadCourses() {
             try {
-                const { data, error } = await supabase
-                    .from('courses')
-                    .select('*')
-                    .eq('is_published', true)
-                    .order('created_at', { ascending: false });
+                // Dados de exemplo (substituir por chamada ao Supabase)
+                const sampleCourses = [
+                    {
+                        id: 1,
+                        title: "Matemática 6º Ano",
+                        description: "Curso completo de matemática para o 6º ano do ensino fundamental.",
+                        price: 197.90,
+                        category: "6ano"
+                    },
+                    {
+                        id: 2,
+                        title: "Matemática 7º Ano",
+                        description: "Curso completo de matemática para o 7º ano do ensino fundamental.",
+                        price: 197.90,
+                        category: "7ano"
+                    },
+                    {
+                        id: 3,
+                        title: "Matemática 8º Ano",
+                        description: "Curso completo de matemática para o 8º ano do ensino fundamental.",
+                        price: 197.90,
+                        category: "8ano"
+                    },
+                    {
+                        id: 4,
+                        title: "Matemática 9º Ano",
+                        description: "Curso completo de matemática para o 9º ano do ensino fundamental.",
+                        price: 197.90,
+                        category: "9ano"
+                    }
+                ];
                 
-                if (error) throw error;
-                
-                window.courses = data || [];
+                window.courses = sampleCourses;
                 loadFeaturedCourses();
+                loadAllCourses();
+                
             } catch (error) {
                 console.error('Erro ao carregar cursos:', error);
                 window.courses = [];
             }
         }
         
-        async function loadPortalModules() {
-            try {
-                const { data, error } = await supabase
-                    .from('portal_modules')
-                    .select('*')
-                    .eq('year', 6)
-                    .eq('is_published', true)
-                    .order('bimester', { ascending: true })
-                    .order('order_index', { ascending: true });
-                
-                if (error) throw error;
-                
-                portalModules = data || [];
-                return portalModules;
-            } catch (error) {
-                console.error('Erro ao carregar módulos:', error);
-                portalModules = [];
-                return [];
-            }
-        }
-        
-        async function loadStudentProgress(studentId) {
-            if (!studentId) return [];
-            
-            try {
-                const { data, error } = await supabase
-                    .from('student_progress')
-                    .select('*')
-                    .eq('student_id', studentId);
-                
-                if (error) throw error;
-                
-                return data || [];
-            } catch (error) {
-                console.error('Erro ao carregar progresso:', error);
-                return [];
-            }
-        }
-        
-        async function saveStudentProgress(progressData) {
-            try {
-                // Verificar se já existe progresso para esta aula
-                const { data: existing } = await supabase
-                    .from('student_progress')
-                    .select('id')
-                    .eq('student_id', progressData.student_id)
-                    .eq('module_id', progressData.module_id)
-                    .single();
-                
-                if (existing) {
-                    // Atualizar
-                    const { error } = await supabase
-                        .from('student_progress')
-                        .update(progressData)
-                        .eq('id', existing.id);
-                    
-                    if (error) throw error;
-                } else {
-                    // Criar novo
-                    const { error } = await supabase
-                        .from('student_progress')
-                        .insert([progressData]);
-                    
-                    if (error) throw error;
-                }
-            } catch (error) {
-                console.error('Erro ao salvar progresso:', error);
-            }
-        }
-        
-        // ===== PORTAL 6º ANO =====
-        async function openPortalModal(year) {
-            currentStudentName = localStorage.getItem('student_name') || '';
-            
-            if (!currentStudentName) {
-                showPortalLogin();
-            } else {
-                await renderPortalContent(year);
-            }
-            
-            document.getElementById('portal-6ano-modal').classList.remove('hidden');
-        }
-        
-        function showPortalLogin() {
-            const portalContent = document.getElementById('portal-6ano-content');
-            portalContent.innerHTML = `
-                <div class="auth-box" style="max-width: 400px; margin: 0 auto;">
-                    <div class="auth-header">
-                        <h3><i class="fas fa-calculator"></i> Portal de Aulas</h3>
-                        <p>Matemática 6º Ano</p>
-                    </div>
-                    <div class="auth-form">
-                        <div class="form-group">
-                            <label>Digite seu nome:</label>
-                            <input type="text" id="portal-student-name" class="form-control" placeholder="Seu nome completo" required>
-                        </div>
-                        <button class="btn btn-primary btn-block" onclick="loginToPortal()">
-                            <i class="fas fa-sign-in-alt"></i> Entrar no Portal
-                        </button>
-                        <div class="text-center mt-3">
-                            <p style="color: var(--gray); font-size: 0.9rem;">
-                                Seu progresso será salvo automaticamente
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function loginToPortal() {
-            const name = document.getElementById('portal-student-name').value.trim();
-            if (name) {
-                currentStudentName = name;
-                localStorage.setItem('student_name', name);
-                renderPortalContent(6);
-            }
-        }
-        
-        async function renderPortalContent(year) {
-            const modules = await loadPortalModules();
-            
-            // Agrupar módulos por bimestre
-            const modulesByBimester = {
-                1: modules.filter(m => m.bimester === 1),
-                2: modules.filter(m => m.bimester === 2),
-                3: modules.filter(m => m.bimester === 3),
-                4: modules.filter(m => m.bimester === 4)
-            };
-            
-            const portalContent = document.getElementById('portal-6ano-content');
-            portalContent.innerHTML = `
-                <div class="portal-container">
-                    <div class="portal-header">
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
-                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 6º Ano</p>
-                            </div>
-                            <button class="btn btn-danger" onclick="logoutFromPortal()" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
-                                <i class="fas fa-sign-out-alt"></i> Sair
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #2563eb;" id="completed-count">0</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #10b981;" id="total-time">0min</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
-                        </div>
-                        <div class="stat-card">
-                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score">0%</h3>
-                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
-                        <div id="ranking-list">
-                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
-                        </div>
-                    </div>
-                    
-                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
-                        
-                        <div class="bimester-tabs">
-                            ${[1, 2, 3, 4].map(b => `
-                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
-                                        onclick="switchBimester(${b})">
-                                    ${b}º Bimestre
-                                </button>
-                            `).join('')}
-                        </div>
-                        
-                        <div class="lessons-grid" id="lessons-container">
-                            ${renderPortalLessons(modulesByBimester[currentBimester] || [])}
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Carregar estatísticas do aluno (simulado - em produção, buscar do Supabase)
-            updatePortalStats();
-        }
-        
-        function renderPortalLessons(lessons) {
-            if (lessons.length === 0) {
-                return '<p style="text-align: center; color: #6b7280; grid-column: 1 / -1;">Nenhuma aula disponível para este bimestre.</p>';
-            }
-            
-            return lessons.map((lesson, index) => {
-                // Simular progresso (em produção, buscar do Supabase)
-                const isCompleted = Math.random() > 0.7;
-                const score = isCompleted ? Math.floor(Math.random() * 30) + 70 : null;
-                const timeSpent = isCompleted ? Math.floor(Math.random() * 30) + 10 : 0;
-                
-                return `
-                    <div class="lesson-card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <span class="lesson-code">${lesson.code}</span>
-                            ${isCompleted ? `<span style="color: #10b981; font-size: 1.25rem;">✅</span>` : ''}
-                        </div>
-                        <div class="lesson-title">${lesson.title}</div>
-                        <div class="lesson-desc">${lesson.description}</div>
-                        
-                        ${timeSpent > 0 ? `
-                            <div style="margin-bottom: 0.5rem;">
-                                <div style="font-size: 0.75rem; color: #6b7280;">Tempo: ${timeSpent}min</div>
-                            </div>
-                        ` : ''}
-                        
-                        ${score !== null ? `
-                            <div style="margin-bottom: 1rem;">
-                                <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 0.25rem;">Acertos: ${score}%</div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: ${score}%"></div>
-                                </div>
-                            </div>
-                        ` : ''}
-                        
-                        <button class="btn btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.875rem;" 
-                                onclick="startPortalLesson('${lesson.id}', '${lesson.title}', '${lesson.url}')">
-                            ${isCompleted ? 'Revisar Aula' : 'Iniciar Aula'}
-                        </button>
-                    </div>
-                `;
-            }).join('');
-        }
-        
-        function switchBimester(bimester) {
-            currentBimester = bimester;
-            
-            document.querySelectorAll('.bimester-tab').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.textContent.includes(`${bimester}º`)) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Recarregar as aulas do bimestre selecionado
-            const currentModules = portalModules.filter(m => m.bimester === bimester);
-            document.getElementById('lessons-container').innerHTML = renderPortalLessons(currentModules);
-        }
-        
-        function startPortalLesson(moduleId, title, url) {
-            // Registrar início da aula
-            const timerKey = `module-${moduleId}`;
-            
-            if (!lessonTimers[timerKey]) {
-                lessonTimers[timerKey] = {
-                    startTime: Date.now(),
-                    interval: setInterval(() => {
-                        updateLessonTime(moduleId);
-                    }, 30000) // Atualizar a cada 30 segundos
-                };
-            }
-
-            // Abrir aula em nova aba
-            window.open(url, '_blank', 'noopener,noreferrer');
-
-            // Mostrar prompt de avaliação após 5 segundos
-            setTimeout(() => {
-                showScorePrompt(moduleId, title);
-            }, 5000);
-        }
-        
-        async function updateLessonTime(moduleId) {
-            // Em produção, salvar o tempo gasto no Supabase
-            console.log(`Atualizando tempo para módulo ${moduleId}`);
-            
-            // Exemplo de como salvar no Supabase:
-            // await saveStudentProgress({
-            //     student_id: currentStudentName, // Em produção, use um ID real
-            //     module_id: moduleId,
-            //     time_spent: elapsedSeconds,
-            //     last_accessed: new Date().toISOString()
-            // });
-        }
-        
-        function showScorePrompt(moduleId, title) {
-            // Parar timer
-            const timerKey = `module-${moduleId}`;
-            if (lessonTimers[timerKey]?.interval) {
-                clearInterval(lessonTimers[timerKey].interval);
-            }
-
-            const score = Math.floor(Math.random() * 30) + 70; // Simular nota
-            
-            // Em produção, salvar a nota no Supabase
-            console.log(`Salvando nota ${score}% para módulo ${moduleId}`);
-            
-            // Exemplo de como salvar no Supabase:
-            // await saveStudentProgress({
-            //     student_id: currentStudentName,
-            //     module_id: moduleId,
-            //     score: score,
-            //     completed: true,
-            //     completed_at: new Date().toISOString()
-            // });
-            
-            // Atualizar estatísticas
-            updatePortalStats();
-            
-            // Mostrar confirmação
-            alert(`Aula "${title}" concluída! Sua nota: ${score}%`);
-        }
-        
-        function updatePortalStats() {
-            // Simular estatísticas (em produção, calcular baseado no progresso real)
-            const completed = Math.floor(Math.random() * 10);
-            const totalTime = completed * 25;
-            const avgScore = completed > 0 ? Math.floor(Math.random() * 20) + 75 : 0;
-            
-            document.getElementById('completed-count').textContent = completed;
-            document.getElementById('total-time').textContent = `${totalTime}min`;
-            document.getElementById('avg-score').textContent = `${avgScore}%`;
-            
-            // Atualizar ranking
-            updateRanking();
-        }
-        
-        function updateRanking() {
-            const rankingList = document.getElementById('ranking-list');
-            
-            // Simular ranking (em produção, buscar do Supabase)
-            const rankings = [
-                { code: 'EF05MA03', score: 95, bimester: 1 },
-                { code: 'EF05MA04', score: 88, bimester: 1 },
-                { code: 'EF05MA05', score: 92, bimester: 2 }
-            ];
-            
-            if (rankings.length === 0) {
-                rankingList.innerHTML = `<p style="text-align: center; color: #6b7280;">Nenhuma aula com nota registrada ainda</p>`;
-                return;
-            }
-
-            rankingList.innerHTML = rankings.map((item, i) => `
-                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: white; border-radius: 6px; margin-bottom: 0.5rem;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span style="font-size: 1.25rem;">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '🎯'}</span>
-                        <div>
-                            <div style="font-weight: 600; color: #1f2937;">${item.code}</div>
-                            <div style="font-size: 0.75rem; color: #6b7280;">${item.bimester}º Bimestre</div>
-                        </div>
-                    </div>
-                    <div style="font-weight: 700; color: #10b981;">${item.score}%</div>
-                </div>
-            `).join('');
-        }
-        
-        function logoutFromPortal() {
-            currentStudentName = '';
-            localStorage.removeItem('student_name');
-            lessonTimers = {};
-            closePortalModal();
-        }
-        
-        function closePortalModal() {
-            document.getElementById('portal-6ano-modal').classList.add('hidden');
-        }
-        
-        // ===== ADMIN =====
-        async function loginAdmin() {
-            const email = document.getElementById('admin-email').value;
-            const password = document.getElementById('admin-password').value;
-            
-            try {
-                const { data, error } = await supabase.auth.signInWithPassword({
-                    email: email,
-                    password: password
-                });
-                
-                if (error) throw error;
-                
-                currentUser = data.user;
-                await checkUserRole();
-                
-                if (isAdmin) {
-                    showAlert('Login realizado com sucesso!', 'success');
-                    updateAdminNav();
-                    navigateTo('admin');
-                } else {
-                    showAlert('Acesso não autorizado.', 'error');
-                    await supabase.auth.signOut();
-                }
-            } catch (error) {
-                console.error('Erro no login:', error);
-                showAlert('Email ou senha incorretos.', 'error');
-            }
-        }
-        
-        function logoutAdmin() {
-            supabase.auth.signOut();
-            currentUser = null;
-            isAdmin = false;
-            showAlert('Logout realizado com sucesso!', 'success');
-            navigateTo('home');
-        }
-        
-        function toggleAdminSidebar() {
-            document.getElementById('admin-sidebar').classList.toggle('active');
-        }
-        
-        function switchAdminTab(tab) {
-            document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
-            document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
-            
-            document.getElementById(`${tab}-tab`).classList.remove('hidden');
-            document.querySelector(`.sidebar-menu a[onclick*="${tab}"]`).classList.add('active');
-            document.getElementById('admin-page-title').textContent = 
-                tab.charAt(0).toUpperCase() + tab.slice(1);
-            
-            if (tab === 'dashboard') {
-                loadAdminDashboard();
-            } else if (tab === 'cursos') {
-                loadAdminCourses();
-            }
-        }
-        
-        async function loadAdminDashboard() {
-            try {
-                // Carregar estatísticas
-                const { data: courses, error: coursesError } = await supabase
-                    .from('courses')
-                    .select('id', { count: 'exact' });
-                
-                const { data: modules, error: modulesError } = await supabase
-                    .from('portal_modules')
-                    .select('id', { count: 'exact' });
-                
-                if (!coursesError && !modulesError) {
-                    document.getElementById('total-courses').textContent = courses.length;
-                    document.getElementById('total-modules').textContent = modules.length;
-                }
-                
-                // Carregar atividades recentes
-                const { data: activities, error: activitiesError } = await supabase
-                    .from('admin_activities')
-                    .select('*')
-                    .order('created_at', { ascending: false })
-                    .limit(5);
-                
-                if (!activitiesError) {
-                    const table = document.getElementById('recent-activities').querySelector('tbody');
-                    table.innerHTML = activities.map(activity => `
-                        <tr>
-                            <td>${new Date(activity.created_at).toLocaleDateString('pt-BR')}</td>
-                            <td>${activity.action}</td>
-                            <td>${activity.user_email}</td>
-                        </tr>
-                    `).join('');
-                }
-                
-            } catch (error) {
-                console.error('Erro ao carregar dashboard:', error);
-            }
-        }
-        
-        async function loadAdminCourses() {
-            try {
-                const { data: courses, error } = await supabase
-                    .from('courses')
-                    .select('*')
-                    .order('created_at', { ascending: false });
-                
-                if (error) throw error;
-                
-                const table = document.getElementById('admin-courses-table').querySelector('tbody');
-                table.innerHTML = courses.map(course => `
-                    <tr>
-                        <td>${course.id}</td>
-                        <td>${course.title}</td>
-                        <td><span class="badge">${course.category}</span></td>
-                        <td>R$ ${course.price.toFixed(2)}</td>
-                        <td><span class="badge ${course.is_published ? 'badge-success' : 'badge-warning'}">${course.is_published ? 'Publicado' : 'Rascunho'}</span></td>
-                        <td>
-                            <button class="btn-action btn-edit" onclick="editCourse(${course.id})" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn-action btn-danger" onclick="deleteCourse(${course.id})" title="Excluir">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                `).join('');
-            } catch (error) {
-                console.error('Erro ao carregar cursos:', error);
-                showAlert('Erro ao carregar cursos.', 'error');
-            }
-        }
-        
-        async function addNewCourse() {
-            const title = document.getElementById('new-course-title').value;
-            const description = document.getElementById('new-course-description').value;
-            const price = parseFloat(document.getElementById('new-course-price').value);
-            const category = document.getElementById('new-course-category').value;
-            
-            if (!title || !price || !category) {
-                showAlert('Por favor, preencha todos os campos obrigatórios.', 'error');
-                return;
-            }
-            
-            try {
-                const { data, error } = await supabase
-                    .from('courses')
-                    .insert([{
-                        title: title,
-                        description: description,
-                        price: price,
-                        category: category,
-                        is_published: true,
-                        created_by: currentUser.id,
-                        created_at: new Date().toISOString()
-                    }])
-                    .select()
-                    .single();
-                
-                if (error) throw error;
-                
-                // Registrar atividade
-                await supabase
-                    .from('admin_activities')
-                    .insert([{
-                        action: `Curso "${title}" adicionado`,
-                        user_email: currentUser.email,
-                        created_at: new Date().toISOString()
-                    }]);
-                
-                showAlert('Curso adicionado com sucesso!', 'success');
-                document.getElementById('add-course-form').reset();
-                loadAdminCourses();
-                loadAdminDashboard();
-            } catch (error) {
-                console.error('Erro ao adicionar curso:', error);
-                showAlert('Erro ao adicionar curso.', 'error');
-            }
-        }
-        
-        async function addNewModule() {
-            const bimester = parseInt(document.getElementById('module-bimester').value);
-            const code = document.getElementById('module-code').value.trim();
-            const title = document.getElementById('module-title').value.trim();
-            const description = document.getElementById('module-description').value.trim();
-            const url = document.getElementById('module-url').value.trim();
-            
-            if (!bimester || !code || !title || !url) {
-                showAlert('Por favor, preencha todos os campos obrigatórios.', 'error');
-                return;
-            }
-            
-            try {
-                // Calcular ordem de exibição
-                const { data: lastModule, error: lastError } = await supabase
-                    .from('portal_modules')
-                    .select('order_index')
-                    .eq('year', 6)
-                    .eq('bimester', bimester)
-                    .order('order_index', { ascending: false })
-                    .limit(1)
-                    .single();
-                
-                const orderIndex = lastModule ? lastModule.order_index + 1 : 1;
-                
-                const { data, error } = await supabase
-                    .from('portal_modules')
-                    .insert([{
-                        year: 6,
-                        bimester: bimester,
-                        code: code,
-                        title: title,
-                        description: description,
-                        url: url,
-                        order_index: orderIndex,
-                        is_published: true,
-                        created_by: currentUser.id,
-                        created_at: new Date().toISOString()
-                    }])
-                    .select()
-                    .single();
-                
-                if (error) throw error;
-                
-                // Registrar atividade
-                await supabase
-                    .from('admin_activities')
-                    .insert([{
-                        action: `Módulo "${title}" adicionado ao portal 6º ano`,
-                        user_email: currentUser.email,
-                        created_at: new Date().toISOString()
-                    }]);
-                
-                showAlert('Módulo adicionado com sucesso!', 'success');
-                document.getElementById('add-module-form').reset();
-                loadAdminDashboard();
-            } catch (error) {
-                console.error('Erro ao adicionar módulo:', error);
-                showAlert('Erro ao adicionar módulo.', 'error');
-            }
-        }
-        
-        function editCourse(courseId) {
-            // Implementar edição de curso
-            showAlert('Funcionalidade de edição em desenvolvimento!', 'info');
-        }
-        
-        async function deleteCourse(courseId) {
-            if (!confirm('Tem certeza que deseja excluir este curso?')) return;
-            
-            try {
-                const { error } = await supabase
-                    .from('courses')
-                    .delete()
-                    .eq('id', courseId);
-                
-                if (error) throw error;
-                
-                // Registrar atividade
-                await supabase
-                    .from('admin_activities')
-                    .insert([{
-                        action: `Curso ID ${courseId} excluído`,
-                        user_email: currentUser.email,
-                        created_at: new Date().toISOString()
-                    }]);
-                
-                showAlert('Curso excluído com sucesso!', 'success');
-                loadAdminCourses();
-                loadAdminDashboard();
-            } catch (error) {
-                console.error('Erro ao excluir curso:', error);
-                showAlert('Erro ao excluir curso.', 'error');
-            }
-        }
-        
-        // ===== CURSOS PÚBLICOS =====
         function loadFeaturedCourses() {
             const container = document.getElementById('featured-courses');
             if (!container || !window.courses) return;
@@ -2404,7 +1562,7 @@
             `).join('');
         }
         
-        function loadAllCoursesPage() {
+        function loadAllCourses() {
             const container = document.getElementById('all-courses');
             if (!container || !window.courses) return;
             
@@ -2477,12 +1635,425 @@
             alert(`Curso: ${course.title}\n\nDescrição: ${course.description}\n\nValor: R$ ${course.price.toFixed(2)}\n\nCategoria: ${course.category}\n\nEntre em contato para mais informações!`);
         }
         
+        // ===== PORTAL 6º ANO =====
+        async function openPortalModal(year) {
+            currentStudentName = localStorage.getItem('student_name') || '';
+            
+            if (!currentStudentName) {
+                showPortalLogin();
+            } else {
+                await renderPortalContent(year);
+            }
+            
+            document.getElementById('portal-6ano-modal').classList.remove('hidden');
+        }
+        
+        function showPortalLogin() {
+            const portalContent = document.getElementById('portal-6ano-content');
+            portalContent.innerHTML = `
+                <div class="auth-box" style="max-width: 400px; margin: 0 auto;">
+                    <div class="auth-header">
+                        <h3><i class="fas fa-calculator"></i> Portal de Aulas</h3>
+                        <p>Matemática 6º Ano</p>
+                    </div>
+                    <div class="auth-form">
+                        <div class="form-group">
+                            <label>Digite seu nome:</label>
+                            <input type="text" id="portal-student-name" class="form-control" placeholder="Seu nome completo" required>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="loginToPortal()">
+                            <i class="fas fa-sign-in-alt"></i> Entrar no Portal
+                        </button>
+                        <div class="text-center mt-3">
+                            <p style="color: var(--gray); font-size: 0.9rem;">
+                                Seu progresso será salvo automaticamente
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function loginToPortal() {
+            const name = document.getElementById('portal-student-name').value.trim();
+            if (name) {
+                currentStudentName = name;
+                localStorage.setItem('student_name', name);
+                renderPortalContent(6);
+            }
+        }
+        
+        async function renderPortalContent(year) {
+            // Dados de exemplo (substituir por chamada ao Supabase)
+            portalModules = [
+                {
+                    id: 1,
+                    bimester: 1,
+                    code: 'EF05MA03',
+                    title: 'Números Naturais e Decimais',
+                    description: 'Reconhecer e utilizar números naturais e decimais em situações do cotidiano.',
+                    url: 'https://www.youtube.com/watch?v=exemplo'
+                },
+                {
+                    id: 2,
+                    bimester: 1,
+                    code: 'EF05MA04',
+                    title: 'Operações Básicas',
+                    description: 'Resolver problemas com as quatro operações básicas.',
+                    url: 'https://www.youtube.com/watch?v=exemplo'
+                }
+            ];
+            
+            const portalContent = document.getElementById('portal-6ano-content');
+            portalContent.innerHTML = `
+                <div class="portal-container">
+                    <div class="portal-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h2 style="margin: 0;">Olá, ${currentStudentName}! 👋</h2>
+                                <p style="margin: 0; opacity: 0.9;">Seu progresso em Matemática - 6º Ano</p>
+                            </div>
+                            <button class="btn btn-danger" onclick="logoutFromPortal()" style="background: rgba(255,255,255,0.2); border: 1px solid white;">
+                                <i class="fas fa-sign-out-alt"></i> Sair
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #2563eb;" id="completed-count">0</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Aulas Concluídas</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #10b981;" id="total-time">0min</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Tempo de Estudo</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 style="margin: 0; color: #f59e0b;" id="avg-score">0%</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: #6b7280;">Média de Acertos</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                        <h4 style="margin: 0 0 1rem 0;">🏆 Seu Ranking</h4>
+                        <div id="ranking-list">
+                            <p style="text-align: center; color: #6b7280;">Nenhuma aula concluída ainda</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h4 style="margin: 0 0 1rem 0;">📚 Aulas por Bimestre</h4>
+                        
+                        <div class="bimester-tabs">
+                            ${[1, 2, 3, 4].map(b => `
+                                <button class="bimester-tab ${b === currentBimester ? 'active' : ''}" 
+                                        onclick="switchBimester(${b})">
+                                    ${b}º Bimestre
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="lessons-grid" id="lessons-container">
+                            ${renderPortalLessons(portalModules.filter(m => m.bimester === currentBimester))}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            updatePortalStats();
+        }
+        
+        function renderPortalLessons(lessons) {
+            if (lessons.length === 0) {
+                return '<p style="text-align: center; color: #6b7280; grid-column: 1 / -1;">Nenhuma aula disponível para este bimestre.</p>';
+            }
+            
+            return lessons.map(lesson => {
+                const isCompleted = Math.random() > 0.7;
+                const score = isCompleted ? Math.floor(Math.random() * 30) + 70 : null;
+                const timeSpent = isCompleted ? Math.floor(Math.random() * 30) + 10 : 0;
+                
+                return `
+                    <div class="lesson-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <span class="lesson-code">${lesson.code}</span>
+                            ${isCompleted ? `<span style="color: #10b981; font-size: 1.25rem;">✅</span>` : ''}
+                        </div>
+                        <div class="lesson-title">${lesson.title}</div>
+                        <div class="lesson-desc">${lesson.description}</div>
+                        
+                        ${timeSpent > 0 ? `
+                            <div style="margin-bottom: 0.5rem;">
+                                <div style="font-size: 0.75rem; color: #6b7280;">Tempo: ${timeSpent}min</div>
+                            </div>
+                        ` : ''}
+                        
+                        ${score !== null ? `
+                            <div style="margin-bottom: 1rem;">
+                                <div style="font-size: 0.75rem; color: #6b7280; margin-bottom: 0.25rem;">Acertos: ${score}%</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: ${score}%"></div>
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        <button class="btn btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.875rem;" 
+                                onclick="startPortalLesson('${lesson.id}', '${lesson.title}', '${lesson.url}')">
+                            ${isCompleted ? 'Revisar Aula' : 'Iniciar Aula'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function switchBimester(bimester) {
+            currentBimester = bimester;
+            
+            document.querySelectorAll('.bimester-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.bimester-tab').forEach(btn => {
+                if (btn.textContent.includes(`${bimester}º`)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            const currentModules = portalModules.filter(m => m.bimester === bimester);
+            document.getElementById('lessons-container').innerHTML = renderPortalLessons(currentModules);
+        }
+        
+        function startPortalLesson(moduleId, title, url) {
+            // Registrar início da aula
+            const timerKey = `module-${moduleId}`;
+            
+            if (!lessonTimers[timerKey]) {
+                lessonTimers[timerKey] = {
+                    startTime: Date.now(),
+                    interval: setInterval(() => {
+                        console.log(`Atualizando tempo para módulo ${moduleId}`);
+                    }, 30000)
+                };
+            }
+
+            // Abrir aula em nova aba
+            window.open(url, '_blank');
+
+            // Mostrar prompt de avaliação após 5 segundos
+            setTimeout(() => {
+                const score = Math.floor(Math.random() * 30) + 70;
+                alert(`Aula "${title}" concluída! Sua nota: ${score}%`);
+                updatePortalStats();
+            }, 5000);
+        }
+        
+        function updatePortalStats() {
+            const completed = Math.floor(Math.random() * 10);
+            const totalTime = completed * 25;
+            const avgScore = completed > 0 ? Math.floor(Math.random() * 20) + 75 : 0;
+            
+            if (document.getElementById('completed-count')) {
+                document.getElementById('completed-count').textContent = completed;
+                document.getElementById('total-time').textContent = `${totalTime}min`;
+                document.getElementById('avg-score').textContent = `${avgScore}%`;
+            }
+            
+            updateRanking();
+        }
+        
+        function updateRanking() {
+            const rankingList = document.getElementById('ranking-list');
+            if (!rankingList) return;
+            
+            const rankings = [
+                { code: 'EF05MA03', score: 95, bimester: 1 },
+                { code: 'EF05MA04', score: 88, bimester: 1 }
+            ];
+            
+            if (rankings.length === 0) {
+                rankingList.innerHTML = `<p style="text-align: center; color: #6b7280;">Nenhuma aula com nota registrada ainda</p>`;
+                return;
+            }
+
+            rankingList.innerHTML = rankings.map((item, i) => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.5rem; background: white; border-radius: 6px; margin-bottom: 0.5rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="font-size: 1.25rem;">${i === 0 ? '🥇' : i === 1 ? '🥈' : '🎯'}</span>
+                        <div>
+                            <div style="font-weight: 600; color: #1f2937;">${item.code}</div>
+                            <div style="font-size: 0.75rem; color: #6b7280;">${item.bimester}º Bimestre</div>
+                        </div>
+                    </div>
+                    <div style="font-weight: 700; color: #10b981;">${item.score}%</div>
+                </div>
+            `).join('');
+        }
+        
+        function logoutFromPortal() {
+            currentStudentName = '';
+            localStorage.removeItem('student_name');
+            lessonTimers = {};
+            closePortalModal();
+        }
+        
+        function closePortalModal() {
+            document.getElementById('portal-6ano-modal').classList.add('hidden');
+        }
+        
+        // ===== ADMIN =====
+        async function checkUserRole() {
+            if (!currentUser) {
+                isAdmin = false;
+                return;
+            }
+            
+            // Verificar se o usuário é admin
+            const adminEmails = ['admin@matematicafacil.com'];
+            isAdmin = adminEmails.includes(currentUser.email);
+            
+            if (isAdmin) {
+                const navMenu = document.getElementById('nav-menu');
+                const adminNav = navMenu.querySelector('li:last-child');
+                adminNav.innerHTML = `
+                    <a href="#" class="nav-link" onclick="navigateTo('admin')">
+                        <i class="fas fa-tachometer-alt"></i> Admin
+                    </a>
+                `;
+            }
+        }
+        
+        async function loginAdmin() {
+            const email = document.getElementById('admin-email').value;
+            const password = document.getElementById('admin-password').value;
+            
+            try {
+                // Simulação de login (substituir por chamada ao Supabase)
+                if (email === 'admin@matematicafacil.com' && password === 'admin123') {
+                    currentUser = { email: email };
+                    isAdmin = true;
+                    
+                    showAlert('Login realizado com sucesso!', 'success');
+                    checkUserRole();
+                    navigateTo('admin');
+                } else {
+                    showAlert('Email ou senha incorretos.', 'error');
+                }
+            } catch (error) {
+                console.error('Erro no login:', error);
+                showAlert('Erro ao realizar login.', 'error');
+            }
+        }
+        
+        function logoutAdmin() {
+            currentUser = null;
+            isAdmin = false;
+            showAlert('Logout realizado com sucesso!', 'success');
+            navigateTo('home');
+        }
+        
+        function toggleAdminSidebar() {
+            document.getElementById('admin-sidebar').classList.toggle('active');
+        }
+        
+        function switchAdminTab(tab) {
+            document.querySelectorAll('.admin-tab').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(`${tab}-tab`).classList.remove('hidden');
+            document.querySelector(`.sidebar-menu a[onclick*="${tab}"]`).classList.add('active');
+            
+            const tabTitles = {
+                'dashboard': 'Dashboard',
+                'cursos': 'Gerenciar Cursos',
+                'alunos': 'Gerenciar Alunos',
+                'configuracoes': 'Configurações'
+            };
+            document.getElementById('admin-page-title').textContent = tabTitles[tab] || 'Admin';
+            
+            if (tab === 'dashboard') {
+                loadAdminDashboard();
+            } else if (tab === 'cursos') {
+                loadAdminCourses();
+            }
+        }
+        
+        async function loadAdminDashboard() {
+            // Dados de exemplo
+            document.getElementById('total-courses').textContent = '4';
+            document.getElementById('total-modules').textContent = '8';
+            
+            const activities = [
+                { created_at: '2024-01-15', action: 'Curso adicionado', user_email: 'admin@matematicafacil.com' },
+                { created_at: '2024-01-14', action: 'Módulo atualizado', user_email: 'admin@matematicafacil.com' }
+            ];
+            
+            const table = document.getElementById('recent-activities').querySelector('tbody');
+            table.innerHTML = activities.map(activity => `
+                <tr>
+                    <td>${new Date(activity.created_at).toLocaleDateString('pt-BR')}</td>
+                    <td>${activity.action}</td>
+                    <td>${activity.user_email}</td>
+                </tr>
+            `).join('');
+        }
+        
+        async function loadAdminCourses() {
+            const courses = window.courses || [];
+            
+            const table = document.getElementById('admin-courses-table').querySelector('tbody');
+            table.innerHTML = courses.map(course => `
+                <tr>
+                    <td>${course.id}</td>
+                    <td>${course.title}</td>
+                    <td><span class="badge">${course.category}</span></td>
+                    <td>R$ ${course.price.toFixed(2)}</td>
+                    <td><span class="badge badge-success">Publicado</span></td>
+                    <td>
+                        <button class="btn-action btn-edit" title="Editar">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-action btn-danger" title="Excluir">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function addNewCourse() {
+            const title = document.getElementById('new-course-title').value;
+            const price = document.getElementById('new-course-price').value;
+            const category = document.getElementById('new-course-category').value;
+            
+            if (!title || !price || !category) {
+                showAlert('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            showAlert('Curso adicionado com sucesso!', 'success');
+            document.getElementById('add-course-form').reset();
+        }
+        
+        function addNewModule() {
+            const bimester = document.getElementById('module-bimester').value;
+            const code = document.getElementById('module-code').value;
+            const title = document.getElementById('module-title').value;
+            const url = document.getElementById('module-url').value;
+            
+            if (!bimester || !code || !title || !url) {
+                showAlert('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            showAlert('Módulo adicionado com sucesso!', 'success');
+            document.getElementById('add-module-form').reset();
+        }
+        
         // ===== CONFIGURAÇÕES =====
         function saveAppearanceSettings() {
             const primaryColor = document.getElementById('primary-color').value;
             const secondaryColor = document.getElementById('secondary-color').value;
             
-            // Aplicar cores
             document.documentElement.style.setProperty('--primary-color', primaryColor);
             document.documentElement.style.setProperty('--secondary-color', secondaryColor);
             
@@ -2491,30 +2062,23 @@
         
         function saveSiteSettings() {
             const siteName = document.getElementById('site-name').value;
-            const siteSlogan = document.getElementById('site-slogan').value;
             
-            // Atualizar textos
             document.getElementById('site-title').textContent = siteName;
-            document.getElementById('footer-site-title').textContent = siteName;
-            document.getElementById('footer-description').textContent = siteSlogan;
             
             showAlert('Informações do site salvas com sucesso!', 'success');
         }
         
         // ===== UTILITÁRIOS =====
         function showAlert(message, type = 'info') {
-            // Criar elemento de alerta
             const alertDiv = document.createElement('div');
             alertDiv.className = `alert alert-${type}`;
             alertDiv.innerHTML = `
                 <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i> ${message}
             `;
             
-            // Adicionar ao topo da página
             const mainContent = document.getElementById('main-content');
             mainContent.insertBefore(alertDiv, mainContent.firstChild);
             
-            // Remover após 3 segundos
             setTimeout(() => {
                 alertDiv.remove();
             }, 3000);
